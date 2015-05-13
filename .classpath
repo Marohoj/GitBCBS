@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="Dyhret/src"/>
 	<classpathentry kind="lib" path="Dyhret/lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="Dyhret/src/img/BCBS_LOGO.jpg"/>
-	<classpathentry kind="lib" path="Dyhret/src/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="Dyhret/bin"/>
 </classpath>
