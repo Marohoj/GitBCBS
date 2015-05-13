@@ -12,8 +12,14 @@ import java.sql.Statement;
 import BCBS.data.Users;
 
 public class DBCon {
-
-	private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
+	private static Configurations cf = new Configurations();
+	
+	
+	
+	//private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
+	private static String sqlUrl = "jdbc:mysql://" +cf.getHost()+":" + cf.getPort() + "/" + cf.getDBname();
+	
+	
 	private static String sqlUser = "root";
 	private static String sqlPassword = "MySQL123";
 	private static String sqlDriver = "com.mysql.jdbc.Driver";
@@ -56,6 +62,7 @@ public class DBCon {
 			
 			
 			System.out.println("Connection Successful");		
+			
 		} 
 
 		catch (Exception ex) {
