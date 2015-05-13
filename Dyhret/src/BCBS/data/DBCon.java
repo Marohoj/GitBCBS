@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import BCBS.data.Users;
+
 public class DBCon {
 
 	private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";

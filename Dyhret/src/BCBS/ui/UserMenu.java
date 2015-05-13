@@ -6,6 +6,8 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 
+import BCBS.data.Users;
+
 import java.awt.Color;
 
 public class UserMenu extends JPanel {

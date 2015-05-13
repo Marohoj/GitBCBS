@@ -1,5 +1,7 @@
 package BCBS.ui;
 
+import BCBS.data.DBCon;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextField;

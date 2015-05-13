@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
+import BCBS.data.Admin;
+import BCBS.data.DBCon;
+import BCBS.data.Users;
+import BCBS.ui.Screen;
+
 public class BCBSapp {
 
 	private Screen screen;
@@ -77,7 +82,6 @@ public class BCBSapp {
 	
 	private class LoginActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource() == screen.getLogin().getBtnLogin()){
@@ -106,7 +110,6 @@ public class BCBSapp {
 
 	private class AdminMenuActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed (ActionEvent e ){
 
 			if (e.getSource() == screen.getAdminMenu().getBtnLogUd()){
@@ -130,7 +133,6 @@ public class BCBSapp {
 
 	private class UserMenuActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getUserMenu().getBtnLogUd()){
@@ -155,7 +157,6 @@ public class BCBSapp {
 
 	private class IndstActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getIndstBc().getBtnLogUd()){
@@ -176,7 +177,6 @@ public class BCBSapp {
 
 	private class HvActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getHvBc().getBtnLogud()){
@@ -197,7 +197,6 @@ public class BCBSapp {
 
 	private class TransActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getTransBc().getBtnLogud()){
@@ -218,7 +217,6 @@ public class BCBSapp {
 
 	private class VisActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getVisBruger().getBtnLogud()){
@@ -239,7 +237,6 @@ public class BCBSapp {
 
 	private class OpretActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getNyBruger().getBtnLogud()){
@@ -260,7 +257,6 @@ public class BCBSapp {
 
 	private class SletActionListener implements ActionListener{
 
-		@Override
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getSletBruger().getBtnLogud()){

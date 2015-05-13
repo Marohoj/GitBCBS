@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import BCBS.ui.Login;
+import BCBS.ui.UserMenu;
+import BCBS.ui.AdminMenu;
+
 public class Screen extends JFrame {
 	public static final String LOGIN = "login";
 	public static final String USERMENU = "usermenu";
