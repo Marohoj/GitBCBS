@@ -1,1 +1,2 @@
-/bin/
+*.json
+FinalCountdown/src/config.json
