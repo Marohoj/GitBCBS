@@ -51,17 +51,16 @@ public class Login extends JPanel {
 		btnAfslut = new JButton("Afslut");
 		btnAfslut.setBounds(358, 414, 89, 23);
 		add(btnAfslut);
-
-		label_1 = new JLabel("");
-		label_1.setBackground(Color.WHITE);
-		//Image img  = new ImageIcon(this.getClass().getResource("/BCBS_LOGO.jpg")).getImage();
-		//label_1.setIcon(new ImageIcon(img));
-		label_1.setBounds(160, 11, 366, 290);
-		add(label_1);
 		
 		lblPing = new JLabel("Connection: " + "");
 		lblPing.setBounds(10, 11, 563, 23);
 		add(lblPing);
+		
+				label_1 = new JLabel("");
+				label_1.setBackground(Color.WHITE);
+				label_1.setIcon(new ImageIcon(Login.class.getResource("/img/images.jpg")));
+				label_1.setBounds(160, 45, 159, 317);
+				add(label_1);
 	}
 
 	public JTextField getTfUsername() {
