@@ -16,11 +16,11 @@ public class DBCon {
 	private static Configurations cf = new Configurations();
 		
 	
-	// private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
+	//private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
 
-	private static String sqlUrl = "jdbs:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
-	private static String sqlUser = "root";
-	private static String sqlPassword = "MySQL123";
+	private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
+	private static String sqlUser = cf.getUsername();
+	private static String sqlPassword = cf.getPassword();
 	private static String sqlDriver = "com.mysql.jdbc.Driver";
 
 	private PreparedStatement selectAllUsers = null;
