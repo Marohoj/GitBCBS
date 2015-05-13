@@ -1,0 +1,8 @@
+create database BCBS;
+
+use BCBS;
+
+DROP TABLE IF EXISTS Admin;
+create table admin(primary key int, name varchar (255), password int);
+
+select * from admin;
