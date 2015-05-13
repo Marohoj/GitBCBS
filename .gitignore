@@ -4,6 +4,7 @@ ehthumbs.db
 
 # My custom blocks
 *.json
+src/config.json
 
 # Folder config file
 Desktop.ini
