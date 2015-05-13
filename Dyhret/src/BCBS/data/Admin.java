@@ -2,19 +2,19 @@ package BCBS.data;
 
 public class Admin {
 	
-	private String name;
+	private String initials;
 	private String password;
 	private String balance;
 	
-	public Admin(String name, String password, String balance){
+	public Admin(String initials, String password, String balance){
 		
-		this.name = name;
+		this.initials = initials;
 		this.password = password;
 		this.balance = balance;		
 	}
 
-	public String getName() {
-		return name;
+	public String getInitials() {
+		return initials;
 	}
 
 	public String getPassword() {

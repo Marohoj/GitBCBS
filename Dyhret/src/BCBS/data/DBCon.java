@@ -20,7 +20,6 @@ public class DBCon {
 
 	private PreparedStatement selectAllUsers = null;
 	private PreparedStatement selectAdmin = null;
-	private PreparedStatement executeUpdate = null;
 	private PreparedStatement createUser = null;
 	private PreparedStatement deleteUser = null;
 	private PreparedStatement updateExchange = null;
@@ -50,12 +49,10 @@ public class DBCon {
 			richOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance DESC");
 			poorOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance ASC");
 			
-			indstBc = conn.prepareStatement("INSERT INTO Users (balance) VALUES = ?");
-			hvBc = conn.prepareStatement("INSERT INTO Users (balance) VALUES = ? ");
-			transBc = conn.prepareStatement("INSERT INTO Users (balance) VALUES = ?");
+			indstBc = conn.prepareStatement("UPDATE Users SET balance = balance + ? WHERE initials = ?");
+			hvBc = conn.prepareStatement("UPDATE Users SET balance WHERE initials = ?");
+			transBc = conn.prepareStatement("UPDATE Users SET balance = balance + ? WHERE initials = ?");
 			
-			
-			System.out.println("Connection Successful");		
 		} 
 
 		catch (Exception ex) {
