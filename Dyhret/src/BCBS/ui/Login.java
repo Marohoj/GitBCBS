@@ -54,8 +54,8 @@ public class Login extends JPanel {
 
 		label_1 = new JLabel("");
 		label_1.setBackground(Color.WHITE);
-		Image img  = new ImageIcon(this.getClass().getResource("/BCBS_LOGO.jpg")).getImage();
-		label_1.setIcon(new ImageIcon(img));
+		//Image img  = new ImageIcon(this.getClass().getResource("/BCBS_LOGO.jpg")).getImage();
+		//label_1.setIcon(new ImageIcon(img));
 		label_1.setBounds(160, 11, 366, 290);
 		add(label_1);
 		

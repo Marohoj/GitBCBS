@@ -168,7 +168,7 @@ public class BCBSapp {
 			}
 
 			else if (e.getSource() == screen.getIndstBc().getBtnIndst()){
-				screen.show(Screen.USERMENU);
+				UserMetode.test();
 			}
 
 		}
