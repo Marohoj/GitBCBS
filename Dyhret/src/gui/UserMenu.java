@@ -1,13 +1,12 @@
-package BCBS.ui;
+package gui;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
+import db.Users;
+
 import java.awt.event.ActionListener;
-
-import BCBS.data.Users;
-
 import java.awt.Color;
 
 public class UserMenu extends JPanel {

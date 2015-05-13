@@ -1,4 +1,8 @@
-package BCBS.ui;
+package gui;
+
+import gui.AdminMenu;
+import gui.LoginScreen;
+import gui.UserMenu;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -6,10 +10,6 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import BCBS.ui.Login;
-import BCBS.ui.UserMenu;
-import BCBS.ui.AdminMenu;
 
 public class Screen extends JFrame {
 	public static final String LOGIN = "login";
@@ -22,7 +22,7 @@ public class Screen extends JFrame {
 	public static final String OPRET = "opret";
 	public static final String SLET = "slet";
 		
-	private Login login;
+	private LoginScreen login;
 	private UserMenu usermenu;
 	private AdminMenu adminmenu;
 	private IndstBc indstbc;
@@ -48,7 +48,7 @@ public class Screen extends JFrame {
 		contentPane.setLayout(new CardLayout(0, 0));
 		setContentPane(contentPane);
 
-		login = new Login();
+		login = new LoginScreen();
 		login.getLblPing().setBounds(10, 10, 218, 23);
 		login.setBackground(new Color(255, 255, 255));
 		login.setBounds(100, 100, 600, 500);
@@ -106,7 +106,7 @@ public class Screen extends JFrame {
 		c = (CardLayout) getContentPane().getLayout();
 	}
 		
-	public Login getLogin(){
+	public LoginScreen getLogin(){
 		return login;
 	}
 

@@ -1,11 +1,11 @@
+import logic.BCBSapp2;
 
-import BCBS.logic.BCBSapp;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		BCBSapp bcbsApp = new BCBSapp();
+		BCBSapp2 bcbsApp = new BCBSapp2();
 		bcbsApp.run();
 	}
 }

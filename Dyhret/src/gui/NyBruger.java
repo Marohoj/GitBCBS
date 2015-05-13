@@ -1,4 +1,4 @@
-package BCBS.ui;
+package gui;
 
 import java.awt.event.ActionListener;
 
@@ -7,11 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class SletBruger extends JPanel {
+public class NyBruger extends JPanel {
 
 	private JButton btnLogud;
 	private JButton btnHjem;
-	private JButton btnSlet;
+	private JButton btnOpret;
 
 	private JTextField brugerint;
 	private JTextField brugerfor;
@@ -26,8 +26,8 @@ public class SletBruger extends JPanel {
 	private JLabel lblPassword;
 	private JLabel lblFormular;
 	
-	public SletBruger() {
-
+	public NyBruger() {
+		
 		setBounds(100,100,600,500);
 		setLayout(null);
 
@@ -47,9 +47,9 @@ public class SletBruger extends JPanel {
 		lblSaldo.setBounds(20, 40, 103, 23);
 		add(lblSaldo);
 		
-		btnSlet = new JButton("Slet Bruger");
-		btnSlet.setBounds(252, 389, 103, 23);
-		add(btnSlet);
+		btnOpret = new JButton("Opret Bruger");
+		btnOpret.setBounds(252, 389, 103, 23);
+		add(btnOpret);
 		
 		brugerint = new JTextField();
 		brugerint.setBounds(277, 183, 155, 23);
@@ -87,12 +87,12 @@ public class SletBruger extends JPanel {
 		lblPassword.setBounds(182, 289, 85, 14);
 		add(lblPassword);
 		
-		lblFormular = new JLabel("Udfyld nedenst\u00E5ende formular for at slette en bruger i systemet");
+		lblFormular = new JLabel("Udfyld nedenst\u00E5ende formular for at oprette en ny bruger i systemet");
 		lblFormular.setBounds(147, 146, 357, 14);
 		add(lblFormular);
 
 	}
-	
+
 	public JButton getBtnLogud() {
 		return btnLogud;
 	}
@@ -101,8 +101,8 @@ public class SletBruger extends JPanel {
 		return btnHjem;
 	}
 
-	public JButton getBtnSlet() {
-		return btnSlet;
+	public JButton getBtnOpret() {
+		return btnOpret;
 	}
 
 	public JTextField getBrugerint() {
@@ -124,7 +124,7 @@ public class SletBruger extends JPanel {
 	public void addActionListener(ActionListener l) {
 		btnLogud.addActionListener(l);
 		btnHjem.addActionListener(l);
-		btnSlet.addActionListener(l);
+		btnOpret.addActionListener(l);
 	}
 
 }

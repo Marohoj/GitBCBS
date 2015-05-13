@@ -1,4 +1,4 @@
-package BCBS.logic;
+package logic;
 
 public class AdminMetode {
 

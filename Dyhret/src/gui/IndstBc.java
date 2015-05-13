@@ -1,4 +1,4 @@
-package BCBS.ui;
+package gui;
 
 import java.awt.event.ActionListener;
 
@@ -7,19 +7,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class HvBc extends JPanel {
-	
+public class IndstBc extends JPanel {
+
 	private JButton btnLogud;
 	private JButton btnHjem;
-	private JButton btnHvBc;
+	private JButton btnIndst;
 	private JLabel lblBruger;
 	private JLabel lblSaldo;
 	private JLabel lblAntalBc;
 	private JTextField textField;
-	private JLabel lblDetErMulig;
-
-	public HvBc() {
-
+	private JLabel label;
+	
+	public IndstBc() {
+		
 		setBounds(100,100,600,500);
 		setLayout(null);
 
@@ -31,15 +31,6 @@ public class HvBc extends JPanel {
 		btnHjem.setBounds(20, 100, 89, 23);
 		add(btnHjem);
 		
-		textField = new JTextField();
-		textField.setBounds(199, 300, 199, 23);
-		add(textField);
-		textField.setColumns(10);
-		
-		btnHvBc = new JButton("H\u00E6v BC");
-		btnHvBc.setBounds(252, 389, 89, 23);
-		add(btnHvBc);
-		
 		lblBruger = new JLabel("Du er logget ind som:" + "");
 		lblBruger.setBounds(20, 11, 238, 23);
 		add(lblBruger);
@@ -48,35 +39,41 @@ public class HvBc extends JPanel {
 		lblSaldo.setBounds(20, 40, 103, 23);
 		add(lblSaldo);
 		
-		lblAntalBc = new JLabel("Hvor mange BC \u00F8nsker du at h\u00E6ve?");
-		lblAntalBc.setBounds(199, 167, 227, 14);
+		textField = new JTextField();
+		textField.setBounds(199, 300, 199, 23);
+		add(textField);
+		textField.setColumns(10);
+		
+		btnIndst = new JButton("Inds\u00E6t BC");
+		btnIndst.setBounds(252, 389, 89, 23);
+		add(btnIndst);
+		
+		lblAntalBc = new JLabel("Hvor mange BC \u00F8nsker du at overf\u00F8re?");
+		lblAntalBc.setBounds(199, 167, 254, 14);
 		add(lblAntalBc);
 		
-		lblDetErMulig = new JLabel("Det er mulig at h\u00E6ve: " + "" + "BC");
-		lblDetErMulig.setBounds(199, 222, 188, 14);
-		add(lblDetErMulig);
+		label = new JLabel("Saldo:");
+		label.setBounds(199, 202, 103, 23);
+		add(label);
+		
 	}
-
-	public JButton getBtnLogud() {
+	
+	public JButton getBtnLogUd() {
 		return btnLogud;
 	}
-
+	
 	public JButton getBtnHjem() {
 		return btnHjem;
 	}
-
-	public JButton getBtnHvBc() {
-		return btnHvBc;
-	}
-
-	public JTextField getTextField() {
-		return textField;
+	
+	public JButton getBtnIndst() {
+		return btnIndst;
 	}
 	
 	public void addActionListener(ActionListener l) {
 		btnLogud.addActionListener(l);
 		btnHjem.addActionListener(l);
-		btnHvBc.addActionListener(l);
+		btnIndst.addActionListener(l);
 	}
-
+	
 }

@@ -1,4 +1,4 @@
-package BCBS.data;
+package db;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import BCBS.data.Users;
+import db.Users;
 
 public class DBCon {
 

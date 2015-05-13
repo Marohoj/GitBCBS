@@ -1,20 +1,22 @@
-package BCBS.logic;
+package logic;
+
+import gui.Screen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JOptionPane;
 
-import BCBS.data.Admin;
-import BCBS.data.DBCon;
-import BCBS.data.Users;
-import BCBS.ui.Screen;
+import db.Admin;
+import db.DBCon;
+import db.Users;
 
-public class BCBSapp {
+public class BCBSapp2 {
 
 	private Screen screen;
 	private DBCon dbcon;	
 
-	public BCBSapp(){
+	public BCBSapp2(){
 		//instansierer objekter
 
 		screen = new Screen();

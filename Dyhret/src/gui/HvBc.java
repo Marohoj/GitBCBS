@@ -1,4 +1,4 @@
-package BCBS.ui;
+package gui;
 
 import java.awt.event.ActionListener;
 
@@ -7,23 +7,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class TransBc extends JPanel {
-
+public class HvBc extends JPanel {
+	
 	private JButton btnLogud;
 	private JButton btnHjem;
-	private JButton btnTransBc;
-	
-	private JTextField tf_bruger;
-	private JTextField tf_antalbc;
-	
+	private JButton btnHvBc;
 	private JLabel lblBruger;
 	private JLabel lblSaldo;
 	private JLabel lblAntalBc;
+	private JTextField textField;
 	private JLabel lblDetErMulig;
-	private JLabel lblHvorMangeBc;
-	
-	public TransBc() {
-		
+
+	public HvBc() {
+
 		setBounds(100,100,600,500);
 		setLayout(null);
 
@@ -35,19 +31,14 @@ public class TransBc extends JPanel {
 		btnHjem.setBounds(20, 100, 89, 23);
 		add(btnHjem);
 		
-		tf_antalbc = new JTextField();
-		tf_antalbc.setBounds(199, 272, 199, 23);
-		add(tf_antalbc);
-		tf_antalbc.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(199, 300, 199, 23);
+		add(textField);
+		textField.setColumns(10);
 		
-		tf_bruger = new JTextField();
-		tf_bruger.setColumns(10);
-		tf_bruger.setBounds(199, 188, 199, 23);
-		add(tf_bruger);
-		
-		btnTransBc = new JButton("Overf\u00F8r BC");
-		btnTransBc.setBounds(252, 389, 89, 23);
-		add(btnTransBc);
+		btnHvBc = new JButton("H\u00E6v BC");
+		btnHvBc.setBounds(252, 389, 89, 23);
+		add(btnHvBc);
 		
 		lblBruger = new JLabel("Du er logget ind som:" + "");
 		lblBruger.setBounds(20, 11, 238, 23);
@@ -57,20 +48,15 @@ public class TransBc extends JPanel {
 		lblSaldo.setBounds(20, 40, 103, 23);
 		add(lblSaldo);
 		
-		lblAntalBc = new JLabel("Til bruger: ");
-		lblAntalBc.setBounds(199, 247, 69, 14);
+		lblAntalBc = new JLabel("Hvor mange BC \u00F8nsker du at h\u00E6ve?");
+		lblAntalBc.setBounds(199, 167, 227, 14);
 		add(lblAntalBc);
 		
-		lblDetErMulig = new JLabel("Det er muligt at overf\u00F8re: BC");
-		lblDetErMulig.setBounds(199, 140, 188, 14);
+		lblDetErMulig = new JLabel("Det er mulig at h\u00E6ve: " + "" + "BC");
+		lblDetErMulig.setBounds(199, 222, 188, 14);
 		add(lblDetErMulig);
-		
-		lblHvorMangeBc = new JLabel("Hvor mange BC \u00F8nsker du at overf\u00F8re?");
-		lblHvorMangeBc.setBounds(199, 165, 221, 14);
-		add(lblHvorMangeBc);
-				
 	}
-	
+
 	public JButton getBtnLogud() {
 		return btnLogud;
 	}
@@ -79,13 +65,18 @@ public class TransBc extends JPanel {
 		return btnHjem;
 	}
 
-	public JButton getBtnTransBc() {
-		return btnTransBc;
+	public JButton getBtnHvBc() {
+		return btnHvBc;
+	}
+
+	public JTextField getTextField() {
+		return textField;
 	}
 	
 	public void addActionListener(ActionListener l) {
 		btnLogud.addActionListener(l);
 		btnHjem.addActionListener(l);
-		btnTransBc.addActionListener(l);
+		btnHvBc.addActionListener(l);
 	}
+
 }

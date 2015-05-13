@@ -1,4 +1,4 @@
-package BCBS.data;
+package db;
 
 public class Users {
 

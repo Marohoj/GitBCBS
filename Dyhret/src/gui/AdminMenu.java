@@ -1,4 +1,4 @@
-package BCBS.ui;
+package gui;
 
 import java.awt.event.ActionListener;
 

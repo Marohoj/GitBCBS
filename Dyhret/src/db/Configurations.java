@@ -1,4 +1,4 @@
-package BCBS.data;
+package db;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
