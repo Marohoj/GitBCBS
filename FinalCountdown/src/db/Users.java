@@ -3,26 +3,26 @@ package db;
 public class Users {
 
 	private String initials;
-	private String firstname;
-	private String lastname;
+	private String first_name;
+	private String last_name;
 	private String password;
 	private String balance;
 
 	public Users(String initials, String password, String balance) {
 
 		this.initials = initials;
-		//this.firstname = first_name;
-		//this.lastname = last_name;
+		this.first_name = first_name;
+		this.last_name = last_name;
 		this.password = password;
 		this.balance = balance;		
 	}
 
 	public String getFirstName() {
-		return firstname;
+		return first_name;
 	}
 
 	public String getLastName() {
-		return lastname;
+		return last_name;
 	}
 
 	public String getInitials() {

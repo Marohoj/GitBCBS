@@ -15,25 +15,22 @@ public class AdminMethod {
 		System.out.println("Metode for visnig af brugere");
 		
 	}
-	
-	public static void createUser() throws SQLException {
-		
-		dbcon = new DBCon();
-		
-		ResultSet rs = dbcon.createUser.executeQuery();
-
-		try {
 			
-			rs.moveToInsertRow();
-			rs.updateString     (1, "Alex");
-			rs.insertRow();
-
-			rs.beforeFirst();			
-		} 
-		
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public static void nyUser(Users newUser){
+			
+			try {
+				dbcon.createUser.setString(1, "lol");
+				dbcon.createUser.setString(2, "lol");
+				dbcon.createUser.setString(3, "lol");
+				dbcon.createUser.setString(4, "lol");
+				dbcon.createUser.setString(5, "lol");
+				
+				dbcon.createUser.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		System.out.println("Metode for ny bruger");
 		

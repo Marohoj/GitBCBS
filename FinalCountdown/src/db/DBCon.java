@@ -48,7 +48,7 @@ public class DBCon {
 			statement = conn.createStatement();
 			selectAllUsers = conn.prepareStatement("SELECT * FROM Users");
 			selectAdmin = conn.prepareStatement("SELECT * FROM Admin");
-			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, intials, password, balance) VALUES = hej, med, dig, so, lol");
+			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, initials, password, balance) VALUES (?, ?, ?, ?, ?);");
 			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = ?, last_name = ?, initials = ?, password = ?");
 			updateExchange = conn.prepareStatement ("");
 			richOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance DESC");
@@ -63,6 +63,24 @@ public class DBCon {
 		catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	public void createUser(Users newUser){
+		
+		try {
+			createUser.setString(1, "lol");
+			createUser.setString(2, "lol");
+			createUser.setString(3, "lol");
+			createUser.setString(4, "lol");
+			createUser.setString(5, "lol");
+			
+			createUser.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
 	}
 
 	public List<Users> getUsers(){
