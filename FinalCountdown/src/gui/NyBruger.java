@@ -125,6 +125,10 @@ public class NyBruger extends JPanel {
 		btnLogud.addActionListener(l);
 		btnHjem.addActionListener(l);
 		btnOpret.addActionListener(l);
+		userFirst.addActionListener(l);
+		userLast.addActionListener(l);
+		userInt.addActionListener(l);
+		userPass.addActionListener(l);
 	}
 
 }

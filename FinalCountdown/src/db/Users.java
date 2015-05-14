@@ -8,7 +8,7 @@ public class Users {
 	private String password;
 	private String balance;
 
-	public Users(String initials, String password, String balance) {
+	public Users(String first_name, String last_name, String initials, String password, String balance) {
 
 		this.initials = initials;
 		this.first_name = first_name;
@@ -20,9 +20,17 @@ public class Users {
 	public String getFirstName() {
 		return first_name;
 	}
+	
+	public void setFirstName(String first_name){
+		this.first_name = first_name;
+	}
 
 	public String getLastName() {
 		return last_name;
+	}
+	
+	public void setLastName(String last_name) {
+		this.last_name = last_name;
 	}
 
 	public String getInitials() {

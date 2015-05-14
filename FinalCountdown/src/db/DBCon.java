@@ -1,5 +1,7 @@
 package db;
 
+import gui.NyBruger;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.Connection;
@@ -13,9 +15,7 @@ import db.Users;
 
 public class DBCon {
 
-	private static Configurations cf = new Configurations();
-		
-	
+	private static Configurations cf = new Configurations();	
 	// private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
 
 	private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
@@ -35,11 +35,12 @@ public class DBCon {
 	private PreparedStatement hvBc = null;
 	private PreparedStatement transBc = null;
 	
-
+	private NyBruger nybruger;
+	
 	ResultSet resultSet = null;
 	Statement statement = null;	
-	Connection conn = null;
-
+	Connection conn = null;;
+	
 	public void DBCon(){
 
 		try { 
@@ -67,14 +68,18 @@ public class DBCon {
 	
 	public void createUser(Users newUser){
 		
+		nybruger = new NyBruger();
+		
 		try {
-			createUser.setString(1, "lol");
-			createUser.setString(2, "lol");
-			createUser.setString(3, "lol");
-			createUser.setString(4, "lol");
-			createUser.setString(5, "lol");
+			createUser.setString(1, nybruger.getUserFirst().getText());
+			createUser.setString(2, nybruger.getUserLast().getText());
+			createUser.setString(3, nybruger.getUserInt().getText());
+			createUser.setString(4, nybruger.getUserPass().getText());
+			createUser.setString(5, "100 BC");
 			
 			createUser.executeUpdate();
+			
+			System.out.println("Done");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -92,8 +97,8 @@ public class DBCon {
 			while (resultSet.next()) {
 
 				ul.add(new Users(resultSet.getString("initials"),
-						//resultSet.getString("first_name"), 
-						//resultSet.getString("last_name"),
+						resultSet.getString("first_name"), 
+						resultSet.getString("last_name"),
 						resultSet.getString("password"), 
 						resultSet.getString("balance")));
 			}

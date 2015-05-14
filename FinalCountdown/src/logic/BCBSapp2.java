@@ -1,5 +1,6 @@
 package logic;
 
+import gui.NyBruger;
 import gui.Screen;
 
 import java.awt.event.ActionEvent;
@@ -14,7 +15,8 @@ import db.Users;
 public class BCBSapp2 {
 
 	private Screen screen;
-	private DBCon dbcon;	
+	private DBCon dbcon;
+	private NyBruger nybruger;
 
 	public BCBSapp2(){
 		//instansierer objekter
@@ -250,9 +252,13 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getNyBruger().getBtnOpret()){
-				
+							
 				Users newuser = null;
 				dbcon.createUser(newuser);
+				nybruger.getUserFirst().getText();
+				nybruger.getUserLast().getText();
+				nybruger.getUserInt().getText();
+				nybruger.getUserPass().getText();
 			}
 			
 		}
