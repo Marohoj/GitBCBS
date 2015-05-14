@@ -13,10 +13,10 @@ public class SletBruger extends JPanel {
 	private JButton btnHjem;
 	private JButton btnSlet;
 
-	private JTextField brugerint;
-	private JTextField brugerfor;
-	private JTextField brugerefter;
-	private JTextField brugerpass;
+	private JTextField userInit;
+	private JTextField userFirst;
+	private JTextField userLast;
+	private JTextField userPass;
 	
 	private JLabel	lblBruger;
 	private JLabel	lblSaldo;	
@@ -51,25 +51,25 @@ public class SletBruger extends JPanel {
 		btnSlet.setBounds(252, 389, 103, 23);
 		add(btnSlet);
 		
-		brugerint = new JTextField();
-		brugerint.setBounds(277, 183, 155, 23);
-		add(brugerint);
-		brugerint.setColumns(10);
+		userInit = new JTextField();
+		userInit.setBounds(277, 183, 155, 23);
+		add(userInit);
+		userInit.setColumns(10);
 		
-		brugerfor = new JTextField();
-		brugerfor.setColumns(10);
-		brugerfor.setBounds(277, 217, 155, 23);
-		add(brugerfor);
+		userFirst = new JTextField();
+		userFirst.setColumns(10);
+		userFirst.setBounds(277, 217, 155, 23);
+		add(userFirst);
 		
-		brugerefter = new JTextField();
-		brugerefter.setColumns(10);
-		brugerefter.setBounds(277, 251, 155, 23);
-		add(brugerefter);
+		userLast = new JTextField();
+		userLast.setColumns(10);
+		userLast.setBounds(277, 251, 155, 23);
+		add(userLast);
 		
-		brugerpass = new JTextField();
-		brugerpass.setColumns(10);
-		brugerpass.setBounds(277, 285, 155, 23);
-		add(brugerpass);
+		userPass = new JTextField();
+		userPass.setColumns(10);
+		userPass.setBounds(277, 285, 155, 23);
+		add(userPass);
 		
 		lblInitialer = new JLabel("Initialer:");
 		lblInitialer.setBounds(182, 187, 85, 14);
@@ -105,20 +105,20 @@ public class SletBruger extends JPanel {
 		return btnSlet;
 	}
 
-	public JTextField getBrugerint() {
-		return brugerint;
+	public JTextField getUserInit() {
+		return userInit;
 	}
 
-	public JTextField getBrugerfor() {
-		return brugerfor;
+	public JTextField getUserFirst() {
+		return userFirst;
 	}
 
-	public JTextField getBrugerefter() {
-		return brugerefter;
+	public JTextField getUserLast() {
+		return userLast;
 	}
 
-	public JTextField getBrugerpass() {
-		return brugerpass;
+	public JTextField getUserPass() {
+		return userPass;
 	}
 	
 	public void addActionListener(ActionListener l) {

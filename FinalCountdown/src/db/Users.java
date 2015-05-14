@@ -6,9 +6,9 @@ public class Users {
 	private String first_name;
 	private String last_name;
 	private String password;
-	private Integer balance;
+	private Double balance;
 
-	public Users(String first_name, String last_name, String initials, String password, Integer balance) {
+	public Users(String first_name, String last_name, String initials, String password, Double balance) {
 		
 		this.first_name = first_name;
 		this.last_name = last_name;
@@ -20,41 +20,21 @@ public class Users {
 	public String getFirstName() {
 		return first_name;
 	}
-	
-	public void setFirstName(String first_name){
-		this.first_name = first_name;
-	}
 
 	public String getLastName() {
 		return last_name;
 	}
 	
-	public void setLastName(String last_name) {
-		this.last_name = last_name;
-	}
-
 	public String getInitials() {
 		return initials;
-	}
-
-	public void setInitials(String initials) {
-		this.initials = initials;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getBalance() {
+	public Double getBalance() {
 		return balance;
-	}
-
-	public void setBalance(Integer balance) {
-		this.balance = balance;
 	}
 
 }

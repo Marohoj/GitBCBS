@@ -117,6 +117,8 @@ public class BCBSapp2 {
 		public void actionPerformed (ActionEvent e ){
 
 			if (e.getSource() == screen.getAdminMenu().getBtnLogUd()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
@@ -139,6 +141,8 @@ public class BCBSapp2 {
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getUserMenu().getBtnLogUd()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);				
 			}
 
@@ -163,10 +167,15 @@ public class BCBSapp2 {
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getIndstBc().getBtnLogUd()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
+				
 			}
 
 			else if (e.getSource() == screen.getIndstBc().getBtnHjem()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.USERMENU);
 			}
 
@@ -183,10 +192,14 @@ public class BCBSapp2 {
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getHvBc().getBtnLogud()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
 			else if (e.getSource() == screen.getHvBc().getBtnHjem()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.USERMENU);
 			}
 
@@ -203,10 +216,14 @@ public class BCBSapp2 {
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getTransBc().getBtnLogud()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
 			else if (e.getSource() == screen.getTransBc().getBtnHjem()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.USERMENU);
 			}
 
@@ -223,10 +240,14 @@ public class BCBSapp2 {
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getVisBruger().getBtnLogud()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
 			else if (e.getSource() == screen.getVisBruger().getBtnHjem()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.ADMINMENU);
 			}
 
@@ -243,17 +264,21 @@ public class BCBSapp2 {
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getNyBruger().getBtnLogud()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
 			else if (e.getSource() == screen.getNyBruger().getBtnHjem()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.ADMINMENU);
 			}
 
 			else if (e.getSource() == screen.getNyBruger().getBtnOpret()){
 				
-					Users newuser = null;
-					dbcon.createUser(newuser);
+				Users newuser = null;
+				dbcon.createUser(newuser);
 				//nybruger.getUserFirst().getText();
 				//nybruger.getUserLast().getText();
 				//nybruger.getUserInt().getText();
@@ -270,10 +295,14 @@ public class BCBSapp2 {
 		public void actionPerformed(ActionEvent e){
 
 			if (e.getSource() == screen.getSletBruger().getBtnLogud()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
 			else if (e.getSource() == screen.getSletBruger().getBtnHjem()){
+				screen.getLogin().getTfUsername().setText("");
+				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.ADMINMENU);
 			}
 

@@ -84,7 +84,7 @@ public class DBCon {
 			createUser.setString(2, lastname);
 			createUser.setString(3, initials);
 			createUser.setString(4, password);
-			createUser.setString(5, "100 BC");
+			createUser.setDouble(5, 1.0);
 			
 			createUser.executeUpdate();
 			
@@ -101,12 +101,17 @@ public class DBCon {
 		
 		sletbruger = new SletBruger();
 		
+		String firstname = screen.getSletBruger().getUserFirst().getText();
+		String lastname = screen.getSletBruger().getUserLast().getText();
+		String initials = screen.getSletBruger().getUserInit().getText();
+		String password = screen.getSletBruger().getUserPass().getText();
+		
 		try {
-			//deleteUser.setString(1, "Mathias");
-			//deleteUser.setString(2, "Højgaard");
-			//deleteUser.setString(3, "maho14am");
-			//deleteUser.setString(4, "1234");
-			//deleteUser.setString(5, "100 BC");
+			deleteUser.setString(1, firstname);
+			deleteUser.setString(2, lastname);
+			deleteUser.setString(3, initials);
+			deleteUser.setString(4, password);
+			deleteUser.setDouble(5, 1.0);
 			
 			deleteUser.executeUpdate();
 			
@@ -118,7 +123,6 @@ public class DBCon {
 		}
 		
 	}
-	
 
 	public List<Users> getUsers(){
 		List<Users> ul = null;
@@ -132,7 +136,7 @@ public class DBCon {
 						resultSet.getString("last_name"),
 						resultSet.getString("initials"),
 						resultSet.getString("password"), 
-						resultSet.getInt("balance")));
+						resultSet.getDouble("balance")));
 			}
 
 		} catch (SQLException e) {
@@ -152,8 +156,10 @@ public class DBCon {
 				
 				al.add(new Admin(resultSet.getString("initials"),
 						resultSet.getString("password"),
-						resultSet.getString("name")));
+						resultSet.getString("name"),
+						resultSet.getDouble("currency")));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
