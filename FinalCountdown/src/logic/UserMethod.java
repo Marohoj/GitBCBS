@@ -36,9 +36,7 @@ public class UserMethod {
 		}
 	}
 	
-	
-	
-	
+		
 	public static void deposit() {
 		
 		screen = new Screen();
