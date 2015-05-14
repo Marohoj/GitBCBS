@@ -57,7 +57,7 @@ public class IndstBc extends JPanel {
 		label.setBounds(199, 202, 103, 23);
 		add(label);
 		
-		lblTest = new JLabel("Test : ");
+		lblTest = new JLabel("");
 		lblTest.setBounds(199, 342, 46, 14);
 		add(lblTest);
 		

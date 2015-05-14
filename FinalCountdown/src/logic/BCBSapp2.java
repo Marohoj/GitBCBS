@@ -28,7 +28,7 @@ public class BCBSapp2 {
 	public void run(){
 
 		dbcon.DBCon();
-		screen.show(Screen.USERMENU);
+		screen.show(Screen.LOGIN);
 
 		screen.getLogin().addActionListener(new LoginActionListener());
 		screen.getUserMenu().addActionListener(new UserMenuActionListener());
@@ -170,7 +170,7 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getIndstBc().getBtnIndst()){
-				UserMetode.test();
+				UserMethod.deposit();
 			}
 
 		}

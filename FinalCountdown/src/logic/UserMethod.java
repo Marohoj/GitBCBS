@@ -33,7 +33,6 @@ public class UserMethod {
 		
 		System.out.println("update complete");
 		
-		
 		}
 	}
 	
@@ -49,7 +48,7 @@ public class UserMethod {
 			public void actionPerformed(ActionEvent e)
 			{
 				String value = screen.getIndstBc().getTfAmount().getText();
-				screen.getIndstBc().getLblTest().setText(value);
+				screen.getIndstBc().getLblTest().setText("Test " + value);
 			}
 		});
 		
