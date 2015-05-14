@@ -18,7 +18,6 @@ public class LoginScreen extends JPanel {
 	private JTextField tfUsername;
 	private JPasswordField tfPassword;
 	private JLabel label_1;
-	private JLabel lblPing;
 	private JButton btnLogin;
 	private JButton btnAfslut;
 	
@@ -30,8 +29,7 @@ public class LoginScreen extends JPanel {
 	public LoginScreen() {
 		
 		dbcon = new DBCon();
-		
-		setBackground(Color.WHITE);
+
 		setLayout(null);
 		setBounds(100, 100, 800, 600);
 
@@ -55,13 +53,9 @@ public class LoginScreen extends JPanel {
 
 		label_1 = new JLabel("");
 		label_1.setBackground(Color.WHITE);
-		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/images.jpg")));
-		label_1.setBounds(160, 11, 366, 290);
+		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/glory.jpg")));
+		label_1.setBounds(20, 0, 700, 374);
 		add(label_1);
-		
-		lblPing = new JLabel("Connection: " + "");
-		lblPing.setBounds(10, 11, 563, 23);
-		add(lblPing);
 	}
 
 	public JTextField getTfUsername() {
@@ -87,11 +81,7 @@ public class LoginScreen extends JPanel {
 	public JButton getBtnAfslut() {
 		return btnAfslut;
 	}
-	
-	public JLabel getLblPing() {
-		return lblPing;
-	}
-	
+		
 	public void addActionListener(ActionListener l) {
 		btnLogin.addActionListener(l);
 		btnAfslut.addActionListener(l);

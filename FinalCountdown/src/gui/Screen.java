@@ -49,7 +49,6 @@ public class Screen extends JFrame {
 		setContentPane(contentPane);
 
 		login = new LoginScreen();
-		login.getLblPing().setBounds(10, 10, 218, 23);
 		login.setBackground(new Color(255, 255, 255));
 		login.setBounds(100, 100, 600, 500);
 		login.setLayout(null);

@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTable;
 
 public class VisBruger extends JPanel {
 	
@@ -19,6 +20,7 @@ public class VisBruger extends JPanel {
 	private JLabel	lblBruger;
 	private JLabel	lblSaldo;
 	private JLabel lblSearch;
+	private JTable userTable;
 	
 	public VisBruger() {
 		
@@ -42,11 +44,11 @@ public class VisBruger extends JPanel {
 		add(lblSaldo);
 		
 		btnVis = new JButton("Vis Brugere");
-		btnVis.setBounds(252, 389, 103, 23);
+		btnVis.setBounds(153, 390, 103, 23);
 		add(btnVis);	
 		
 		btnOversigt = new JButton("Vis fattigste/rigeste");
-		btnOversigt.setBounds(437, 100, 127, 23);
+		btnOversigt.setBounds(318, 390, 127, 23);
 		add(btnOversigt);
 		
 		tfSearch = new JTextField();
@@ -57,6 +59,10 @@ public class VisBruger extends JPanel {
 		lblSearch = new JLabel("S\u00F8g:");
 		lblSearch.setBounds(153, 343, 41, 14);
 		add(lblSearch);	
+		
+		//table = new JTable();
+		//table.setBounds(153, 301, 322, -200);
+		//add(table);
 	}
 
 	public JButton getBtnLogud() {

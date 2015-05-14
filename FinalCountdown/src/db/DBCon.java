@@ -14,9 +14,6 @@ import db.Users;
 public class DBCon {
 
 	private static Configurations cf = new Configurations();
-		
-	
-	//private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
 
 	private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
 	private static String sqlUser = cf.getUsername();
@@ -31,9 +28,9 @@ public class DBCon {
 	private PreparedStatement richOverview = null;
 	private PreparedStatement poorOverview = null;
 	
-	private PreparedStatement indstBc = null;
-	private PreparedStatement hvBc = null;
-	private PreparedStatement transBc = null;
+	private PreparedStatement depositBc = null;
+	private PreparedStatement withdrawBc = null;
+	private PreparedStatement transferBc = null;
 	
 
 	ResultSet resultSet = null;
@@ -54,9 +51,9 @@ public class DBCon {
 			richOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance DESC");
 			poorOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance ASC");
 			
-			indstBc = conn.prepareStatement("UPDATE Users SET balance = balance + ? WHERE initials = ?");
-			hvBc = conn.prepareStatement("UPDATE Users SET balance WHERE initials = ?");
-			transBc = conn.prepareStatement("UPDATE Users SET balance = balance + ? WHERE initials = ?");
+			depositBc = conn.prepareStatement("UPDATE Users SET balance = balance + ? WHERE initials = ?");
+			withdrawBc = conn.prepareStatement("UPDATE Users SET balance WHERE initials = ?");
+			transferBc = conn.prepareStatement("UPDATE Users SET balance = balance + ? WHERE initials = ?");
 			
 		} 
 

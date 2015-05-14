@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -15,8 +16,9 @@ public class IndstBc extends JPanel {
 	private JLabel lblBruger;
 	private JLabel lblSaldo;
 	private JLabel lblAntalBc;
-	private JTextField textField;
+	private JTextField tfAmount;
 	private JLabel label;
+	private JLabel lblTest;
 	
 	public IndstBc() {
 		
@@ -39,10 +41,10 @@ public class IndstBc extends JPanel {
 		lblSaldo.setBounds(20, 40, 103, 23);
 		add(lblSaldo);
 		
-		textField = new JTextField();
-		textField.setBounds(199, 300, 199, 23);
-		add(textField);
-		textField.setColumns(10);
+		tfAmount = new JTextField();
+		tfAmount.setBounds(199, 300, 199, 23);
+		add(tfAmount);
+		tfAmount.setColumns(10);
 		
 		btnIndst = new JButton("Inds\u00E6t BC");
 		btnIndst.setBounds(252, 389, 89, 23);
@@ -56,8 +58,16 @@ public class IndstBc extends JPanel {
 		label.setBounds(199, 202, 103, 23);
 		add(label);
 		
+		lblTest = new JLabel("");
+		lblTest.setBounds(199, 334, 46, 14);
+		add(lblTest);
+		
 	}
 	
+	public JLabel getLblTest() {
+		return lblTest;
+	}
+
 	public JButton getBtnLogUd() {
 		return btnLogud;
 	}
@@ -70,10 +80,17 @@ public class IndstBc extends JPanel {
 		return btnIndst;
 	}
 	
+	public JTextField getTfAmount() {
+		return tfAmount;
+	}
+	
+	public JTextField setTfAmount(String value) {
+		return tfAmount;
+	}
+	
 	public void addActionListener(ActionListener l) {
 		btnLogud.addActionListener(l);
 		btnHjem.addActionListener(l);
 		btnIndst.addActionListener(l);
 	}
-	
 }

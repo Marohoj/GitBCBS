@@ -28,18 +28,18 @@ public class BCBSapp2 {
 	public void run(){
 
 		dbcon.DBCon();
-		screen.show(Screen.USERMENU);
+		screen.show(Screen.LOGIN);
 
 		screen.getLogin().addActionListener(new LoginActionListener());
 		screen.getUserMenu().addActionListener(new UserMenuActionListener());
 		screen.getAdminMenu().addActionListener(new AdminMenuActionListener());
 
-		screen.getIndstBc().addActionListener(new IndstActionListener());
-		screen.getHvBc().addActionListener(new HvActionListener());
-		screen.getTransBc().addActionListener(new TransActionListener());
-		screen.getNyBruger().addActionListener(new OpretActionListener());
-		screen.getSletBruger().addActionListener(new SletActionListener());
-		screen.getVisBruger().addActionListener(new VisActionListener());
+		screen.getIndstBc().addActionListener(new DepositActionListener());
+		screen.getHvBc().addActionListener(new WithdrawActionListener());
+		screen.getTransBc().addActionListener(new TransferActionListener());
+		screen.getNyBruger().addActionListener(new CreateActionListener());
+		screen.getSletBruger().addActionListener(new DeleteActionListener());
+		screen.getVisBruger().addActionListener(new ShowActionListener());
 	}
 
 	public boolean auth(){
@@ -157,7 +157,7 @@ public class BCBSapp2 {
 
 	}
 
-	private class IndstActionListener implements ActionListener{
+	private class DepositActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -170,14 +170,14 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getIndstBc().getBtnIndst()){
-				UserMetode.test();
+				UserMethod.deposit();
 			}
 
 		}
 
 	}
 
-	private class HvActionListener implements ActionListener{
+	private class WithdrawActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -190,14 +190,14 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getHvBc().getBtnHvBc()){
-				screen.show(Screen.USERMENU);
+				UserMethod.withdraw();
 			}
 			
 		}
 		
 	}
 
-	private class TransActionListener implements ActionListener{
+	private class TransferActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -210,14 +210,14 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getTransBc().getBtnTransBc()){
-				screen.show(Screen.USERMENU);
+				UserMethod.transfer();
 			}
 
 		}
 		
 	}
 
-	private class VisActionListener implements ActionListener{
+	private class ShowActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -230,14 +230,14 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getVisBruger().getBtnVis()){
-				screen.show(Screen.ADMINMENU);
+				AdminMethod.showUsers();
 			}
 			
 		}
 		
 	}
 
-	private class OpretActionListener implements ActionListener{
+	private class CreateActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -250,14 +250,14 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getNyBruger().getBtnOpret()){
-				screen.show(Screen.ADMINMENU);
+				AdminMethod.createUser();
 			}
 			
 		}
 		
 	}
 
-	private class SletActionListener implements ActionListener{
+	private class DeleteActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -270,7 +270,7 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getSletBruger().getBtnSlet()){
-				screen.show(Screen.ADMINMENU);
+				AdminMethod.deleteUser();;
 			}
 			
 		}
