@@ -64,9 +64,6 @@ public void setDBname(String dbname){
 	this.dbname = dbname;
 }
 
-
-
-
 public void ReadFile() {
     JSONParser jsonParser = new JSONParser();
 

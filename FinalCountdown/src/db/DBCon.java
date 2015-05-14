@@ -25,7 +25,7 @@ public class DBCon {
 
 	private PreparedStatement selectAllUsers = null;
 	private PreparedStatement selectAdmin = null;
-	private PreparedStatement createUser = null;
+	public PreparedStatement createUser = null;
 	private PreparedStatement deleteUser = null;
 	private PreparedStatement updateExchange = null;
 	private PreparedStatement richOverview = null;
@@ -48,7 +48,7 @@ public class DBCon {
 			statement = conn.createStatement();
 			selectAllUsers = conn.prepareStatement("SELECT * FROM Users");
 			selectAdmin = conn.prepareStatement("SELECT * FROM Admin");
-			createUser = conn.prepareStatement("INSERT INTO Users (Name, Username, Password, Balance) VALUES = ?, ?, ?, ?");
+			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, intials, password, balance) VALUES = hej, med, dig, so, lol");
 			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = ?, last_name = ?, initials = ?, password = ?");
 			updateExchange = conn.prepareStatement ("");
 			richOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance DESC");
