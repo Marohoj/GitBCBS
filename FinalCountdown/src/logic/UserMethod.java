@@ -9,11 +9,6 @@ import gui.Screen;
 public class UserMethod {
 	
 	private static Screen screen;
-
-
-	
-	
-	
 	
 	public static void deposit() {
 		

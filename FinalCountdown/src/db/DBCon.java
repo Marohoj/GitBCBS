@@ -1,6 +1,8 @@
 package db;
 
 import gui.NyBruger;
+import gui.Screen;
+import gui.SletBruger;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -19,8 +21,8 @@ public class DBCon {
 	// private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
 
 	private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
-	private static String sqlUser = "root";
-	private static String sqlPassword = "MySQL123";
+	private static String sqlUser = cf.getUsername();
+	private static String sqlPassword = cf.getPassword();
 	private static String sqlDriver = "com.mysql.jdbc.Driver";
 
 	private PreparedStatement selectAllUsers = null;
@@ -35,7 +37,9 @@ public class DBCon {
 	private PreparedStatement hvBc = null;
 	private PreparedStatement transBc = null;
 	
+	private Screen screen;
 	private NyBruger nybruger;
+	private SletBruger sletbruger;
 	
 	ResultSet resultSet = null;
 	Statement statement = null;	
@@ -50,7 +54,7 @@ public class DBCon {
 			selectAllUsers = conn.prepareStatement("SELECT * FROM Users");
 			selectAdmin = conn.prepareStatement("SELECT * FROM Admin");
 			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, initials, password, balance) VALUES (?, ?, ?, ?, ?);");
-			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = ?, last_name = ?, initials = ?, password = ?");
+			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = '';");
 			updateExchange = conn.prepareStatement ("");
 			richOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance DESC");
 			poorOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance ASC");
@@ -58,7 +62,6 @@ public class DBCon {
 			indstBc = conn.prepareStatement("UPDATE Users SET balance = balance + ? WHERE initials = ?");
 			hvBc = conn.prepareStatement("UPDATE Users SET balance WHERE initials = ?");
 			transBc = conn.prepareStatement("UPDATE Users SET balance = balance + ? WHERE initials = ?");
-			
 		} 
 
 		catch (Exception ex) {
@@ -68,13 +71,19 @@ public class DBCon {
 	
 	public void createUser(Users newUser){
 		
-		nybruger = new NyBruger();
+		screen = new Screen();
+		
+		String firstname = screen.getNyBruger().getUserFirst().getText();
+		String lastname = screen.getNyBruger().getUserLast().getText();
+		String initials = screen.getNyBruger().getUserInit().getText();
+		String password = screen.getNyBruger().getUserPass().getText();
+		
 		
 		try {
-			createUser.setString(1, nybruger.getUserFirst().getText());
-			createUser.setString(2, nybruger.getUserLast().getText());
-			createUser.setString(3, nybruger.getUserInt().getText());
-			createUser.setString(4, nybruger.getUserPass().getText());
+			createUser.setString(1, firstname);
+			createUser.setString(2, lastname);
+			createUser.setString(3, initials);
+			createUser.setString(4, password);
 			createUser.setString(5, "100 BC");
 			
 			createUser.executeUpdate();
@@ -84,9 +93,32 @@ public class DBCon {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 		
 	}
+	
+	public void deleteUser(Users delUser){
+		
+		sletbruger = new SletBruger();
+		
+		try {
+			//deleteUser.setString(1, "Mathias");
+			//deleteUser.setString(2, "Højgaard");
+			//deleteUser.setString(3, "maho14am");
+			//deleteUser.setString(4, "1234");
+			//deleteUser.setString(5, "100 BC");
+			
+			deleteUser.executeUpdate();
+			
+			System.out.println("Done");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 
 	public List<Users> getUsers(){
 		List<Users> ul = null;
@@ -96,11 +128,11 @@ public class DBCon {
 			ul = new ArrayList<Users>();
 			while (resultSet.next()) {
 
-				ul.add(new Users(resultSet.getString("initials"),
-						resultSet.getString("first_name"), 
+				ul.add(new Users(resultSet.getString("first_name"), 
 						resultSet.getString("last_name"),
+						resultSet.getString("initials"),
 						resultSet.getString("password"), 
-						resultSet.getString("balance")));
+						resultSet.getInt("balance")));
 			}
 
 		} catch (SQLException e) {
@@ -118,9 +150,9 @@ public class DBCon {
 			al = new ArrayList<Admin>();
 			while (resultSet.next()) {
 				
-				al.add(new Admin(resultSet.getString("name"),
+				al.add(new Admin(resultSet.getString("initials"),
 						resultSet.getString("password"),
-						resultSet.getString("balance")));
+						resultSet.getString("name")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

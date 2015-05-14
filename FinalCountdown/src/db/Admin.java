@@ -2,27 +2,29 @@ package db;
 
 public class Admin {
 	
-	private String name;
-	private String password;
-	private String balance;
 	
-	public Admin(String name, String password, String balance){
+	private String initials;
+	private String password;
+	private String name;
 		
-		this.name = name;
+	public Admin(String initials, String password, String name){
+		
+		
+		this.initials = initials;
 		this.password = password;
-		this.balance = balance;		
+		this.name = name;	
 	}
 
-	public String getName() {
-		return name;
+	public String getInitials() {
+		return initials;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public String getBalance() {
-		return balance;
+	public String getName() {
+		return name;
 	}
 
 }

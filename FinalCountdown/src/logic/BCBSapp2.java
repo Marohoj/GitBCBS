@@ -39,9 +39,9 @@ public class BCBSapp2 {
 		screen.getIndstBc().addActionListener(new IndstActionListener());
 		screen.getHvBc().addActionListener(new HvActionListener());
 		screen.getTransBc().addActionListener(new TransActionListener());
-		screen.getNyBruger().addActionListener(new OpretActionListener());
-		screen.getSletBruger().addActionListener(new SletActionListener());
-		screen.getVisBruger().addActionListener(new VisActionListener());
+		screen.getNyBruger().addActionListener(new CreateActionListener());
+		screen.getSletBruger().addActionListener(new DeleteActionListener());
+		screen.getVisBruger().addActionListener(new ShowActionListener());
 	}
 
 	public boolean auth(){
@@ -67,12 +67,12 @@ public class BCBSapp2 {
 	public boolean ad_auth(){
 		boolean AdminAuth = false;
 
-		String name = screen.getLogin().getTfUsername().getText();
+		String initials = screen.getLogin().getTfUsername().getText();
 		String password = screen.getLogin().getTfPassword().getText();
 
 		for  (Admin admin : dbcon.getAdmin()){
 
-			if (admin.getName().equals(name) && admin.getPassword().equals(password)){
+			if (admin.getInitials().equals(initials) && admin.getPassword().equals(password)){
 
 				System.out.println("Welcome to the Bitcoin ATM");
 
@@ -133,7 +133,6 @@ public class BCBSapp2 {
 			}
 		}
 	}
-
 
 	private class UserMenuActionListener implements ActionListener{
 
@@ -219,7 +218,7 @@ public class BCBSapp2 {
 		
 	}
 
-	private class VisActionListener implements ActionListener{
+	private class ShowActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -239,7 +238,7 @@ public class BCBSapp2 {
 		
 	}
 
-	private class OpretActionListener implements ActionListener{
+	private class CreateActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -252,20 +251,21 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getNyBruger().getBtnOpret()){
-							
-				Users newuser = null;
-				dbcon.createUser(newuser);
-				nybruger.getUserFirst().getText();
-				nybruger.getUserLast().getText();
-				nybruger.getUserInt().getText();
-				nybruger.getUserPass().getText();
-			}
+				
+					Users newuser = null;
+					dbcon.createUser(newuser);
+				//nybruger.getUserFirst().getText();
+				//nybruger.getUserLast().getText();
+				//nybruger.getUserInt().getText();
+				//nybruger.getUserPass().getText();
 			
+			}
+		
 		}
 		
 	}
 
-	private class SletActionListener implements ActionListener{
+	private class DeleteActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -278,12 +278,20 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getSletBruger().getBtnSlet()){
-				screen.show(Screen.ADMINMENU);
+				Users deluser = null;
+				dbcon.deleteUser(deluser);
 			}
 			
 		}
-		
+	
 	}
-
+	
 }
 
+	
+	
+	
+	
+	
+	
+	

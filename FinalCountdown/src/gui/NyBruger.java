@@ -13,7 +13,7 @@ public class NyBruger extends JPanel {
 	private JButton btnHjem;
 	private JButton btnOpret;
 
-	private JTextField userInt;
+	private JTextField userInit;
 	private JTextField userFirst;
 	private JTextField userLast;
 	private JTextField userPass;
@@ -51,10 +51,10 @@ public class NyBruger extends JPanel {
 		btnOpret.setBounds(252, 389, 103, 23);
 		add(btnOpret);
 		
-		userInt = new JTextField();
-		userInt.setBounds(277, 183, 155, 23);
-		add(userInt);
-		userInt.setColumns(10);
+		userInit = new JTextField();
+		userInit.setBounds(277, 183, 155, 23);
+		add(userInit);
+		userInit.setColumns(10);
 		
 		userFirst = new JTextField();
 		userFirst.setColumns(10);
@@ -105,8 +105,8 @@ public class NyBruger extends JPanel {
 		return btnOpret;
 	}
 
-	public JTextField getUserInt() {
-		return userInt;
+	public JTextField getUserInit() {
+		return userInit;
 	}
 
 	public JTextField getUserFirst() {
@@ -127,7 +127,7 @@ public class NyBruger extends JPanel {
 		btnOpret.addActionListener(l);
 		userFirst.addActionListener(l);
 		userLast.addActionListener(l);
-		userInt.addActionListener(l);
+		userInit.addActionListener(l);
 		userPass.addActionListener(l);
 	}
 
