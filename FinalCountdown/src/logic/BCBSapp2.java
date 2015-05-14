@@ -91,10 +91,13 @@ public class BCBSapp2 {
 			if (e.getSource() == screen.getLogin().getBtnLogin()){
 
 				if (auth()) {
+					screen.getUserMenu().getLblBruger().setText("User: " + screen.getLogin().getTfUsername().getText());
+					//screen.getUserMenu().getLblSaldo().setText("Credit: " + dbcon.getLogin().getTfPassword().getText());
 					screen.show(Screen.USERMENU);
 				}
 
 				else if (ad_auth()) {
+					screen.getAdminMenu().getLblBruger().setText("User: " + screen.getLogin().getTfUsername().getText());
 					screen.show(Screen.ADMINMENU);
 				}
 

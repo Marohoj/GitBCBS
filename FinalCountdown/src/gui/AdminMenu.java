@@ -79,6 +79,10 @@ public class AdminMenu extends JPanel {
 		add(lblVekselkurs);	
 	}
 	
+	public JLabel getLblBruger(){
+		return lblBruger;
+	}
+	
 	public JButton getBtnOpdaterVekselkurs(){
 		return btnOpdaterVekselkurs;
 	}

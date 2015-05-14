@@ -17,6 +17,8 @@ public class UserMenu extends JPanel {
 	private JButton btnHvBc;
 	private JButton btnOverfrBc;
 	private JLabel lblBruger;
+	
+
 	private JLabel lblSaldo;
 	
 	private Users users;
@@ -60,7 +62,6 @@ public class UserMenu extends JPanel {
 		lblSaldo.setBounds(20, 40, 89, 23);
 		add(lblSaldo);
 		setBounds(153, 104, 255, 19);
-
 	}
 
 	public JButton getBtnLogUd() {
@@ -81,6 +82,14 @@ public class UserMenu extends JPanel {
 
 	public JButton getBtnOverfrBc() {
 		return btnOverfrBc;
+	}
+	
+	public JLabel getLblBruger() {
+		return lblBruger;
+	}
+
+	public JLabel getLblSaldo() {
+		return lblSaldo;
 	}
 	
 	public void addActionListener(ActionListener l) {

@@ -27,6 +27,7 @@ public class DBCon {
 
 	private PreparedStatement selectAllUsers = null;
 	private PreparedStatement selectAdmin = null;
+	private PreparedStatement selectCredit = null;
 	public PreparedStatement createUser = null;
 	private PreparedStatement deleteUser = null;
 	private PreparedStatement updateExchange = null;
@@ -53,8 +54,9 @@ public class DBCon {
 			statement = conn.createStatement();
 			selectAllUsers = conn.prepareStatement("SELECT * FROM Users");
 			selectAdmin = conn.prepareStatement("SELECT * FROM Admin");
-			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, initials, password, balance) VALUES (?, ?, ?, ?, ?);");
-			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = '';");
+			selectCredit = conn.prepareStatement("SELECT balance FROM users WHERE initials = ?;");
+			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, initials, password, balance) VALUES (?, ?, ?, ?, 1);");
+			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = ?, last_name = ?, initials = ?, password = ?;");
 			updateExchange = conn.prepareStatement ("");
 			richOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance DESC");
 			poorOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance ASC");
@@ -84,7 +86,7 @@ public class DBCon {
 			createUser.setString(2, lastname);
 			createUser.setString(3, initials);
 			createUser.setString(4, password);
-			createUser.setDouble(5, 1.0);
+			//createUser.setDouble(5, 1.0);
 			
 			createUser.executeUpdate();
 			
@@ -98,9 +100,7 @@ public class DBCon {
 	}
 	
 	public void deleteUser(Users delUser){
-		
-		sletbruger = new SletBruger();
-		
+				
 		String firstname = screen.getSletBruger().getUserFirst().getText();
 		String lastname = screen.getSletBruger().getUserLast().getText();
 		String initials = screen.getSletBruger().getUserInit().getText();
