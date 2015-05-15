@@ -75,6 +75,56 @@ public class DBCon {
 		}
 	}
 	
+	public void createUser(Users newUser){
+		
+		String firstname = screen.getNyBruger().getUserFirst().getText();
+		String lastname = screen.getNyBruger().getUserLast().getText();
+		String initials = screen.getNyBruger().getUserInit().getText();
+		String password = screen.getNyBruger().getUserPass().getText();
+		
+		try {
+			createUser.setString(1, firstname);
+			 createUser.setString(2, lastname);
+			 createUser.setString(3, initials);
+			 createUser.setString(4, password);
+			 createUser.setDouble(5, 1.0);
+			
+			 createUser.executeUpdate();
+			
+			System.out.println("Done");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void deleteUser(Users delUser){
+				
+		String firstname = screen.getSletBruger().getUserFirst().getText();
+		String lastname = screen.getSletBruger().getUserLast().getText();
+		String initials = screen.getSletBruger().getUserInit().getText();
+		String password = screen.getSletBruger().getUserPass().getText();
+		
+		try {
+			 deleteUser.setString(1, firstname);
+			 deleteUser.setString(2, lastname);
+			 deleteUser.setString(3, initials);
+			 deleteUser.setString(4, password);
+			 deleteUser.setDouble(5, 1.0);
+			
+			 deleteUser.executeUpdate();
+			
+			System.out.println(screen.getSletBruger().getUserInit().getText());
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
 	public List<Users> getUsers(){
 		List<Users> ul = null;
 		ResultSet resultSet = null;

@@ -263,7 +263,7 @@ public class BCBSapp2 {
 		
 	}
 
-	private class CreateActionListener implements ActionListener{
+	public class CreateActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -279,11 +279,11 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getNyBruger().getBtnOpret()){
 				
-				screen.getNyBruger().getUserInit().getText();
+				//screen.getNyBruger().getUserInit().getText();
 				//initials = new initials(screen.getNyBruger().getUserInit().getText());
 				
 				Users newuser = null;
-				adminmethod.createUser(newuser);
+				dbcon.createUser(newuser);
 				//nybruger.getUserFirst().getText();
 				//nybruger.getUserLast().getText();
 				//nybruger.getUserInt().getText();
@@ -295,7 +295,7 @@ public class BCBSapp2 {
 		
 	}
 
-	private class DeleteActionListener implements ActionListener{
+	public class DeleteActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -311,13 +311,17 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getSletBruger().getBtnSlet()){
 				
+				screen.getNyBruger().getUserInit().getText();
+				
 				Users deluser = null;
-				adminmethod.deleteUser(deluser);
+				dbcon.deleteUser(deluser);
 			}
 			
 		}
 	
 	}
+	
+	//private class 
 	
 }
 

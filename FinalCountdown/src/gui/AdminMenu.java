@@ -118,5 +118,5 @@ public class AdminMenu extends JPanel {
 		btnOpretBruger.addActionListener(l);
 		btnSletBruger.addActionListener(l);
 	}
-
+	
 }

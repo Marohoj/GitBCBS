@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -129,6 +130,16 @@ public class NyBruger extends JPanel {
 		userLast.addActionListener(l);
 		userInit.addActionListener(l);
 		userPass.addActionListener(l);
+	}
+	
+	public void TexFieldTest(){
+		
+		userInit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				userInit.getText();
+			}
+		});
+		
 	}
 
 }
