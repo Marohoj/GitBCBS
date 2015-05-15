@@ -13,7 +13,7 @@ public class NyBruger extends JPanel {
 	private JButton btnHjem;
 	private JButton btnOpret;
 
-	private JTextField userInit;
+	public JTextField userInit;
 	private JTextField userFirst;
 	private JTextField userLast;
 	private JTextField userPass;

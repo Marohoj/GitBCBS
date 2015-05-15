@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import db.Admin;
 import db.DBCon;
@@ -16,7 +17,7 @@ public class BCBSapp2 {
 
 	private Screen screen;
 	private DBCon dbcon;
-	private NyBruger nybruger;
+	private AdminMethod adminmethod;
 
 	public BCBSapp2(){
 		//instansierer objekter
@@ -273,15 +274,16 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getNyBruger().getBtnHjem()){
-				screen.getLogin().getTfUsername().setText("");
-				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.ADMINMENU);
 			}
 
 			else if (e.getSource() == screen.getNyBruger().getBtnOpret()){
 				
+				screen.getNyBruger().getUserInit().getText();
+				//initials = new initials(screen.getNyBruger().getUserInit().getText());
+				
 				Users newuser = null;
-				dbcon.createUser(newuser);
+				adminmethod.createUser(newuser);
 				//nybruger.getUserFirst().getText();
 				//nybruger.getUserLast().getText();
 				//nybruger.getUserInt().getText();
@@ -303,15 +305,14 @@ public class BCBSapp2 {
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getSletBruger().getBtnHjem()){
-				screen.getLogin().getTfUsername().setText("");
-				screen.getLogin().getTfPassword().setText("");
+			else if (e.getSource() == screen.getSletBruger().getBtnHjem()){;
 				screen.show(Screen.ADMINMENU);
 			}
 
 			else if (e.getSource() == screen.getSletBruger().getBtnSlet()){
+				
 				Users deluser = null;
-				dbcon.deleteUser(deluser);
+				adminmethod.deleteUser(deluser);
 			}
 			
 		}
