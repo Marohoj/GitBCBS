@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import db.Admin;
 import db.DBCon;
@@ -17,7 +16,10 @@ public class BCBSapp2 {
 
 	private Screen screen;
 	private DBCon dbcon;
+	private Users currentUser;
+	private Users users;
 	private AdminMethod adminmethod;
+	private UserMethod usermethod;
 
 	public BCBSapp2(){
 		//instansierer objekter
@@ -40,6 +42,7 @@ public class BCBSapp2 {
 		screen.getIndstBc().addActionListener(new IndstActionListener());
 		screen.getHvBc().addActionListener(new HvActionListener());
 		screen.getTransBc().addActionListener(new TransActionListener());
+		
 		screen.getNyBruger().addActionListener(new CreateActionListener());
 		screen.getSletBruger().addActionListener(new DeleteActionListener());
 		screen.getVisBruger().addActionListener(new ShowActionListener());
@@ -56,7 +59,7 @@ public class BCBSapp2 {
 			if (users.getInitials().equals(initials) && users.getPassword().equals(password)){
 
 				System.out.println("Welcome to the Bitcoin ATM");
-
+				currentUser = users;
 				UserAuth = true;
 			}
 
@@ -92,8 +95,8 @@ public class BCBSapp2 {
 			if (e.getSource() == screen.getLogin().getBtnLogin()){
 
 				if (auth()) {
-					screen.getUserMenu().getLblBruger().setText("User: " + screen.getLogin().getTfUsername().getText());
-					//screen.getUserMenu().getLblSaldo().setText("Credit: " + dbcon.getLogin().getTfPassword().getText());
+					screen.getUserMenu().getLblBruger().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+					screen.getUserMenu().getLblSaldo().setText("Credit: " + currentUser.getBalance() + " BC");
 					screen.show(Screen.USERMENU);
 				}
 
@@ -165,7 +168,7 @@ public class BCBSapp2 {
 		}
 
 	}
-
+	
 	private class IndstActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
@@ -250,13 +253,13 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getVisBruger().getBtnHjem()){
-				screen.getLogin().getTfUsername().setText("");
-				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.ADMINMENU);
 			}
 
 			else if (e.getSource() == screen.getVisBruger().getBtnVis()){
-				screen.show(Screen.ADMINMENU);
+				
+				//screen.getVisBruger().getTbUser();
+				screen.show(Screen.VIS);
 			}
 			
 		}
@@ -279,15 +282,12 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getNyBruger().getBtnOpret()){
 				
-				//screen.getNyBruger().getUserInit().getText();
-				//initials = new initials(screen.getNyBruger().getUserInit().getText());
-				
-				Users newuser = null;
-				dbcon.createUser(newuser);
-				//nybruger.getUserFirst().getText();
-				//nybruger.getUserLast().getText();
-				//nybruger.getUserInt().getText();
-				//nybruger.getUserPass().getText();
+				String firstname = screen.getNyBruger().getUserFirst().getText();
+				String lastname = screen.getNyBruger().getUserLast().getText();
+				String initials = screen.getNyBruger().getUserInit().getText();
+				String password = screen.getNyBruger().getUserPass().getText();
+	
+				dbcon.createUser(firstname, lastname, initials, password);
 			
 			}
 		
@@ -311,10 +311,12 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getSletBruger().getBtnSlet()){
 				
-				screen.getNyBruger().getUserInit().getText();
-				
-				Users deluser = null;
-				dbcon.deleteUser(deluser);
+				String firstname = screen.getSletBruger().getUserFirst().getText();
+				String lastname = screen.getSletBruger().getUserLast().getText();
+				String initials = screen.getSletBruger().getUserInit().getText();
+				String password = screen.getSletBruger().getUserPass().getText();
+			
+				dbcon.deleteUser(firstname, lastname, initials, password);
 			}
 			
 		}

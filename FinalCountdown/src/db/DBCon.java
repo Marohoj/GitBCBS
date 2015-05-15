@@ -37,7 +37,7 @@ public class DBCon {
 	
 	//Statements for Users
 	private PreparedStatement poorOverview = null;
-	private PreparedStatement selectCredit = null;
+	public PreparedStatement selectCredit = null;
 	private PreparedStatement indstBc = null;
 	private PreparedStatement hvBc = null;
 	private PreparedStatement transBc = null;
@@ -48,7 +48,7 @@ public class DBCon {
 	
 	ResultSet resultSet = null;
 	Statement statement = null;	
-	Connection conn = null;;
+	Connection conn = null;
 	
 	public void DBCon(){
 
@@ -56,11 +56,16 @@ public class DBCon {
 			Class.forName(sqlDriver);
 			conn = DriverManager.getConnection(sqlUrl, sqlUser, sqlPassword);
 			statement = conn.createStatement();
+			
 			selectAllUsers = conn.prepareStatement("SELECT * FROM Users");
 			selectAdmin = conn.prepareStatement("SELECT * FROM Admin");
-			selectCredit = conn.prepareStatement("SELECT balance FROM users WHERE initials = ?;");
-			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, initials, password, balance) VALUES (?, ?, ?, ?, 1);");
-			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = ?, last_name = ?, initials = ?, password = ?;");
+			
+			selectCredit = conn.prepareStatement("SELECT balance FROM users WHERE initials = ?");
+			
+			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, initials, password, balance) VALUES (?, ?, ?, ?, 1)");
+			
+			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = ? AND last_name = ? AND initials = ? AND password = ?");
+			
 			updateExchange = conn.prepareStatement ("UPDATE Admin SET currency = ?");
 			richOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance DESC");
 			poorOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance ASC");
@@ -75,19 +80,13 @@ public class DBCon {
 		}
 	}
 	
-	public void createUser(Users newUser){
-		
-		String firstname = screen.getNyBruger().getUserFirst().getText();
-		String lastname = screen.getNyBruger().getUserLast().getText();
-		String initials = screen.getNyBruger().getUserInit().getText();
-		String password = screen.getNyBruger().getUserPass().getText();
+	public void createUser(String firstname, String lastname, String initials, String password){
 		
 		try {
-			createUser.setString(1, firstname);
+			 createUser.setString(1, firstname);
 			 createUser.setString(2, lastname);
 			 createUser.setString(3, initials);
 			 createUser.setString(4, password);
-			 createUser.setDouble(5, 1.0);
 			
 			 createUser.executeUpdate();
 			
@@ -100,29 +99,27 @@ public class DBCon {
 		
 	}
 	
-	public void deleteUser(Users delUser){
-				
-		String firstname = screen.getSletBruger().getUserFirst().getText();
-		String lastname = screen.getSletBruger().getUserLast().getText();
-		String initials = screen.getSletBruger().getUserInit().getText();
-		String password = screen.getSletBruger().getUserPass().getText();
-		
+	public void deleteUser(String firstname, String lastname, String initials, String password){
+					
 		try {
 			 deleteUser.setString(1, firstname);
 			 deleteUser.setString(2, lastname);
 			 deleteUser.setString(3, initials);
 			 deleteUser.setString(4, password);
-			 deleteUser.setDouble(5, 1.0);
 			
 			 deleteUser.executeUpdate();
 			
-			System.out.println(screen.getSletBruger().getUserInit().getText());
+			System.out.println("Done");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+//	public void showUser(){
+
+	//}
 
 	
 	public List<Users> getUsers(){

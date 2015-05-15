@@ -125,6 +125,10 @@ public class SletBruger extends JPanel {
 		btnLogud.addActionListener(l);
 		btnHjem.addActionListener(l);
 		btnSlet.addActionListener(l);
+		userInit.addActionListener(l);
+		userFirst.addActionListener(l);
+		userLast.addActionListener(l);
+		userPass.addActionListener(l);
 	}
 
 }

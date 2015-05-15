@@ -132,14 +132,4 @@ public class NyBruger extends JPanel {
 		userPass.addActionListener(l);
 	}
 	
-	public void TexFieldTest(){
-		
-		userInit.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				userInit.getText();
-			}
-		});
-		
-	}
-
 }

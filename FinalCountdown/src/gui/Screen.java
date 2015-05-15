@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import logic.UserMethod;
+
 public class Screen extends JFrame {
 	public static final String LOGIN = "login";
 	public static final String USERMENU = "usermenu";
@@ -24,6 +26,7 @@ public class Screen extends JFrame {
 		
 	private LoginScreen login;
 	private UserMenu usermenu;
+	private UserMethod usermethod;
 	private AdminMenu adminmenu;
 	private IndstBc indstbc;
 	private HvBc hvbc;
@@ -60,6 +63,8 @@ public class Screen extends JFrame {
 		usermenu.setBounds(100, 100, 600, 500);
 		usermenu.setLayout(null);
 		contentPane.add(usermenu, USERMENU);
+		
+		usermethod = new UserMethod();
 		
 		adminmenu = new AdminMenu();
 		adminmenu.setBackground(new Color(255, 255, 255));
