@@ -8,7 +8,7 @@ public class TableModel extends AbstractTableModel {
 
 	private DBCon dbcon;
 
-	public TableModel() {
+	public void TableModel1() {
 		dbcon = new DBCon();
 
 	}

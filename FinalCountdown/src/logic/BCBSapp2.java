@@ -2,6 +2,7 @@ package logic;
 
 import gui.NyBruger;
 import gui.Screen;
+import gui.TableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class BCBSapp2 {
 	private DBCon dbcon;
 	private Users currentUser;
 	private Users users;
+	private TableModel table;
 	private AdminMethod adminmethod;
 	private UserMethod usermethod;
 
@@ -26,6 +28,7 @@ public class BCBSapp2 {
 
 		screen = new Screen();
 		dbcon = new DBCon();
+		table = new TableModel();
 
 		screen.setVisible(true);
 	}
@@ -39,7 +42,7 @@ public class BCBSapp2 {
 		screen.getUserMenu().addActionListener(new UserMenuActionListener());
 		screen.getAdminMenu().addActionListener(new AdminMenuActionListener());
 
-		screen.getIndstBc().addActionListener(new IndstActionListener());
+		screen.getDepositScreen().addActionListener(new DepositActionListener());
 		screen.getHvBc().addActionListener(new HvActionListener());
 		screen.getTransBc().addActionListener(new TransActionListener());
 		
@@ -67,6 +70,7 @@ public class BCBSapp2 {
 
 		return UserAuth;
 	}
+
 
 	public boolean ad_auth(){
 		boolean AdminAuth = false;
@@ -153,8 +157,8 @@ public class BCBSapp2 {
 				screen.show(Screen.LOGIN);				
 			}
 
-			else if (e.getSource() == screen.getUserMenu().getBtnIndstBc()){
-				screen.show(Screen.INDSTBC);
+			else if (e.getSource() == screen.getUserMenu().getBtnDeposit()){
+				screen.show(Screen.DEPOSIT);
 			}
 
 			else if (e.getSource() == screen.getUserMenu().getBtnHvBc()){
@@ -169,25 +173,28 @@ public class BCBSapp2 {
 
 	}
 	
-	private class IndstActionListener implements ActionListener{
+	private class DepositActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getIndstBc().getBtnLogUd()){
+			if (e.getSource() == screen.getDepositScreen().getBtnLogUd()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 				
 			}
 
-			else if (e.getSource() == screen.getIndstBc().getBtnHjem()){
-				screen.getLogin().getTfUsername().setText("");
-				screen.getLogin().getTfPassword().setText("");
+			else if (e.getSource() == screen.getDepositScreen().getBtnHjem()){
 				screen.show(Screen.USERMENU);
 			}
 
-			else if (e.getSource() == screen.getIndstBc().getBtnIndst()){
-				UserMethod.deposit();
+			else if (e.getSource() == screen.getDepositScreen().getBtnDeposit()){
+				
+				
+				Double balance = (screen.getDepositScreen().getTfAmount().getText() + getCurrentUser().getBalance());
+				String initials = getCurrentUser().getInitials();
+				
+				dbcon.depositUser(balance, initials);
 			}
 
 		}
@@ -235,6 +242,12 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getTransBc().getBtnTransBc()){
+				
+				Double balance = screen.getTransBc().getTfAmount().getText();
+				String initials = screen.getTransBc().getTfTransUser().getText();
+				
+				dbcon.transferUser(balance, initials);
+				
 				screen.show(Screen.USERMENU);
 			}
 
@@ -258,7 +271,7 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getVisBruger().getBtnVis()){
 				
-				//screen.getVisBruger().getTbUser();
+				table.TableModel1();
 				screen.show(Screen.VIS);
 			}
 			
@@ -323,7 +336,9 @@ public class BCBSapp2 {
 	
 	}
 	
-	//private class 
+	public Users getCurrentUser() {
+		return currentUser;
+	} 
 	
 }
 
