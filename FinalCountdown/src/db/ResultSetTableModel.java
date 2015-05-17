@@ -1,3 +1,5 @@
+package db;
+
 // Fig. 28.25: ResultSetTableModel.java
 // A TableModel that supplies ResultSet data to a JTable.
 import java.sql.Connection;

@@ -7,11 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class SletBruger extends JPanel {
+public class DeleteScreen extends JPanel {
 
-	private JButton btnLogud;
+	private JButton btnLogout;
 	private JButton btnHome;
-	private JButton btnSlet;
+	private JButton btnDelete;
 
 	private JTextField userInit;
 	private JTextField userFirst;
@@ -20,22 +20,22 @@ public class SletBruger extends JPanel {
 	
 	private JLabel	lblBruger;
 	private JLabel	lblSaldo;	
-	private JLabel lblInitialer;
-	private JLabel lblFornavn;
-	private JLabel lblEfternavn;
+	private JLabel lblInitials;
+	private JLabel lblFirstname;
+	private JLabel lblLastname;
 	private JLabel lblPassword;
 	private JLabel lblFormular;
 	
-	public SletBruger() {
+	public DeleteScreen() {
 
 		setBounds(100,100,600,500);
 		setLayout(null);
 
-		btnLogud = new JButton("Log ud");
-		btnLogud.setBounds(475, 11, 89, 23);
-		add(btnLogud);
+		btnLogout = new JButton("Log out");
+		btnLogout.setBounds(475, 11, 89, 23);
+		add(btnLogout);
 		
-		btnHome = new JButton("Hjem");
+		btnHome = new JButton("Home");
 		btnHome.setBounds(20, 100, 89, 23);
 		add(btnHome);
 		
@@ -47,9 +47,9 @@ public class SletBruger extends JPanel {
 		lblSaldo.setBounds(20, 40, 103, 23);
 		add(lblSaldo);
 		
-		btnSlet = new JButton("Slet Bruger");
-		btnSlet.setBounds(252, 389, 103, 23);
-		add(btnSlet);
+		btnDelete = new JButton("Delete user");
+		btnDelete.setBounds(252, 389, 103, 23);
+		add(btnDelete);
 		
 		userInit = new JTextField();
 		userInit.setBounds(277, 183, 155, 23);
@@ -71,38 +71,38 @@ public class SletBruger extends JPanel {
 		userPass.setBounds(277, 285, 155, 23);
 		add(userPass);
 		
-		lblInitialer = new JLabel("Initialer:");
-		lblInitialer.setBounds(182, 187, 85, 14);
-		add(lblInitialer);
+		lblInitials = new JLabel("Initials:");
+		lblInitials.setBounds(182, 187, 85, 14);
+		add(lblInitials);
 		
-		lblFornavn = new JLabel("Fornavn:");
-		lblFornavn.setBounds(182, 221, 85, 14);
-		add(lblFornavn);
+		lblFirstname = new JLabel("Firstname:");
+		lblFirstname.setBounds(182, 221, 85, 14);
+		add(lblFirstname);
 		
-		lblEfternavn = new JLabel("Efternavn:");
-		lblEfternavn.setBounds(182, 255, 85, 14);
-		add(lblEfternavn);
+		lblLastname = new JLabel("Lastname:");
+		lblLastname.setBounds(182, 255, 85, 14);
+		add(lblLastname);
 		
 		lblPassword = new JLabel("Password:");
 		lblPassword.setBounds(182, 289, 85, 14);
 		add(lblPassword);
 		
-		lblFormular = new JLabel("Udfyld nedenst\u00E5ende formular for at slette en bruger i systemet");
+		lblFormular = new JLabel("Fill out the formular below to delte a user from the system");
 		lblFormular.setBounds(147, 146, 357, 14);
 		add(lblFormular);
 
 	}
 	
-	public JButton getBtnLogud() {
-		return btnLogud;
+	public JButton getBtnLogout() {
+		return btnLogout;
 	}
 
 	public JButton getBtnHome() {
 		return btnHome;
 	}
 
-	public JButton getBtnSlet() {
-		return btnSlet;
+	public JButton getBtnDelete() {
+		return btnDelete;
 	}
 
 	public JTextField getUserInit() {
@@ -122,9 +122,9 @@ public class SletBruger extends JPanel {
 	}
 	
 	public void addActionListener(ActionListener l) {
-		btnLogud.addActionListener(l);
+		btnLogout.addActionListener(l);
 		btnHome.addActionListener(l);
-		btnSlet.addActionListener(l);
+		btnDelete.addActionListener(l);
 		userInit.addActionListener(l);
 		userFirst.addActionListener(l);
 		userLast.addActionListener(l);

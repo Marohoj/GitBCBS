@@ -128,8 +128,13 @@ public class DBCon {
 		
 		try {
 			updateExchange.setDouble(1, currency);
+			//updateExchange.setString(2, initials);
 			
 			updateExchange.executeUpdate();
+			
+			
+			
+			System.out.println("Done");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -175,12 +180,7 @@ public class DBCon {
 		}
 	}
 
-	//	public void showUser(){
-
-	//}
-
-
-	public List<Users> getUsers(){
+	public List<Users> getUser(){
 		List<Users> ul = null;
 		ResultSet resultSet = null;
 		try {

@@ -1,8 +1,8 @@
 package logic;
 
-import gui.NyBruger;
+import gui.CreateScreen;
 import gui.Screen;
-import gui.TableModel;
+import gui.ModelTabel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,15 +18,14 @@ public class BCBSapp2 {
 	private Screen screen;
 	private DBCon dbcon;
 	private Users currentUser;
-	private Admin admin;
-	private TableModel table;
+	private Admin currentAdmin;
+	private ModelTabel table;
 
 	public BCBSapp2(){
 		//instansierer objekter
 
 		screen = new Screen();
 		dbcon = new DBCon();
-		table = new TableModel();
 
 		screen.setVisible(true);
 	}
@@ -44,9 +43,9 @@ public class BCBSapp2 {
 		screen.getWithdrawScreen().addActionListener(new WithdrawActionListener());
 		screen.getTransferScreen().addActionListener(new TransActionListener());
 		
-		screen.getNyBruger().addActionListener(new CreateActionListener());
-		screen.getSletBruger().addActionListener(new DeleteActionListener());
-		screen.getVisBruger().addActionListener(new ShowActionListener());
+		screen.getCreateScreen().addActionListener(new CreateActionListener());
+		screen.getDeleteScreen().addActionListener(new DeleteActionListener());
+		screen.getViewScreen().addActionListener(new ViewActionListener());
 	}
 
 	public boolean auth(){
@@ -55,7 +54,7 @@ public class BCBSapp2 {
 		String initials = screen.getLogin().getTfUsername().getText();
 		String password = screen.getLogin().getTfPassword().getText();
 
-		for (Users users: dbcon.getUsers()){
+		for (Users users: dbcon.getUser()){
 
 			if (users.getInitials().equals(initials) && users.getPassword().equals(password)){
 
@@ -69,7 +68,6 @@ public class BCBSapp2 {
 		return UserAuth;
 	}
 
-
 	public boolean ad_auth(){
 		boolean AdminAuth = false;
 
@@ -81,7 +79,7 @@ public class BCBSapp2 {
 			if (admin.getInitials().equals(initials) && admin.getPassword().equals(password)){
 
 				System.out.println("Welcome to the Bitcoin ATM");
-
+				currentAdmin = admin;
 				AdminAuth = true;
 			}
 
@@ -97,23 +95,14 @@ public class BCBSapp2 {
 			if (e.getSource() == screen.getLogin().getBtnLogin()){
 
 				if (auth()) {
-					screen.getUserMenu().getLblBruger().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
-					screen.getUserMenu().getLblSaldo().setText("Credit: " + currentUser.getBalance() + " BC");
+					screen.getUserMenu().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+					screen.getUserMenu().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
 					screen.show(Screen.USERMENU);
 				}
 
 				else if (ad_auth()) {
-					screen.getAdminMenu().getLblBruger().setText("User: " + screen.getLogin().getTfUsername().getText());
-					screen.getAdminMenu().getLblExchange().setText("Vekselkurs: + " + admin.getCurrency());
-					
-					Double cur = new Double(screen.getAdminMenu().getTfExchange().getText());
-					
-					String text = "";
-					
-					double currency = cur.parseDouble(text);
-					
-					dbcon.updateExchange(currency);
-					
+					screen.getAdminMenu().getLblUser().setText("User: " + screen.getLogin().getTfUsername().getText());
+					screen.getAdminMenu().getLblCurrentEx().setText("Current Exchangerate: " + currentAdmin.getCurrency());			
 					screen.show(Screen.ADMINMENU);
 				}
 
@@ -135,22 +124,37 @@ public class BCBSapp2 {
 
 		public void actionPerformed (ActionEvent e ){
 
-			if (e.getSource() == screen.getAdminMenu().getBtnLogUd()){
+			if (e.getSource() == screen.getAdminMenu().getBtnLogout()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
-
-			else if (e.getSource() == screen.getAdminMenu().getBtnVisBrugere()){
-				screen.show(Screen.VIS);
+			
+			else if (e.getSource() == screen.getAdminMenu().getBtnExchange()){
+				
+				Double cur = new Double(screen.getAdminMenu().getTfExchange().getText());
+				String text = screen.getAdminMenu().getTfExchange().getText();	
+				
+				double currency = cur.parseDouble(text);
+				
+				//String initials = currentAdmin.getInitials();
+				
+				dbcon.updateExchange(currency);
+				
+				screen.getAdminMenu().getTfExchange().setText("");
+				screen.getAdminMenu().getLblCurrentEx().setText("Current Exchangerate: " + currency);
 			}
 
-			else if (e.getSource() == screen.getAdminMenu().getBtnOpretBruger()){
-				screen.show(Screen.OPRET);
+			else if (e.getSource() == screen.getAdminMenu().getBtnViewUsers()){
+				screen.show(Screen.VIEW);
 			}
 
-			else if (e.getSource() == screen.getAdminMenu().getBtnSletBruger()){
-				screen.show(Screen.SLET);
+			else if (e.getSource() == screen.getAdminMenu().getBtnCreateUser()){
+				screen.show(Screen.CREATE);
+			}
+
+			else if (e.getSource() == screen.getAdminMenu().getBtnDeleteUser()){
+				screen.show(Screen.DELETE);
 			}
 		}
 	}
@@ -159,21 +163,27 @@ public class BCBSapp2 {
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getUserMenu().getBtnLogUd()){
+			if (e.getSource() == screen.getUserMenu().getBtnLogout()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);				
 			}
 
 			else if (e.getSource() == screen.getUserMenu().getBtnDeposit()){
+				screen.getDepositScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+				screen.getDepositScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.DEPOSIT);
 			}
 
 			else if (e.getSource() == screen.getUserMenu().getBtnWithdraw()){
+				screen.getWithdrawScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+				screen.getWithdrawScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.WITHDRAW);
 			}
 
 			else if (e.getSource() == screen.getUserMenu().getBtnTransfer()){
+				screen.getTransferScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+				screen.getTransferScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.TRANSFER);
 			}
 
@@ -185,27 +195,39 @@ public class BCBSapp2 {
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getDepositScreen().getBtnLogUd()){
+			if (e.getSource() == screen.getDepositScreen().getBtnLogout()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
-				
 			}
 
 			else if (e.getSource() == screen.getDepositScreen().getBtnHome()){
+				screen.getDepositScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+				screen.getDepositScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.USERMENU);
 			}
 
 			else if (e.getSource() == screen.getDepositScreen().getBtnDeposit()){
+				screen.getDepositScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+				screen.getDepositScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
+				screen.getDepositScreen().getTfAmount().setText("");
 				
+				try {
 				Double bal = new Double(screen.getDepositScreen().getTfAmount().getText());
-				String text = "";
+				String text = screen.getDepositScreen().getTfAmount().getText();
 				
-				double balance = bal.parseDouble(text);
+				double balance = (bal.parseDouble(text) + currentUser.getBalance());
 				
 				String initials = getCurrentUser().getInitials();
 				
 				dbcon.depositUser(balance, initials);
+				
+				} catch (NumberFormatException e1) {
+							
+					JOptionPane.showMessageDialog(null, "You have to type a value!");
+						
+				}
+				
 			}
 
 		}
@@ -216,7 +238,7 @@ public class BCBSapp2 {
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getWithdrawScreen().getBtnLogud()){
+			if (e.getSource() == screen.getWithdrawScreen().getBtnLogout()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
@@ -230,10 +252,10 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getWithdrawScreen().getBtnWithdraw()){
 				
-				Double bal = new Double(screen.getDepositScreen().getTfAmount().getText());
-				String text = "";
+				Double bal = new Double(screen.getWithdrawScreen().getTfAmount().getText());
+				String text = screen.getWithdrawScreen().getTfAmount().getText();
 				
-				double balance = bal.parseDouble(text);
+				double balance = (bal.parseDouble(text) - currentUser.getBalance());
 				
 				String initials = getCurrentUser().getInitials();
 			
@@ -248,7 +270,7 @@ public class BCBSapp2 {
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getTransferScreen().getBtnLogud()){
+			if (e.getSource() == screen.getTransferScreen().getBtnLogout()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
@@ -259,15 +281,15 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getTransferScreen().getBtnTransfer()){
-				
-				Double bal = new Double(screen.getDepositScreen().getTfAmount().getText());
-				String text = "";
+							
+				Double bal = new Double(screen.getTransferScreen().getTfAmount().getText());
+				String text = screen.getTransferScreen().getTfAmount().getText();
 				
 				double balance = bal.parseDouble(text);
 				
 				String initials = screen.getTransferScreen().getTfTransUser().getText();
-				
-				dbcon.transferUser(balance, initials);
+			
+			    dbcon.transferUser(balance, initials);
 				
 			}
 
@@ -275,24 +297,23 @@ public class BCBSapp2 {
 		
 	}
 
-	private class ShowActionListener implements ActionListener{
+	private class ViewActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getVisBruger().getBtnLogud()){
+			if (e.getSource() == screen.getViewScreen().getBtnLogout()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getVisBruger().getBtnHome()){
+			else if (e.getSource() == screen.getViewScreen().getBtnHome()){
 				screen.show(Screen.ADMINMENU);
 			}
 
-			else if (e.getSource() == screen.getVisBruger().getBtnVis()){
-				
-				table.TableModel1();
-				screen.show(Screen.VIS);
+			else if (e.getSource() == screen.getViewScreen().getBtnView()){
+		
+				screen.show(Screen.VIEW);
 			}
 			
 		}
@@ -303,22 +324,22 @@ public class BCBSapp2 {
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getNyBruger().getBtnLogud()){
+			if (e.getSource() == screen.getCreateScreen().getBtnLogout()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getNyBruger().getBtnHome()){
+			else if (e.getSource() == screen.getCreateScreen().getBtnHome()){
 				screen.show(Screen.ADMINMENU);
 			}
 
-			else if (e.getSource() == screen.getNyBruger().getBtnOpret()){
+			else if (e.getSource() == screen.getCreateScreen().getBtnCreate()){
 				
-				String firstname = screen.getNyBruger().getUserFirst().getText();
-				String lastname = screen.getNyBruger().getUserLast().getText();
-				String initials = screen.getNyBruger().getUserInit().getText();
-				String password = screen.getNyBruger().getUserPass().getText();
+				String firstname = screen.getCreateScreen().getUserFirst().getText();
+				String lastname = screen.getCreateScreen().getUserLast().getText();
+				String initials = screen.getCreateScreen().getUserInit().getText();
+				String password = screen.getCreateScreen().getUserPass().getText();
 	
 				dbcon.createUser(firstname, lastname, initials, password);
 			
@@ -332,22 +353,22 @@ public class BCBSapp2 {
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getSletBruger().getBtnLogud()){
+			if (e.getSource() == screen.getDeleteScreen().getBtnLogout()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getSletBruger().getBtnHome()){
+			else if (e.getSource() == screen.getDeleteScreen().getBtnHome()){
 				screen.show(Screen.ADMINMENU);
 			}
 
-			else if (e.getSource() == screen.getSletBruger().getBtnSlet()){
+			else if (e.getSource() == screen.getDeleteScreen().getBtnDelete()){
 				
-				String firstname = screen.getSletBruger().getUserFirst().getText();
-				String lastname = screen.getSletBruger().getUserLast().getText();
-				String initials = screen.getSletBruger().getUserInit().getText();
-				String password = screen.getSletBruger().getUserPass().getText();
+				String firstname = screen.getDeleteScreen().getUserFirst().getText();
+				String lastname = screen.getDeleteScreen().getUserLast().getText();
+				String initials = screen.getDeleteScreen().getUserInit().getText();
+				String password = screen.getDeleteScreen().getUserPass().getText();
 			
 				dbcon.deleteUser(firstname, lastname, initials, password);
 			}

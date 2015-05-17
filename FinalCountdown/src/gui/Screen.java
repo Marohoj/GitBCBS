@@ -11,8 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import logic.UserMethod;
-
 public class Screen extends JFrame {
 	public static final String LOGIN = "login";
 	public static final String USERMENU = "usermenu";
@@ -20,20 +18,19 @@ public class Screen extends JFrame {
 	public static final String DEPOSIT = "deposit";
 	public static final String WITHDRAW = "withdraw";
 	public static final String TRANSFER = "transfer";
-	public static final String VIS = "vis";
-	public static final String OPRET = "opret";
-	public static final String SLET = "slet";
+	public static final String VIEW = "view";
+	public static final String CREATE = "create";
+	public static final String DELETE = "delete";
 		
 	private LoginScreen login;
 	private UserMenu usermenu;
-	private UserMethod usermethod;
 	private AdminMenu adminmenu;
 	private DepositScreen deposit;
 	private WithdrawScreen withdraw;
 	private TransferScreen transfer;
-	private VisBruger vis;
-	private NyBruger opret;
-	private SletBruger slet;
+	private ViewScreen view;
+	private CreateScreen create;
+	private DeleteScreen delete;
 	private JPanel contentPane;
 	
 	private CardLayout c;
@@ -52,7 +49,6 @@ public class Screen extends JFrame {
 		setContentPane(contentPane);
 
 		login = new LoginScreen();
-		login.getLblPing().setBounds(10, 10, 218, 23);
 		login.setBackground(new Color(255, 255, 255));
 		login.setBounds(100, 100, 600, 500);
 		login.setLayout(null);
@@ -88,23 +84,23 @@ public class Screen extends JFrame {
 		transfer.setLayout(null);
 		contentPane.add(transfer, TRANSFER);
 		
-		opret = new NyBruger();
-		opret.setBackground(new Color(255, 255, 255));
-		opret.setBounds(100, 100, 600, 500);
-		opret.setLayout(null);
-		contentPane.add(opret, OPRET);
+		create = new CreateScreen();
+		create.setBackground(new Color(255, 255, 255));
+		create.setBounds(100, 100, 600, 500);
+		create.setLayout(null);
+		contentPane.add(create, CREATE);
 		
-		slet = new SletBruger();
-		slet.setBackground(new Color(255, 255, 255));
-		slet.setBounds(100, 100, 600, 500);
-		slet.setLayout(null);
-		contentPane.add(slet, SLET);
+		delete = new DeleteScreen();
+		delete.setBackground(new Color(255, 255, 255));
+		delete.setBounds(100, 100, 600, 500);
+		delete.setLayout(null);
+		contentPane.add(delete, DELETE);
 		
-		vis = new VisBruger();
-		vis.setBackground(new Color(255, 255, 255));
-		vis.setBounds(100, 100, 600, 500);
-		vis.setLayout(null);
-		contentPane.add(vis, VIS);
+		view = new ViewScreen();
+		view.setBackground(new Color(255, 255, 255));
+		view.setBounds(100, 100, 600, 500);
+		view.setLayout(null);
+		contentPane.add(view, VIEW);
 				
 		c = (CardLayout) getContentPane().getLayout();
 	}
@@ -133,16 +129,16 @@ public class Screen extends JFrame {
 		return transfer;
 	}
 	
-	public VisBruger getVisBruger(){
-		return vis;
+	public ViewScreen getViewScreen(){
+		return view;
 	}
 	
-	public NyBruger getNyBruger(){
-		return opret;
+	public CreateScreen getCreateScreen(){
+		return create;
 	}
 	
-	public SletBruger getSletBruger(){
-		return slet;
+	public DeleteScreen getDeleteScreen(){
+		return delete;
 	}
 	
 	public void show(String card){

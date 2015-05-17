@@ -9,19 +9,18 @@ import javax.swing.JTextField;
 
 public class AdminMenu extends JPanel {
 
-	private JButton btnLogud;
-	private JButton btnHjem;
-	private JButton btnOpretBruger;
-	private JButton btnSletBruger;
-	private JButton btnVisBrugere;
+	private JButton btnLogout;
+	private JButton btnHome;
+	private JButton btnCreateUser;
+	private JButton btnDeleteUser;
+	private JButton btnViewUsers;
 	private JButton btnExchange;
 	
 	private JTextField tfExchange;
 	
-	private JLabel	lblBruger;
-	private JLabel	lblSaldo;
+	private JLabel	lblUser;
 	private JLabel lblLoginInfo;
-	private JLabel lblIndls;
+	private JLabel lblCurrentEx;
 	private JLabel lblExchange;
 		
 	public AdminMenu() {
@@ -29,86 +28,82 @@ public class AdminMenu extends JPanel {
 		setBounds(100,100,600,500);
 		setLayout(null);
 
-		btnLogud = new JButton("Log ud");
-		btnLogud.setBounds(475, 11, 89, 23);
-		add(btnLogud);
+		btnLogout = new JButton("Log out");
+		btnLogout.setBounds(475, 11, 89, 23);
+		add(btnLogout);
 
-		btnHjem = new JButton("Hjem");
-		btnHjem.setBounds(20, 100, 89, 23);
-		add(btnHjem);
+		btnHome = new JButton("Home");
+		btnHome.setBounds(20, 129, 103, 23);
+		add(btnHome);
 
-		btnOpretBruger = new JButton("Opret Bruger");
-		btnOpretBruger.setBounds(20, 134, 89, 23);
-		add(btnOpretBruger);
+		btnCreateUser = new JButton("Create User");
+		btnCreateUser.setBounds(20, 197, 103, 23);
+		add(btnCreateUser);
 
-		btnSletBruger = new JButton("Slet Bruger");
-		btnSletBruger.setBounds(20, 202, 89, 23);
-		add(btnSletBruger);
+		btnDeleteUser = new JButton("Delete User");
+		btnDeleteUser.setBounds(20, 231, 103, 23);
+		add(btnDeleteUser);
 
-		btnVisBrugere = new JButton("Vis Brugere");
-		btnVisBrugere.setBounds(20, 168, 89, 23);
-		add(btnVisBrugere);
+		btnViewUsers = new JButton("View Users");
+		btnViewUsers.setBounds(20, 163, 103, 23);
+		add(btnViewUsers);
 
-		btnExchange = new JButton("Opdater Vekselkurs");
-		btnExchange.setBounds(231, 264, 133, 23);
+		btnExchange = new JButton("Update Exchangerate");
+		btnExchange.setBounds(204, 368, 152, 23);
 		add(btnExchange);
 		
 		tfExchange = new JTextField();
-		tfExchange.setBounds(219, 203, 152, 20);
+		tfExchange.setBounds(204, 310, 152, 20);
 		tfExchange.setColumns(10);
 		add(tfExchange);
 		
-		lblBruger = new JLabel("Du er logget ind som:" + "");
-		lblBruger.setBounds(20, 11, 238, 23);
-		add(lblBruger);
-
-		lblSaldo = new JLabel("Saldo:" + "");
-		lblSaldo.setBounds(20, 40, 103, 23);
-		add(lblSaldo);
+		lblUser = new JLabel("User: ");
+		lblUser.setBounds(20, 11, 238, 23);
+		add(lblUser);
 		
-		lblLoginInfo = new JLabel("Du er logget ind som Admin");
-		lblLoginInfo.setBounds(231, 104, 139, 14);
+		lblLoginInfo = new JLabel("You are logged in as Admin. You got all the power. Have fun!");
+		lblLoginInfo.setBounds(137, 70, 310, 14);
 		add(lblLoginInfo);
 		
-		lblIndls = new JLabel("Indl\u00E6s den dagens vekselkurs i feltet herunder");
-		lblIndls.setBounds(181, 172, 243, 14);
-		add(lblIndls);
+		lblExchange = new JLabel("Type in todays exchangerate:");
+		lblExchange.setBounds(204, 285, 243, 14);
+		add(lblExchange);
 		
-		lblExchange = new JLabel("Nuv\u00E6rende vekselkurs: ");
-		lblExchange.setBounds(231, 138, 133, 14);
-		add(lblExchange);	
+		lblCurrentEx = new JLabel("Current exchangerate:");
+		lblCurrentEx.setBounds(204, 201, 167, 14);
+		add(lblCurrentEx);	
 	}
 	
-	public JLabel getLblBruger(){
-		return lblBruger;
+	public JLabel getLblUser(){
+		return lblUser;
 	}
 	
-	public JLabel getLblExchange() {
-		return lblExchange;
+	public JLabel getLblCurrentEx() {
+		return lblCurrentEx;
 	}
 
 	public JButton getBtnExchange(){
 		return btnExchange;
 	}
 	
-	public JButton getBtnVisBrugere() {
-		return btnVisBrugere;
+	public JButton getBtnViewUsers() {
+		return btnViewUsers;
 	}
 	
-	public JButton getBtnOpretBruger() {
-		return btnOpretBruger;
+	public JButton getBtnCreateUser() {
+		return btnCreateUser;
 	}
 	
-	public JButton getBtnSletBruger() {
-		return btnSletBruger;
+	public JButton getBtnDeleteUser() {
+		return btnDeleteUser;
 	}
 
-	public JButton getBtnLogUd() {
-		return btnLogud;
+	public JButton getBtnLogout() {
+		return btnLogout;
 	}
 	
-	public JButton getBtnHjem() {
-		return btnHjem;
+	public JButton getBtnHome() {
+		return btnHome;
 	}
 	
 	public JTextField getTfExchange(){
@@ -116,11 +111,12 @@ public class AdminMenu extends JPanel {
 	}
 	
 	public void addActionListener(ActionListener l) {
-		btnLogud.addActionListener(l);
-		btnHjem.addActionListener(l);
-		btnVisBrugere.addActionListener(l);
-		btnOpretBruger.addActionListener(l);
-		btnSletBruger.addActionListener(l);
+		btnLogout.addActionListener(l);
+		btnHome.addActionListener(l);
+		btnViewUsers.addActionListener(l);
+		btnCreateUser.addActionListener(l);
+		btnDeleteUser.addActionListener(l);
+		btnExchange.addActionListener(l);
 	}
 	
 }

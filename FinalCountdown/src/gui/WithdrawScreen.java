@@ -6,59 +6,68 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 public class WithdrawScreen extends JPanel {
 	
-	private JButton btnLogud;
+	private JButton btnLogout;
 	private JButton btnHome;
 	private JButton btnWithdraw;
-	private JLabel lblBruger;
-	private JLabel lblSaldo;
-	private JLabel lblAntalBc;
+	private JLabel lblUser;
+	private JLabel lblBalance;
+	private JLabel lblAmount;
 	private JTextField tfAmount;
-	private JLabel lblDetErMulig;
+	private JLabel lblPossible;
 
 	public WithdrawScreen() {
 
 		setBounds(100,100,600,500);
 		setLayout(null);
 
-		btnLogud = new JButton("Log ud");
-		btnLogud.setBounds(475, 11, 89, 23);
-		add(btnLogud);
+		btnLogout = new JButton("Log out");
+		btnLogout.setBounds(475, 11, 89, 23);
+		add(btnLogout);
 		
-		btnHome = new JButton("Hjem");
+		btnHome = new JButton("Home");
 		btnHome.setBounds(20, 100, 89, 23);
 		add(btnHome);
 		
 		tfAmount = new JTextField();
-		tfAmount.setBounds(199, 300, 199, 23);
+		tfAmount.setBounds(199, 258, 199, 23);
 		add(tfAmount);
 		tfAmount.setColumns(10);
 		
-		btnWithdraw = new JButton("H\u00E6v BC");
+		btnWithdraw = new JButton("Withdraw");
 		btnWithdraw.setBounds(252, 389, 89, 23);
 		add(btnWithdraw);
 		
-		lblBruger = new JLabel("Du er logget ind som:" + "");
-		lblBruger.setBounds(20, 11, 238, 23);
-		add(lblBruger);
+		lblUser = new JLabel("User: ");
+		lblUser.setBounds(20, 11, 238, 23);
+		add(lblUser);
 
-		lblSaldo = new JLabel("Saldo:" + "");
-		lblSaldo.setBounds(20, 40, 103, 23);
-		add(lblSaldo);
+		lblBalance = new JLabel("Balance: ");
+		lblBalance.setBounds(20, 40, 103, 23);
+		add(lblBalance);
 		
-		lblAntalBc = new JLabel("Hvor mange BC \u00F8nsker du at h\u00E6ve?");
-		lblAntalBc.setBounds(199, 167, 227, 14);
-		add(lblAntalBc);
+		lblAmount = new JLabel("How much do you want withdraw?");
+		lblAmount.setBounds(199, 197, 227, 14);
+		add(lblAmount);
 		
-		lblDetErMulig = new JLabel("Det er mulig at h\u00E6ve: " + "" + "BC");
-		lblDetErMulig.setBounds(199, 222, 188, 14);
-		add(lblDetErMulig);
+		lblPossible = new JLabel("");
+		lblPossible.setBounds(199, 222, 188, 14);
+		add(lblPossible);
+	}
+	
+	public JLabel getLblUser() {
+		return lblUser;
 	}
 
-	public JButton getBtnLogud() {
-		return btnLogud;
+	public JLabel getLblBalance() {
+		return lblBalance;
+	}
+
+	public JButton getBtnLogout() {
+		return btnLogout;
 	}
 
 	public JButton getBtnHome() {
@@ -74,7 +83,7 @@ public class WithdrawScreen extends JPanel {
 	}
 	
 	public void addActionListener(ActionListener l) {
-		btnLogud.addActionListener(l);
+		btnLogout.addActionListener(l);
 		btnHome.addActionListener(l);
 		btnWithdraw.addActionListener(l);
 	}

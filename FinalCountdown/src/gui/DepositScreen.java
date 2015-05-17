@@ -9,12 +9,12 @@ import javax.swing.JTextField;
 
 public class DepositScreen extends JPanel {
 
-	private JButton btnLogud;
+	private JButton btnLogout;
 	private JButton btnHome;
 	private JButton btnDeposit;
-	private JLabel lblBruger;
-	private JLabel lblSaldo;
-	private JLabel lblAntalBc;
+	private JLabel lblUser;
+	private JLabel lblBalance;
+	private JLabel lblAmount;
 	private JTextField tfAmount;
 	private JLabel label;
 	private JLabel lblTest;
@@ -24,36 +24,36 @@ public class DepositScreen extends JPanel {
 		setBounds(100,100,600,500);
 		setLayout(null);
 
-		btnLogud = new JButton("Log ud");
-		btnLogud.setBounds(475, 11, 89, 23);
-		add(btnLogud);
+		btnLogout = new JButton("Logout");
+		btnLogout.setBounds(475, 11, 89, 23);
+		add(btnLogout);
 		
-		btnHome = new JButton("Hjem");
+		btnHome = new JButton("Home");
 		btnHome.setBounds(20, 100, 89, 23);
 		add(btnHome);
 		
-		lblBruger = new JLabel("Du er logget ind som:" + "");
-		lblBruger.setBounds(20, 11, 238, 23);
-		add(lblBruger);
+		lblUser = new JLabel("User: ");
+		lblUser.setBounds(20, 11, 238, 23);
+		add(lblUser);
 
-		lblSaldo = new JLabel("Saldo:" + "");
-		lblSaldo.setBounds(20, 40, 103, 23);
-		add(lblSaldo);
+		lblBalance = new JLabel("Balance: ");
+		lblBalance.setBounds(20, 40, 103, 23);
+		add(lblBalance);
 		
 		tfAmount = new JTextField();
 		tfAmount.setBounds(199, 300, 199, 23);
 		add(tfAmount);
 		tfAmount.setColumns(10);
 		
-		btnDeposit = new JButton("Inds\u00E6t BC");
+		btnDeposit = new JButton("Deposit BC");
 		btnDeposit.setBounds(252, 389, 89, 23);
 		add(btnDeposit);
 		
-		lblAntalBc = new JLabel("Hvor mange BC \u00F8nsker du at overf\u00F8re?");
-		lblAntalBc.setBounds(199, 167, 254, 14);
-		add(lblAntalBc);
+		lblAmount = new JLabel("How many BC do you want to deposit?");
+		lblAmount.setBounds(199, 167, 254, 14);
+		add(lblAmount);
 		
-		label = new JLabel("Saldo:");
+		label = new JLabel("Balance:");
 		label.setBounds(199, 202, 103, 23);
 		add(label);
 		
@@ -63,8 +63,24 @@ public class DepositScreen extends JPanel {
 		
 	}
 	
-	public JButton getBtnLogUd() {
-		return btnLogud;
+	public JLabel getLblUser() {
+		return lblUser;
+	}
+	
+	public JLabel getLblBalance() {
+		return lblBalance;
+	}
+
+	public JLabel getLblAmount() {
+		return lblAmount;
+	}
+
+	public JLabel getLblTest() {
+		return lblTest;
+	}
+	
+	public JButton getBtnLogout() {
+		return btnLogout;
 	}
 	
 	public JButton getBtnHome() {
@@ -79,12 +95,8 @@ public class DepositScreen extends JPanel {
 		return tfAmount;
 	}
 	
-	public JLabel getLblTest() {
-		return lblTest;
-	}
-	
 	public void addActionListener(ActionListener l) {
-		btnLogud.addActionListener(l);
+		btnLogout.addActionListener(l);
 		btnHome.addActionListener(l);
 		btnDeposit.addActionListener(l);
 	}

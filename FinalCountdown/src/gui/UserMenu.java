@@ -4,72 +4,64 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
-import db.Users;
-
 import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class UserMenu extends JPanel {
 	
-	private JButton btnLogud;
-	private JButton btnHjem;
+	private JButton btnLogout;
+	private JButton btnHome;
 	private JButton btnDeposit;
 	private JButton btnWithdraw;
 	private JButton btnTransfer;
-	private JLabel lblBruger;
 	
-
-	private JLabel lblSaldo;
-	
-	private Users users;
+	private JLabel lblUser;
+	private JLabel lblBalance;
 
 	/**
 	 * Create the panel.
 	 */
 	public UserMenu() {
-		setBackground(new Color(240, 240, 240));
-		
-		//users = new Users(initials, password, balance);
-		
-		setBounds(100,100,544,326);
+		setBackground(new Color(240, 240, 240));	
+		setBounds(100,100,734,361);
 		setLayout(null);
 		
-		btnLogud = new JButton("Log ud");
-		btnLogud.setBounds(475, 11, 89, 23);
-		add(btnLogud);
+		btnLogout = new JButton("Log out");
+		btnLogout.setBounds(475, 11, 89, 23);
+		add(btnLogout);
 		
-		btnHjem = new JButton("Hjem");
-		btnHjem.setBounds(20, 100, 89, 23);
-		add(btnHjem);
+		btnHome = new JButton("Home");
+		btnHome.setBounds(20, 100, 89, 23);
+		add(btnHome);
 		
-		btnDeposit = new JButton("Inds\u00E6t BC");
+		btnDeposit = new JButton("Deposit");
 		btnDeposit.setBounds(20, 140, 89, 23);
 		add(btnDeposit);
 		
-		btnWithdraw = new JButton("H\u00E6v BC");
+		btnWithdraw = new JButton("Withdraw");
 		btnWithdraw.setBounds(20, 180, 89, 23);
 		add(btnWithdraw);
 		
-		btnTransfer = new JButton("Overf\u00F8r BC");
+		btnTransfer = new JButton("Transaction");
 		btnTransfer.setBounds(20, 220, 89, 23);
 		add(btnTransfer);
 		
-		lblBruger = new JLabel("Du er logget ind som: " + "users.getInitials()");
-		lblBruger.setBounds(20, 11, 179, 23);
-		add(lblBruger);
+		lblUser = new JLabel("User: ");
+		lblUser.setBounds(20, 11, 179, 23);
+		add(lblUser);
 		
-		lblSaldo = new JLabel("Saldo: " + "users.getBalance()");
-		lblSaldo.setBounds(20, 40, 89, 23);
-		add(lblSaldo);
+		lblBalance = new JLabel("Balance: ");
+		lblBalance.setBounds(20, 40, 89, 40);
+		add(lblBalance);
 		setBounds(153, 104, 255, 19);
 	}
 
-	public JButton getBtnLogUd() {
-		return btnLogud;
+	public JButton getBtnLogout() {
+		return btnLogout;
 	}
 
-	public JButton getBtnHjem() {
-		return btnHjem;
+	public JButton getBtnHome() {
+		return btnHome;
 	}
 
 	public JButton getBtnDeposit() {
@@ -84,17 +76,17 @@ public class UserMenu extends JPanel {
 		return btnTransfer;
 	}
 	
-	public JLabel getLblBruger() {
-		return lblBruger;
+	public JLabel getLblUser() {
+		return lblUser;
 	}
 
-	public JLabel getLblSaldo() {
-		return lblSaldo;
+	public JLabel getLblBalance() {
+		return lblBalance;
 	}
 	
 	public void addActionListener(ActionListener l) {
-		btnLogud.addActionListener(l);
-		btnHjem.addActionListener(l);
+		btnLogout.addActionListener(l);
+		btnHome.addActionListener(l);
 		btnDeposit.addActionListener(l);
 		btnWithdraw.addActionListener(l);
 		btnTransfer.addActionListener(l);

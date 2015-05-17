@@ -9,29 +9,29 @@ import javax.swing.JTextField;
 
 public class TransferScreen extends JPanel {
 
-	private JButton btnLogud;
+	private JButton btnLogout;
 	private JButton btnHome;
 	private JButton btnTransfer;
 	
 	private JTextField tfTransUser;
 	private JTextField tfAmount;
 	
-	private JLabel lblBruger;
-	private JLabel lblSaldo;
-	private JLabel lblAntalBc;
-	private JLabel lblDetErMulig;
-	private JLabel lblHvorMangeBc;
+	private JLabel lblUser;
+	private JLabel lblBalance;
+	private JLabel lblReceiver;
+	private JLabel lblPossible;
+	private JLabel lblAmount;
 	
 	public TransferScreen() {
 		
 		setBounds(100,100,600,500);
 		setLayout(null);
 
-		btnLogud = new JButton("Log ud");
-		btnLogud.setBounds(475, 11, 89, 23);
-		add(btnLogud);
+		btnLogout = new JButton("Log out");
+		btnLogout.setBounds(475, 11, 89, 23);
+		add(btnLogout);
 		
-		btnHome = new JButton("Hjem");
+		btnHome = new JButton("Home");
 		btnHome.setBounds(20, 100, 89, 23);
 		add(btnHome);
 		
@@ -45,34 +45,42 @@ public class TransferScreen extends JPanel {
 		tfTransUser.setBounds(199, 188, 199, 23);
 		add(tfTransUser);
 		
-		btnTransfer = new JButton("Overf\u00F8r BC");
+		btnTransfer = new JButton("Transfer");
 		btnTransfer.setBounds(252, 389, 89, 23);
 		add(btnTransfer);
 		
-		lblBruger = new JLabel("Du er logget ind som:" + "");
-		lblBruger.setBounds(20, 11, 238, 23);
-		add(lblBruger);
+		lblUser = new JLabel("");
+		lblUser.setBounds(20, 11, 238, 23);
+		add(lblUser);
 
-		lblSaldo = new JLabel("Saldo:" + "");
-		lblSaldo.setBounds(20, 40, 103, 23);
-		add(lblSaldo);
+		lblBalance = new JLabel();
+		lblBalance.setBounds(20, 40, 103, 23);
+		add(lblBalance);
 		
-		lblAntalBc = new JLabel("Til bruger: ");
-		lblAntalBc.setBounds(199, 247, 69, 14);
-		add(lblAntalBc);
+		lblReceiver = new JLabel("To User (initials): ");
+		lblReceiver.setBounds(199, 247, 69, 14);
+		add(lblReceiver);
 		
-		lblDetErMulig = new JLabel("Det er muligt at overf\u00F8re: BC");
-		lblDetErMulig.setBounds(199, 140, 188, 14);
-		add(lblDetErMulig);
+		lblPossible = new JLabel("");
+		lblPossible.setBounds(199, 140, 188, 14);
+		add(lblPossible);
 		
-		lblHvorMangeBc = new JLabel("Hvor mange BC \u00F8nsker du at overf\u00F8re?");
-		lblHvorMangeBc.setBounds(199, 165, 221, 14);
-		add(lblHvorMangeBc);
+		lblAmount = new JLabel("Hvor much do you want to transfer?");
+		lblAmount.setBounds(199, 165, 221, 14);
+		add(lblAmount);
 				
 	}
-	
-	public JButton getBtnLogud() {
-		return btnLogud;
+		
+	public JLabel getLblUser() {
+		return lblUser;
+	}
+
+	public JLabel getLblBalance() {
+		return lblBalance;
+	}
+
+	public JButton getBtnLogout() {
+		return btnLogout;
 	}
 
 	public JButton getBtnHome() {
@@ -92,7 +100,7 @@ public class TransferScreen extends JPanel {
 	}
 
 	public void addActionListener(ActionListener l) {
-		btnLogud.addActionListener(l);
+		btnLogout.addActionListener(l);
 		btnHome.addActionListener(l);
 		btnTransfer.addActionListener(l);
 	}

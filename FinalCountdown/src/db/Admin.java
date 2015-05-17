@@ -7,9 +7,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.table.AbstractTableModel;
 
-public class Admin extends AbstractTableModel
+public class Admin //extends AbstractTableModel
 {
-	
 	private Statement stmt;
 	private ResultSet resultSet;
 	private ResultSetMetaData metaData;
@@ -24,16 +23,16 @@ public class Admin extends AbstractTableModel
 	DBCon connect = new DBCon ();
 	
 	
-	public ResultSetTableModel(String url, String username, String password, String query)
-	throws SQLException{
+	//public ResultSetTableModel(String url, String username, String password, String query)
+	//throws SQLException{
 		
 		
 		
 		
-		stmt = connect.DBCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-				ResultSet.CONCUR_READ_ONLY);
-		setQuery( query );
-	}
+	//	stmt = connect.DBCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+	//			ResultSet.CONCUR_READ_ONLY);
+	//	setQuery( query );
+	//}
 	
 	
 	

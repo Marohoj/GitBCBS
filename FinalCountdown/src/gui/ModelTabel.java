@@ -4,22 +4,17 @@ import javax.swing.table.AbstractTableModel;
 
 import db.DBCon;
 
-public class TableModel extends AbstractTableModel {
+public class ModelTabel extends AbstractTableModel {
 
 	private DBCon dbcon;
 
-	public void TableModel1() {
-		dbcon = new DBCon();
-
-	}
-
 	public int getColumnCount() {
-		return 4;
+		return 5;
 	}
 
 	public int getRowCount() {
-		return 4;
-		//return dbcon.getUsers().size();
+		return 5;
+		//return dbcon.getUser().size();
 	}
 
 	public String getColumnName(int columnIndex) {
@@ -32,23 +27,27 @@ public class TableModel extends AbstractTableModel {
 			return "Initials";
 		case 3: 
 			return "Password";
+		case 4: 
+			return "Balance";
 		}
 		return null;
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		dbcon.getUsers().get(rowIndex);
+		//dbcon.getUser().get(rowIndex);
 
 		switch (columnIndex) {
 
 		case 0:
-			return dbcon.getUsers().get(rowIndex).getFirstName();
+			return dbcon.getUser().get(rowIndex).getFirstName();
 		case 1:
-			return dbcon.getUsers().get(rowIndex).getLastName();
+			return dbcon.getUser().get(rowIndex).getLastName();
 		case 2:
-			return dbcon.getUsers().get(rowIndex).getInitials();
+			return dbcon.getUser().get(rowIndex).getInitials();
 		case 3: 
-			return dbcon.getUsers().get(rowIndex).getPassword();
+			return dbcon.getUser().get(rowIndex).getPassword();
+		case 4: 
+			return dbcon.getUser().get(rowIndex).getBalance();
 		}
 		return getValueAt(rowIndex, columnIndex);
 	}

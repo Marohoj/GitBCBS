@@ -58,10 +58,6 @@ public class LoginScreen extends JPanel {
 		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/kimjung.jpg")));
 		label_1.setBounds(160, 11, 366, 290);
 		add(label_1);
-		
-		lblPing = new JLabel("Connection: " + "");
-		lblPing.setBounds(10, 11, 563, 23);
-		add(lblPing);
 	}
 
 	public JTextField getTfUsername() {
@@ -86,10 +82,6 @@ public class LoginScreen extends JPanel {
 
 	public JButton getBtnAfslut() {
 		return btnAfslut;
-	}
-	
-	public JLabel getLblPing() {
-		return lblPing;
 	}
 	
 	public void addActionListener(ActionListener l) {
