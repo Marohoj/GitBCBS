@@ -64,8 +64,6 @@ public class Screen extends JFrame {
 		usermenu.setLayout(null);
 		contentPane.add(usermenu, USERMENU);
 		
-		usermethod = new UserMethod();
-		
 		adminmenu = new AdminMenu();
 		adminmenu.setBackground(new Color(255, 255, 255));
 		adminmenu.setBounds(100, 100, 600, 500);

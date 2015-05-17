@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 public class SletBruger extends JPanel {
 
 	private JButton btnLogud;
-	private JButton btnHjem;
+	private JButton btnHome;
 	private JButton btnSlet;
 
 	private JTextField userInit;
@@ -35,9 +35,9 @@ public class SletBruger extends JPanel {
 		btnLogud.setBounds(475, 11, 89, 23);
 		add(btnLogud);
 		
-		btnHjem = new JButton("Hjem");
-		btnHjem.setBounds(20, 100, 89, 23);
-		add(btnHjem);
+		btnHome = new JButton("Hjem");
+		btnHome.setBounds(20, 100, 89, 23);
+		add(btnHome);
 		
 		lblBruger = new JLabel("Du er logget ind som:" + "");
 		lblBruger.setBounds(20, 11, 238, 23);
@@ -97,8 +97,8 @@ public class SletBruger extends JPanel {
 		return btnLogud;
 	}
 
-	public JButton getBtnHjem() {
-		return btnHjem;
+	public JButton getBtnHome() {
+		return btnHome;
 	}
 
 	public JButton getBtnSlet() {
@@ -123,7 +123,7 @@ public class SletBruger extends JPanel {
 	
 	public void addActionListener(ActionListener l) {
 		btnLogud.addActionListener(l);
-		btnHjem.addActionListener(l);
+		btnHome.addActionListener(l);
 		btnSlet.addActionListener(l);
 		userInit.addActionListener(l);
 		userFirst.addActionListener(l);

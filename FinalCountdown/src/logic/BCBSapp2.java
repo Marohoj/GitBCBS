@@ -18,10 +18,8 @@ public class BCBSapp2 {
 	private Screen screen;
 	private DBCon dbcon;
 	private Users currentUser;
-	private Users users;
+	private Admin admin;
 	private TableModel table;
-	private AdminMethod adminmethod;
-	private UserMethod usermethod;
 
 	public BCBSapp2(){
 		//instansierer objekter
@@ -43,7 +41,7 @@ public class BCBSapp2 {
 		screen.getAdminMenu().addActionListener(new AdminMenuActionListener());
 
 		screen.getDepositScreen().addActionListener(new DepositActionListener());
-		screen.getWithdrawScreen().addActionListener(new HvActionListener());
+		screen.getWithdrawScreen().addActionListener(new WithdrawActionListener());
 		screen.getTransferScreen().addActionListener(new TransActionListener());
 		
 		screen.getNyBruger().addActionListener(new CreateActionListener());
@@ -106,6 +104,16 @@ public class BCBSapp2 {
 
 				else if (ad_auth()) {
 					screen.getAdminMenu().getLblBruger().setText("User: " + screen.getLogin().getTfUsername().getText());
+					screen.getAdminMenu().getLblExchange().setText("Vekselkurs: + " + admin.getCurrency());
+					
+					Double cur = new Double(screen.getAdminMenu().getTfExchange().getText());
+					
+					String text = "";
+					
+					double currency = cur.parseDouble(text);
+					
+					dbcon.updateExchange(currency);
+					
 					screen.show(Screen.ADMINMENU);
 				}
 
@@ -184,14 +192,17 @@ public class BCBSapp2 {
 				
 			}
 
-			else if (e.getSource() == screen.getDepositScreen().getBtnHjem()){
+			else if (e.getSource() == screen.getDepositScreen().getBtnHome()){
 				screen.show(Screen.USERMENU);
 			}
 
 			else if (e.getSource() == screen.getDepositScreen().getBtnDeposit()){
 				
+				Double bal = new Double(screen.getDepositScreen().getTfAmount().getText());
+				String text = "";
 				
-				Double balance = getCurrentUser().getBalance() + screen.getDepositScreen().getTfAmount().getText();
+				double balance = bal.parseDouble(text);
+				
 				String initials = getCurrentUser().getInitials();
 				
 				dbcon.depositUser(balance, initials);
@@ -201,7 +212,7 @@ public class BCBSapp2 {
 
 	}
 
-	private class HvActionListener implements ActionListener{
+	private class WithdrawActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 
@@ -211,7 +222,7 @@ public class BCBSapp2 {
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getWithdrawScreen().getBtnHjem()){
+			else if (e.getSource() == screen.getWithdrawScreen().getBtnHome()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.USERMENU);
@@ -219,7 +230,11 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getWithdrawScreen().getBtnWithdraw()){
 				
-				Double balance = getCurrentUser().getBalance() - screen.getWithdrawScreen().getTfAmount().getText();
+				Double bal = new Double(screen.getDepositScreen().getTfAmount().getText());
+				String text = "";
+				
+				double balance = bal.parseDouble(text);
+				
 				String initials = getCurrentUser().getInitials();
 			
 				dbcon.withdrawUser(balance, initials);
@@ -239,13 +254,17 @@ public class BCBSapp2 {
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getTransferScreen().getBtnHjem()){
+			else if (e.getSource() == screen.getTransferScreen().getBtnHome()){
 				screen.show(Screen.USERMENU);
 			}
 
 			else if (e.getSource() == screen.getTransferScreen().getBtnTransfer()){
 				
-				Double balance = screen.getTransferScreen().getTfAmount().getText();
+				Double bal = new Double(screen.getDepositScreen().getTfAmount().getText());
+				String text = "";
+				
+				double balance = bal.parseDouble(text);
+				
 				String initials = screen.getTransferScreen().getTfTransUser().getText();
 				
 				dbcon.transferUser(balance, initials);
@@ -266,7 +285,7 @@ public class BCBSapp2 {
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getVisBruger().getBtnHjem()){
+			else if (e.getSource() == screen.getVisBruger().getBtnHome()){
 				screen.show(Screen.ADMINMENU);
 			}
 
@@ -290,7 +309,7 @@ public class BCBSapp2 {
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getNyBruger().getBtnHjem()){
+			else if (e.getSource() == screen.getNyBruger().getBtnHome()){
 				screen.show(Screen.ADMINMENU);
 			}
 
@@ -319,7 +338,7 @@ public class BCBSapp2 {
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getSletBruger().getBtnHjem()){;
+			else if (e.getSource() == screen.getSletBruger().getBtnHome()){
 				screen.show(Screen.ADMINMENU);
 			}
 
@@ -342,11 +361,4 @@ public class BCBSapp2 {
 	} 
 	
 }
-
-	
-	
-	
-	
-	
-	
 	

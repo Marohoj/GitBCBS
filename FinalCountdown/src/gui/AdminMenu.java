@@ -14,15 +14,15 @@ public class AdminMenu extends JPanel {
 	private JButton btnOpretBruger;
 	private JButton btnSletBruger;
 	private JButton btnVisBrugere;
-	private JButton btnOpdaterVekselkurs;
+	private JButton btnExchange;
 	
-	private JTextField tf_Vekselkurs;
+	private JTextField tfExchange;
 	
 	private JLabel	lblBruger;
 	private JLabel	lblSaldo;
 	private JLabel lblLoginInfo;
 	private JLabel lblIndls;
-	private JLabel lblVekselkurs;
+	private JLabel lblExchange;
 		
 	public AdminMenu() {
 
@@ -49,14 +49,14 @@ public class AdminMenu extends JPanel {
 		btnVisBrugere.setBounds(20, 168, 89, 23);
 		add(btnVisBrugere);
 
-		btnOpdaterVekselkurs = new JButton("Opdater Vekselkurs");
-		btnOpdaterVekselkurs.setBounds(231, 264, 133, 23);
-		add(btnOpdaterVekselkurs);
+		btnExchange = new JButton("Opdater Vekselkurs");
+		btnExchange.setBounds(231, 264, 133, 23);
+		add(btnExchange);
 		
-		tf_Vekselkurs = new JTextField();
-		tf_Vekselkurs.setBounds(219, 203, 152, 20);
-		tf_Vekselkurs.setColumns(10);
-		add(tf_Vekselkurs);
+		tfExchange = new JTextField();
+		tfExchange.setBounds(219, 203, 152, 20);
+		tfExchange.setColumns(10);
+		add(tfExchange);
 		
 		lblBruger = new JLabel("Du er logget ind som:" + "");
 		lblBruger.setBounds(20, 11, 238, 23);
@@ -74,17 +74,21 @@ public class AdminMenu extends JPanel {
 		lblIndls.setBounds(181, 172, 243, 14);
 		add(lblIndls);
 		
-		lblVekselkurs = new JLabel("Nuv\u00E6rende vekselkurs: ");
-		lblVekselkurs.setBounds(231, 138, 133, 14);
-		add(lblVekselkurs);	
+		lblExchange = new JLabel("Nuv\u00E6rende vekselkurs: ");
+		lblExchange.setBounds(231, 138, 133, 14);
+		add(lblExchange);	
 	}
 	
 	public JLabel getLblBruger(){
 		return lblBruger;
 	}
 	
-	public JButton getBtnOpdaterVekselkurs(){
-		return btnOpdaterVekselkurs;
+	public JLabel getLblExchange() {
+		return lblExchange;
+	}
+
+	public JButton getBtnExchange(){
+		return btnExchange;
 	}
 	
 	public JButton getBtnVisBrugere() {
@@ -107,8 +111,8 @@ public class AdminMenu extends JPanel {
 		return btnHjem;
 	}
 	
-	public JTextField getTf_Vekselkurs(){
-		return tf_Vekselkurs;
+	public JTextField getTfExchange(){
+		return tfExchange;
 	}
 	
 	public void addActionListener(ActionListener l) {

@@ -1,9 +1,5 @@
 package db;
 
-import gui.NyBruger;
-import gui.Screen;
-import gui.SletBruger;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.Connection;
@@ -41,10 +37,6 @@ public class DBCon {
 	private PreparedStatement deposit = null;
 	private PreparedStatement withdraw = null;
 	private PreparedStatement transfer = null;
-
-	private Screen screen;
-	private NyBruger nybruger;
-	private SletBruger sletbruger;
 
 	ResultSet resultSet = null;
 	Statement statement = null;	
@@ -132,6 +124,19 @@ public class DBCon {
 
 	}
 
+	public void updateExchange(Double currency){
+		
+		try {
+			updateExchange.setDouble(1, currency);
+			
+			updateExchange.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	public void createUser(String firstname, String lastname, String initials, String password){
 
