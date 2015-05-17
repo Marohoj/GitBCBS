@@ -7,24 +7,32 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.table.AbstractTableModel;
 
-public class Admin {
-
-	DBCon conncetion = new DBCon();
+public class Admin extends AbstractTableModel
+{
 	
-	private Statement statement;
+	private Statement stmt;
 	private ResultSet resultSet;
 	private ResultSetMetaData metaData;
 	private int numberOfRows;
+	
 	private String initials;
 	private String password;
 	private String name;
 	private Double currency;
-		
+	
+	
+	DBCon connect = new DBCon ();
+	
+	
 	public ResultSetTableModel(String url, String username, String password, String query)
 	throws SQLException{
 		
-		statement = connection.DBCon.CreateStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		
+		
+		
+		stmt = connect.DBCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		setQuery( query );
 	}
 	
 	
