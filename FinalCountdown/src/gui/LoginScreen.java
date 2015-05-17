@@ -55,7 +55,7 @@ public class LoginScreen extends JPanel {
 
 		label_1 = new JLabel("");
 		label_1.setBackground(Color.WHITE);
-		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/images.jpg")));
+		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/kimjung.jpg")));
 		label_1.setBounds(160, 11, 366, 290);
 		add(label_1);
 		
