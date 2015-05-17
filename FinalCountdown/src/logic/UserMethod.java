@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import db.DBCon;
-import gui.IndstBc;
+import gui.DepositScreen;
 import gui.Screen;
 
 public class UserMethod {
@@ -15,16 +15,6 @@ public class UserMethod {
 	
 	public static void deposit() {
 		
-		screen = new Screen();
-		
-			screen.getIndstBc().getTfAmount().addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e)
-			{
-				String value = screen.getIndstBc().getTfAmount().getText();
-				screen.getIndstBc().getLblTest().setText("Test " + value);
-			}
-		});
 		
 	}
 	

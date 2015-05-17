@@ -23,7 +23,7 @@ public class Admin {
 	public ResultSetTableModel(String url, String username, String password, String query)
 	throws SQLException{
 		
-		statement = connectio.DBCon.CreateStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		statement = connection.DBCon.CreateStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		
 	}
 	

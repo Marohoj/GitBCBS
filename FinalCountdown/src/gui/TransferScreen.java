@@ -7,14 +7,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class TransBc extends JPanel {
+public class TransferScreen extends JPanel {
 
 	private JButton btnLogud;
-	private JButton btnHjem;
-	private JButton btnTransBc;
+	private JButton btnHome;
+	private JButton btnTransfer;
 	
-	private JTextField tf_bruger;
-	private JTextField tf_antalbc;
+	private JTextField tfTransUser;
+	private JTextField tfAmount;
 	
 	private JLabel lblBruger;
 	private JLabel lblSaldo;
@@ -22,7 +22,7 @@ public class TransBc extends JPanel {
 	private JLabel lblDetErMulig;
 	private JLabel lblHvorMangeBc;
 	
-	public TransBc() {
+	public TransferScreen() {
 		
 		setBounds(100,100,600,500);
 		setLayout(null);
@@ -31,23 +31,23 @@ public class TransBc extends JPanel {
 		btnLogud.setBounds(475, 11, 89, 23);
 		add(btnLogud);
 		
-		btnHjem = new JButton("Hjem");
-		btnHjem.setBounds(20, 100, 89, 23);
-		add(btnHjem);
+		btnHome = new JButton("Hjem");
+		btnHome.setBounds(20, 100, 89, 23);
+		add(btnHome);
 		
-		tf_antalbc = new JTextField();
-		tf_antalbc.setBounds(199, 272, 199, 23);
-		add(tf_antalbc);
-		tf_antalbc.setColumns(10);
+		tfAmount = new JTextField();
+		tfAmount.setBounds(199, 272, 199, 23);
+		add(tfAmount);
+		tfAmount.setColumns(10);
 		
-		tf_bruger = new JTextField();
-		tf_bruger.setColumns(10);
-		tf_bruger.setBounds(199, 188, 199, 23);
-		add(tf_bruger);
+		tfTransUser = new JTextField();
+		tfTransUser.setColumns(10);
+		tfTransUser.setBounds(199, 188, 199, 23);
+		add(tfTransUser);
 		
-		btnTransBc = new JButton("Overf\u00F8r BC");
-		btnTransBc.setBounds(252, 389, 89, 23);
-		add(btnTransBc);
+		btnTransfer = new JButton("Overf\u00F8r BC");
+		btnTransfer.setBounds(252, 389, 89, 23);
+		add(btnTransfer);
 		
 		lblBruger = new JLabel("Du er logget ind som:" + "");
 		lblBruger.setBounds(20, 11, 238, 23);
@@ -75,17 +75,25 @@ public class TransBc extends JPanel {
 		return btnLogud;
 	}
 
-	public JButton getBtnHjem() {
-		return btnHjem;
+	public JButton getBtnHome() {
+		return btnHome;
 	}
 
-	public JButton getBtnTransBc() {
-		return btnTransBc;
+	public JButton getBtnTransfer() {
+		return btnTransfer;
 	}
 	
+	public JTextField getTfTransUser() {
+		return tfTransUser;
+	}
+
+	public JTextField getTfAmount() {
+		return tfAmount;
+	}
+
 	public void addActionListener(ActionListener l) {
 		btnLogud.addActionListener(l);
-		btnHjem.addActionListener(l);
-		btnTransBc.addActionListener(l);
+		btnHome.addActionListener(l);
+		btnTransfer.addActionListener(l);
 	}
 }

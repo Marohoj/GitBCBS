@@ -17,9 +17,9 @@ public class Screen extends JFrame {
 	public static final String LOGIN = "login";
 	public static final String USERMENU = "usermenu";
 	public static final String ADMINMENU = "adminmenu";
-	public static final String INDSTBC = "indstbc";
-	public static final String HVBC = "hvbc";
-	public static final String TRANS = "trans";
+	public static final String DEPOSIT = "deposit";
+	public static final String WITHDRAW = "withdraw";
+	public static final String TRANSFER = "transfer";
 	public static final String VIS = "vis";
 	public static final String OPRET = "opret";
 	public static final String SLET = "slet";
@@ -28,9 +28,9 @@ public class Screen extends JFrame {
 	private UserMenu usermenu;
 	private UserMethod usermethod;
 	private AdminMenu adminmenu;
-	private IndstBc indstbc;
-	private HvBc hvbc;
-	private TransBc trans;
+	private DepositScreen deposit;
+	private WithdrawScreen withdraw;
+	private TransferScreen transfer;
 	private VisBruger vis;
 	private NyBruger opret;
 	private SletBruger slet;
@@ -72,23 +72,23 @@ public class Screen extends JFrame {
 		adminmenu.setLayout(null);
 		contentPane.add(adminmenu, ADMINMENU);
 		
-		indstbc = new IndstBc();
-		indstbc.setBackground(new Color(255, 255, 255));
-		indstbc.setBounds(100, 100, 600, 500);
-		indstbc.setLayout(null);
-		contentPane.add(indstbc, INDSTBC);
+		deposit = new DepositScreen();
+		deposit.setBackground(new Color(255, 255, 255));
+		deposit.setBounds(100, 100, 600, 500);
+		deposit.setLayout(null);
+		contentPane.add(deposit, DEPOSIT);
 		
-		hvbc = new HvBc();
-		hvbc.setBackground(new Color(255, 255, 255));
-		hvbc.setBounds(100, 100, 600, 500);
-		hvbc.setLayout(null);
-		contentPane.add(hvbc,HVBC);
+		withdraw = new WithdrawScreen();
+		withdraw.setBackground(new Color(255, 255, 255));
+		withdraw.setBounds(100, 100, 600, 500);
+		withdraw.setLayout(null);
+		contentPane.add(withdraw, WITHDRAW);
 		
-		trans = new TransBc();
-		trans.setBackground(new Color(255, 255, 255));
-		trans.setBounds(100, 100, 600, 500);
-		trans.setLayout(null);
-		contentPane.add(trans, TRANS);
+		transfer = new TransferScreen();
+		transfer.setBackground(new Color(255, 255, 255));
+		transfer.setBounds(100, 100, 600, 500);
+		transfer.setLayout(null);
+		contentPane.add(transfer, TRANSFER);
 		
 		opret = new NyBruger();
 		opret.setBackground(new Color(255, 255, 255));
@@ -123,16 +123,16 @@ public class Screen extends JFrame {
 		return adminmenu;
 	}
 	
-	public IndstBc getIndstBc(){
-		return indstbc;
+	public DepositScreen getDepositScreen(){
+		return deposit;
 	}
 	
-	public HvBc getHvBc(){
-		return hvbc;
+	public WithdrawScreen getWithdrawScreen(){
+		return withdraw;
 	}
 	
-	public TransBc getTransBc(){
-		return trans;
+	public TransferScreen getTransferScreen(){
+		return transfer;
 	}
 	
 	public VisBruger getVisBruger(){

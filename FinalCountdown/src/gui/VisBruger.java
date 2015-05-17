@@ -16,7 +16,7 @@ import db.Users;
 public class VisBruger extends JPanel {
 	
 	private JButton btnLogud;
-	private JButton btnHjem;
+	private JButton btnHome;
 	private JButton btnVis;
 	private JButton btnOversigt;
 	
@@ -38,9 +38,9 @@ public class VisBruger extends JPanel {
 		btnLogud.setBounds(475, 11, 89, 23);
 		add(btnLogud);
 		
-		btnHjem = new JButton("Hjem");
-		btnHjem.setBounds(20, 100, 89, 23);
-		add(btnHjem);
+		btnHome = new JButton("Hjem");
+		btnHome.setBounds(20, 100, 89, 23);
+		add(btnHome);
 		
 		lblBruger = new JLabel("Du er logget ind som:" + "");
 		lblBruger.setBounds(20, 11, 238, 23);
@@ -78,8 +78,8 @@ public class VisBruger extends JPanel {
 		return btnLogud;
 	}
 
-	public JButton getBtnHjem() {
-		return btnHjem;
+	public JButton getBtnHome() {
+		return btnHome;
 	}
 
 	public JButton getBtnVis() {
@@ -100,7 +100,7 @@ public class VisBruger extends JPanel {
 
 	public void addActionListener(ActionListener l) {
 		btnLogud.addActionListener(l);
-		btnHjem.addActionListener(l);
+		btnHome.addActionListener(l);
 		btnVis.addActionListener(l);
 		btnOversigt.addActionListener(l);
 	}

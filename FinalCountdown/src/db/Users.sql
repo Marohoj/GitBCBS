@@ -8,7 +8,7 @@ CREATE TABLE `users`(
 `last_name` varchar(255),
 `initials` varchar(255),
 `password` varchar(255),
-`balance` double (10),
+`balance` double,
 PRIMARY KEY (`id`)) AUTO_INCREMENT = 4;
 
 INSERT INTO `users` VALUES ('1','Mathias', 'Højgaard', 'maho14am', '1234', 1.0), 

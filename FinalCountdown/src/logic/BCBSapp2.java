@@ -43,8 +43,8 @@ public class BCBSapp2 {
 		screen.getAdminMenu().addActionListener(new AdminMenuActionListener());
 
 		screen.getDepositScreen().addActionListener(new DepositActionListener());
-		screen.getHvBc().addActionListener(new HvActionListener());
-		screen.getTransBc().addActionListener(new TransActionListener());
+		screen.getWithdrawScreen().addActionListener(new HvActionListener());
+		screen.getTransferScreen().addActionListener(new TransActionListener());
 		
 		screen.getNyBruger().addActionListener(new CreateActionListener());
 		screen.getSletBruger().addActionListener(new DeleteActionListener());
@@ -161,12 +161,12 @@ public class BCBSapp2 {
 				screen.show(Screen.DEPOSIT);
 			}
 
-			else if (e.getSource() == screen.getUserMenu().getBtnHvBc()){
-				screen.show(Screen.HVBC);
+			else if (e.getSource() == screen.getUserMenu().getBtnWithdraw()){
+				screen.show(Screen.WITHDRAW);
 			}
 
-			else if (e.getSource() == screen.getUserMenu().getBtnOverfrBc()){
-				screen.show(Screen.TRANS);
+			else if (e.getSource() == screen.getUserMenu().getBtnTransfer()){
+				screen.show(Screen.TRANSFER);
 			}
 
 		}
@@ -191,7 +191,7 @@ public class BCBSapp2 {
 			else if (e.getSource() == screen.getDepositScreen().getBtnDeposit()){
 				
 				
-				Double balance = (screen.getDepositScreen().getTfAmount().getText() + getCurrentUser().getBalance());
+				Double balance = getCurrentUser().getBalance() + screen.getDepositScreen().getTfAmount().getText();
 				String initials = getCurrentUser().getInitials();
 				
 				dbcon.depositUser(balance, initials);
@@ -205,20 +205,24 @@ public class BCBSapp2 {
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getHvBc().getBtnLogud()){
+			if (e.getSource() == screen.getWithdrawScreen().getBtnLogud()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getHvBc().getBtnHjem()){
+			else if (e.getSource() == screen.getWithdrawScreen().getBtnHjem()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.USERMENU);
 			}
 
-			else if (e.getSource() == screen.getHvBc().getBtnHvBc()){
-				screen.show(Screen.USERMENU);
+			else if (e.getSource() == screen.getWithdrawScreen().getBtnWithdraw()){
+				
+				Double balance = getCurrentUser().getBalance() - screen.getWithdrawScreen().getTfAmount().getText();
+				String initials = getCurrentUser().getInitials();
+			
+				dbcon.withdrawUser(balance, initials);
 			}
 			
 		}
@@ -229,26 +233,23 @@ public class BCBSapp2 {
 
 		public void actionPerformed(ActionEvent e){
 
-			if (e.getSource() == screen.getTransBc().getBtnLogud()){
+			if (e.getSource() == screen.getTransferScreen().getBtnLogud()){
 				screen.getLogin().getTfUsername().setText("");
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
 
-			else if (e.getSource() == screen.getTransBc().getBtnHjem()){
-				screen.getLogin().getTfUsername().setText("");
-				screen.getLogin().getTfPassword().setText("");
+			else if (e.getSource() == screen.getTransferScreen().getBtnHjem()){
 				screen.show(Screen.USERMENU);
 			}
 
-			else if (e.getSource() == screen.getTransBc().getBtnTransBc()){
+			else if (e.getSource() == screen.getTransferScreen().getBtnTransfer()){
 				
-				Double balance = screen.getTransBc().getTfAmount().getText();
-				String initials = screen.getTransBc().getTfTransUser().getText();
+				Double balance = screen.getTransferScreen().getTfAmount().getText();
+				String initials = screen.getTransferScreen().getTfTransUser().getText();
 				
 				dbcon.transferUser(balance, initials);
 				
-				screen.show(Screen.USERMENU);
 			}
 
 		}

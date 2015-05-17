@@ -7,18 +7,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class HvBc extends JPanel {
+public class WithdrawScreen extends JPanel {
 	
 	private JButton btnLogud;
-	private JButton btnHjem;
-	private JButton btnHvBc;
+	private JButton btnHome;
+	private JButton btnWithdraw;
 	private JLabel lblBruger;
 	private JLabel lblSaldo;
 	private JLabel lblAntalBc;
-	private JTextField textField;
+	private JTextField tfAmount;
 	private JLabel lblDetErMulig;
 
-	public HvBc() {
+	public WithdrawScreen() {
 
 		setBounds(100,100,600,500);
 		setLayout(null);
@@ -27,18 +27,18 @@ public class HvBc extends JPanel {
 		btnLogud.setBounds(475, 11, 89, 23);
 		add(btnLogud);
 		
-		btnHjem = new JButton("Hjem");
-		btnHjem.setBounds(20, 100, 89, 23);
-		add(btnHjem);
+		btnHome = new JButton("Hjem");
+		btnHome.setBounds(20, 100, 89, 23);
+		add(btnHome);
 		
-		textField = new JTextField();
-		textField.setBounds(199, 300, 199, 23);
-		add(textField);
-		textField.setColumns(10);
+		tfAmount = new JTextField();
+		tfAmount.setBounds(199, 300, 199, 23);
+		add(tfAmount);
+		tfAmount.setColumns(10);
 		
-		btnHvBc = new JButton("H\u00E6v BC");
-		btnHvBc.setBounds(252, 389, 89, 23);
-		add(btnHvBc);
+		btnWithdraw = new JButton("H\u00E6v BC");
+		btnWithdraw.setBounds(252, 389, 89, 23);
+		add(btnWithdraw);
 		
 		lblBruger = new JLabel("Du er logget ind som:" + "");
 		lblBruger.setBounds(20, 11, 238, 23);
@@ -61,22 +61,22 @@ public class HvBc extends JPanel {
 		return btnLogud;
 	}
 
-	public JButton getBtnHjem() {
-		return btnHjem;
+	public JButton getBtnHome() {
+		return btnHome;
 	}
 
-	public JButton getBtnHvBc() {
-		return btnHvBc;
+	public JButton getBtnWithdraw() {
+		return btnWithdraw;
 	}
 
-	public JTextField getTextField() {
-		return textField;
+	public JTextField getTfAmount() {
+		return tfAmount;
 	}
 	
 	public void addActionListener(ActionListener l) {
 		btnLogud.addActionListener(l);
-		btnHjem.addActionListener(l);
-		btnHvBc.addActionListener(l);
+		btnHome.addActionListener(l);
+		btnWithdraw.addActionListener(l);
 	}
 
 }
