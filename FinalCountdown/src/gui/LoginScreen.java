@@ -8,8 +8,10 @@ import javax.swing.JLabel;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-import javax.swing.JPasswordField;
+import javax.swing.*;
 
 import db.DBCon;
 
@@ -24,6 +26,7 @@ public class LoginScreen extends JPanel {
 	
 	private DBCon dbcon;
 
+		
 	/**
 	 * Create the Login Panel.
 	 */
@@ -39,6 +42,7 @@ public class LoginScreen extends JPanel {
 		tfUsername.setColumns(10);
 		tfUsername.setBounds(247, 312, 200, 26);
 		add(tfUsername);
+		tfUsername.addMouseListener(handler);
 
 		tfPassword = new JPasswordField();
 		tfPassword.setColumns(10);
@@ -89,5 +93,32 @@ public class LoginScreen extends JPanel {
 	public void addActionListener(ActionListener l) {
 		btnLogin.addActionListener(l);
 		btnAfslut.addActionListener(l);
+	}
+	
+	HandlerClass handler = new HandlerClass();	
+
+	public class HandlerClass implements MouseListener{
+			
+			
+		public void mouseClicked(MouseEvent event){
+			tfUsername.setText("");
+		}
+		
+		public void mousePressed(MouseEvent event){
+				tfUsername.setText("");
+		}
+		
+		public void mouseExited(MouseEvent event){
+			tfUsername.setText("");
+		}
+		
+		public void mouseEntered(MouseEvent event){
+			tfUsername.setText("");
+		}
+		
+		public void mouseReleased(MouseEvent event){
+			tfUsername.setText("");
+		}
+
 	}
 }
