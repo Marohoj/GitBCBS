@@ -2,7 +2,6 @@ package logic;
 
 import gui.CreateScreen;
 import gui.Screen;
-import gui.ModelTabel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,17 +21,17 @@ public class BCBSapp2 {
 	private ModelTabel table;
 
 	public BCBSapp2(){
+		
 		//instansierer objekter
-
 		screen = new Screen();
 		dbcon = new DBCon();
+		table = new ModelTabel();
 
-		screen.setVisible(true);
+		screen.setVisible(true);;
 	}
 
 	public void run(){
 
-		dbcon.DBCon();
 		screen.show(Screen.LOGIN);
 
 		screen.getLogin().addActionListener(new LoginActionListener());
@@ -136,16 +135,15 @@ public class BCBSapp2 {
 				String text = screen.getAdminMenu().getTfExchange().getText();	
 				
 				double currency = cur.parseDouble(text);
-				
-				//String initials = currentAdmin.getInitials();
-				
+							
 				dbcon.updateExchange(currency);
 				
 				screen.getAdminMenu().getTfExchange().setText("");
 				screen.getAdminMenu().getLblCurrentEx().setText("Current Exchangerate: " + currency);
 			}
 
-			else if (e.getSource() == screen.getAdminMenu().getBtnViewUsers()){
+			else if (e.getSource() == screen.getAdminMenu().getBtnViewUsers()){	
+				inJTable();
 				screen.show(Screen.VIEW);
 			}
 
@@ -157,6 +155,15 @@ public class BCBSapp2 {
 				screen.show(Screen.DELETE);
 			}
 		}
+	}
+	
+	public void inJTable(){
+		
+		screen.getViewScreen().getTbUser().setModel(table);
+		screen.getViewScreen().getTbUser().setRowHeight(25);
+		screen.getViewScreen().getTbUser().setColumnSelectionAllowed(true);
+		screen.getViewScreen().getTbUser().setCellSelectionEnabled(true);
+		
 	}
 
 	private class UserMenuActionListener implements ActionListener{
@@ -312,7 +319,7 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getViewScreen().getBtnView()){
-		
+							
 				screen.show(Screen.VIEW);
 			}
 			

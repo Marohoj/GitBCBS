@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 import db.Users;
 
 public class DBCon {
@@ -42,7 +44,7 @@ public class DBCon {
 	Statement statement = null;	
 	Connection conn = null;
 
-	public void DBCon(){
+	public DBCon(){
 
 		try { 
 			Class.forName(sqlDriver);
@@ -50,6 +52,7 @@ public class DBCon {
 			statement = conn.createStatement();
 
 			selectAllUsers = conn.prepareStatement("SELECT * FROM Users");
+			
 			selectAdmin = conn.prepareStatement("SELECT * FROM Admin");
 
 			selectCredit = conn.prepareStatement("SELECT balance FROM users WHERE initials = ?");
@@ -128,17 +131,14 @@ public class DBCon {
 		
 		try {
 			updateExchange.setDouble(1, currency);
-			//updateExchange.setString(2, initials);
-			
+						
 			updateExchange.executeUpdate();
-			
-			
 			
 			System.out.println("Done");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "You have to type a value!");
 		}
 		
 	}
@@ -157,7 +157,8 @@ public class DBCon {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Please fill out the formular");
 		}
 
 	}
@@ -182,12 +183,12 @@ public class DBCon {
 
 	public List<Users> getUser(){
 		List<Users> ul = null;
-		ResultSet resultSet = null;
+		ResultSet resultSet;
+		
 		try {
 			resultSet = selectAllUsers.executeQuery();
 			ul = new ArrayList<Users>();
 			while (resultSet.next()) {
-
 				ul.add(new Users(resultSet.getString("first_name"), 
 						resultSet.getString("last_name"),
 						resultSet.getString("initials"),
@@ -197,6 +198,7 @@ public class DBCon {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		
 		}
 
 		return ul;	

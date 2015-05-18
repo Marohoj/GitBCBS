@@ -23,7 +23,7 @@ public class UserMenu extends JPanel {
 	 */
 	public UserMenu() {
 		setBackground(new Color(240, 240, 240));	
-		setBounds(100,100,734,361);
+		setBounds(100,100,584,334);
 		setLayout(null);
 		
 		btnLogout = new JButton("Log out");

@@ -10,9 +10,12 @@ import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
-import gui.ModelTabel;
 import db.DBCon;
 import db.Users;
+
+import javax.swing.JScrollPane;
+
+import logic.ModelTabel;
 
 public class ViewScreen extends JPanel {
 	
@@ -26,6 +29,7 @@ public class ViewScreen extends JPanel {
 	private JLabel	lblUser;
 	private JLabel lblSearch;
 	private JTable tbUser;
+	private JScrollPane scrollPane;
 		
 	public ViewScreen() {
 		
@@ -45,26 +49,31 @@ public class ViewScreen extends JPanel {
 		add(lblUser);
 		
 		btnView = new JButton("View Users");
-		btnView.setBounds(228, 371, 103, 23);
-		add(btnView);	
+		btnView.setBounds(256, 371, 103, 23);
+		add(btnView);
 		
 		btnOverview = new JButton("Order by the richest user");
-		btnOverview.setBounds(200, 405, 159, 23);
+		btnOverview.setBounds(233, 405, 159, 23);
 		add(btnOverview);
 		
 		tfSearch = new JTextField();
-		tfSearch.setBounds(186, 340, 197, 20);
+		tfSearch.setBounds(219, 340, 197, 20);
 		add(tfSearch);
 		tfSearch.setColumns(10);
 		
 		lblSearch = new JLabel("Search: ");
-		lblSearch.setBounds(138, 343, 41, 14);
+		lblSearch.setBounds(168, 343, 41, 14);
 		add(lblSearch);	
 		
-		tbUser = new JTable(new ModelTabel());
-		tbUser.setFillsViewportHeight(true);
-		tbUser.setBounds(30, 23, 392, 246);
-		add(tbUser);
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(119, 63, 401, 246);
+		add(scrollPane);
+		
+		tbUser = new JTable();
+		scrollPane.setViewportView(tbUser);
+		//tbUser.setFillsViewportHeight(true);
+		//tbUser.setBounds(200, 250, 300, 300);
+		//add(tbUser);
 	}
 
 	public JLabel getLblUser() {
@@ -100,5 +109,6 @@ public class ViewScreen extends JPanel {
 		btnHome.addActionListener(l);
 		btnView.addActionListener(l);
 		btnOverview.addActionListener(l);
+		//tbUser.addActionListener(l);
 	}
 }
