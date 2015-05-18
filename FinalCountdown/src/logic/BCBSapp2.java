@@ -221,23 +221,18 @@ public class BCBSapp2 {
 				
 				Double bal = new Double(currentUser.getBalance());
 				String text = screen.getDepositScreen().getTfAmount().getText();
-				
 				double balance1 = (bal.parseDouble(text));
-					
+								
 				currentUser.setBalance(currentUser.getBalance() + balance1);
 				
-				Double balance = balance1;
-				
+				Double balance = currentUser.getBalance();
 				String initials = currentUser.getInitials();
 				
 				dbcon.depositUser(balance, initials);
-				
-				System.out.println("Indsat: " + bal + "/" + text);
-				System.out.println("Gammel Balance: " + currentUser.getBalance());
-				System.out.println("Ny balance " + balance);
-				
+							
 				screen.getDepositScreen().getLblBalance().setText("Balance: " + balance + " BC");
-				screen.getDepositScreen().getTfAmount().setText("");				
+				screen.getDepositScreen().getTfAmount().setText("");
+			
 			}
 
 		}
@@ -259,18 +254,26 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getWithdrawScreen().getBtnWithdraw()){
-								
-				Double bal = new Double(screen.getWithdrawScreen().getTfAmount().getText());
+				
+				Double value = new Double(screen.getWithdrawScreen().getTfAmount().getText());
 				String text = screen.getWithdrawScreen().getTfAmount().getText();
 				
-				double balance = (currentUser.getBalance() - bal.parseDouble(text));
+				double balance1 = (value.parseDouble(text));
 				
+				if (currentUser.getBalance() >= value && value > 0){
+				
+				currentUser.setBalance(currentUser.getBalance() - balance1);
+											
+				Double balance = currentUser.getBalance(); 
 				String initials = getCurrentUser().getInitials();
 			
 				dbcon.withdrawUser(balance, initials);
 				
 				screen.getWithdrawScreen().getLblBalance().setText("Balance: " + balance + " BC");
 				screen.getWithdrawScreen().getTfAmount().setText("");
+				} else {
+					JOptionPane.showMessageDialog(screen, "Insufficient funds!");
+				}
 			}
 			
 		}
@@ -293,15 +296,20 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getTransferScreen().getBtnTransfer()){
 							
-				Double bal = new Double(screen.getTransferScreen().getTfAmount().getText());
+				Double value = new Double(screen.getTransferScreen().getTfAmount().getText());
 				String text = screen.getTransferScreen().getTfAmount().getText();
 				
-				double balance = bal.parseDouble(text);
+				double balance1 = value.parseDouble(text);
 				
-				String initials = screen.getTransferScreen().getTfTransUser().getText();
-			
-			    dbcon.transferUser(balance, initials);
-				
+				if (currentUser.getBalance() >= value && value > 0){
+								
+					String initials = screen.getTransferScreen().getTfTransUser().getText();
+					Double balance = ;
+					
+					dbcon.transferUser(balance, initials);
+				} else {
+					JOptionPane.showMessageDialog(screen, "Insufficient funds!");
+				}
 			}
 
 		}

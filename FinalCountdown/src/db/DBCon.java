@@ -115,7 +115,6 @@ public class DBCon {
 			e.printStackTrace();
 		}
 
-
 	}
 
 	public void updateExchange(Double currency){

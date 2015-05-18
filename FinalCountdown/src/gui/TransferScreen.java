@@ -36,13 +36,13 @@ public class TransferScreen extends JPanel {
 		add(btnHome);
 		
 		tfAmount = new JTextField();
-		tfAmount.setBounds(199, 272, 199, 23);
+		tfAmount.setBounds(199, 184, 199, 23);
 		add(tfAmount);
 		tfAmount.setColumns(10);
 		
 		tfTransUser = new JTextField();
 		tfTransUser.setColumns(10);
-		tfTransUser.setBounds(199, 188, 199, 23);
+		tfTransUser.setBounds(199, 265, 199, 23);
 		add(tfTransUser);
 		
 		btnTransfer = new JButton("Transfer");
@@ -58,7 +58,7 @@ public class TransferScreen extends JPanel {
 		add(lblBalance);
 		
 		lblReceiver = new JLabel("To User (initials): ");
-		lblReceiver.setBounds(199, 247, 69, 14);
+		lblReceiver.setBounds(199, 247, 199, 14);
 		add(lblReceiver);
 		
 		lblPossible = new JLabel("");
