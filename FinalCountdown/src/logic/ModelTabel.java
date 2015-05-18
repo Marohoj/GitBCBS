@@ -40,7 +40,7 @@ public class ModelTabel extends AbstractTableModel {
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		//dbcon.getUser().get(rowIndex);
+		dbcon.getUser().get(rowIndex);
 
 		switch (columnIndex) {
 

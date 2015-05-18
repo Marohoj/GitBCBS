@@ -23,9 +23,7 @@ public class UserMenu extends JPanel {
 	
 		public UserMenu() {
 		
-		
-		setBackground(new Color(240, 240, 240));	
-		setBounds(100,100,646,19);
+		setBounds(100,100,600,500);
 		setLayout(null);
 		
 		btnLogout = new JButton("Log out");
@@ -55,7 +53,6 @@ public class UserMenu extends JPanel {
 		lblBalance = new JLabel("Balance: ");
 		lblBalance.setBounds(20, 40, 89, 40);
 		add(lblBalance);
-		setBounds(153, 104, 255, 19);
 	}
 
 	public JButton getBtnLogout() {

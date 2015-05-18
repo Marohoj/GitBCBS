@@ -77,9 +77,8 @@ public class DBCon {
 	public Users getUserByName (String username){
 		
 		Users result = null;
-		
-		
-		try{
+				
+		try {
 			
 			userByName.setString(1, username);
 			
@@ -87,8 +86,11 @@ public class DBCon {
 			
 			while (resultSet.next()){
 				
-				result = new Users(resultSet.getString("Initials"), resultSet.getString("first_name"), resultSet.getString("last_name"),
-						resultSet.getString("password"), resultSet.getDouble("balance"));
+				result = new Users(resultSet.getString("Initials"), 
+						resultSet.getString("first_name"), 
+						resultSet.getString("last_name"),
+						resultSet.getString("password"), 
+						resultSet.getDouble("balance"));
 			}
 		}
 		catch(Exception e){
@@ -128,7 +130,7 @@ public class DBCon {
 
 	}
 
-	public void transferUser(double balance, String initials){
+	public void transferUser(Double balance, String initials){
 
 		try {
 			transfer.setDouble(1, balance);
@@ -193,10 +195,13 @@ public class DBCon {
 	}
 
 	public void overview(){
-		
-		//richOverview.
-		
-		//richOverview.executeQuery();
+			
+		try {
+			richOverview.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
