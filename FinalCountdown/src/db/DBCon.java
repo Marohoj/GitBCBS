@@ -16,8 +16,8 @@ import db.Users;
 public class DBCon {
 
 	private static Configurations cf = new Configurations();	
-	// private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
 
+	//Henter data fra config.json for at oprette forbindelse til database
 	private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
 	private static String sqlUser = cf.getUsername();
 	private static String sqlPassword = cf.getPassword();
