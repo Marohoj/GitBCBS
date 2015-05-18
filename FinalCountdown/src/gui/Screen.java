@@ -10,6 +10,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 
 public class Screen extends JFrame {
 	public static final String LOGIN = "login";
@@ -38,7 +39,18 @@ public class Screen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	// Background
+	JPanel jp = new JPanel();
+	JLabel jl = new JLabel();
+	
+	
+	
+	
 	public Screen(){
+		
+		
+		
 		
 		setTitle("CBS Bitcoin ATM");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
