@@ -23,7 +23,8 @@ public class ResultSetTableModel extends AbstractTableModel
    private ResultSet resultSet;
    private ResultSetMetaData metaData;
    private int numberOfRows;
-
+   
+   
    // keep track of database connection status
    private boolean connectedToDatabase = false;
    

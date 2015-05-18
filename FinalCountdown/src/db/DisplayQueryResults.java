@@ -24,12 +24,12 @@ import javax.swing.table.TableModel;
 public class DisplayQueryResults extends JFrame 
 {
    // database URL, username and password
-   static final String DATABASE_URL = "jdbc:mysql://localhost/books";
-   static final String USERNAME = "deitel";
-   static final String PASSWORD = "deitel";
+   static final String DATABASE_URL = "jdbc:mysql://localhost:3306/bcbs";
+   static final String USERNAME = "username	";
+   static final String PASSWORD = "password";
    
    // default query retrieves all data from authors table
-   static final String DEFAULT_QUERY = "SELECT * FROM authors";
+   static final String DEFAULT_QUERY = "SELECT * FROM users";
    
    private ResultSetTableModel tableModel;
    private JTextArea queryArea;
@@ -189,10 +189,7 @@ public class DisplayQueryResults extends JFrame
    } // end DisplayQueryResults constructor
    
    // execute application
-   public static void main( String args[] ) 
-   {
-      new DisplayQueryResults();     
-   } // end main
+
 } // end class DisplayQueryResults
 
 
