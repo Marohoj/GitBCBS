@@ -4,11 +4,11 @@ use bcbs;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`(
 `id` int(11) NOT NULL AUTO_INCREMENT, 
-`first_name` varchar(20),
-`last_name` varchar(50),
-`initials` varchar(8),
-`password` varchar(8),
-`balance` double,
+`first_name` varchar(20) NOT NULL,
+`last_name` varchar(50) NOT NULL,
+`initials` varchar(8) NOT NULL,
+`password` varchar(8) NOT NULL,
+`balance` double NOT NULL,
 PRIMARY KEY (`id`)) AUTO_INCREMENT = 4;
 
 INSERT INTO `users` VALUES ('1','Mathias', 'Højgaard', 'maho14am', '1234', 1.0), 

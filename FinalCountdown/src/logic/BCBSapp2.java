@@ -4,6 +4,8 @@ import gui.Screen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -19,9 +21,11 @@ public class BCBSapp2 {
 	private Users currentUser;
 	private Admin currentAdmin;
 	private ModelTabel table;
+	private Pattern pswNamePtrn = Pattern.compile("((?=.*\\d)(?=.*[a-z]).{6,100})");
+	private Pattern usrNamePtrn = Pattern.compile("(?=.*[@.]).{1,1001}");
 
 	public BCBSapp2(){
-		
+
 		//instansierer objekter
 		screen = new Screen();
 		dbcon = new DBCon();
@@ -41,7 +45,7 @@ public class BCBSapp2 {
 		screen.getDepositScreen().addActionListener(new DepositActionListener());
 		screen.getWithdrawScreen().addActionListener(new WithdrawActionListener());
 		screen.getTransferScreen().addActionListener(new TransActionListener());
-		
+
 		screen.getCreateScreen().addActionListener(new CreateActionListener());
 		screen.getDeleteScreen().addActionListener(new DeleteActionListener());
 		screen.getViewScreen().addActionListener(new ViewActionListener());
@@ -84,7 +88,7 @@ public class BCBSapp2 {
 
 		return AdminAuth;
 	}
-	
+
 	private class LoginActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
@@ -127,22 +131,22 @@ public class BCBSapp2 {
 				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.LOGIN);
 			}
-			
+
 			else if (e.getSource() == screen.getAdminMenu().getBtnExchange()){
-				
+
 				try {
-				Double currency = Double.parseDouble(screen.getAdminMenu().getTfExchange().getText());
-											
-				dbcon.updateExchange(currency);
-				
-				screen.getAdminMenu().getTfExchange().setText("");
-				screen.getAdminMenu().getLblCurrentEx().setText("Current Exchangerate: " + currency);
-			
+					Double currency = Double.parseDouble(screen.getAdminMenu().getTfExchange().getText());
+
+					dbcon.updateExchange(currency);
+
+					screen.getAdminMenu().getTfExchange().setText("");
+					screen.getAdminMenu().getLblCurrentEx().setText("Current Exchangerate: " + currency);
+
 				} catch (NumberFormatException e2) {
 					JOptionPane.showMessageDialog(screen, "Please type a value!");
 				}
 			}
-			
+
 			else if (e.getSource() == screen.getAdminMenu().getBtnViewUsers()){	
 				inJTable();
 				screen.show(Screen.VIEW);
@@ -157,14 +161,14 @@ public class BCBSapp2 {
 			}
 		}
 	}
-	
+
 	public void inJTable(){
-		
+
 		screen.getViewScreen().getTbUser().setModel(table);
 		screen.getViewScreen().getTbUser().setRowHeight(25);
 		screen.getViewScreen().getTbUser().setColumnSelectionAllowed(true);
 		screen.getViewScreen().getTbUser().setCellSelectionEnabled(true);
-		
+
 	}
 
 	private class UserMenuActionListener implements ActionListener{
@@ -198,7 +202,7 @@ public class BCBSapp2 {
 		}
 
 	}
-	
+
 	private class DepositActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
@@ -216,19 +220,19 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getDepositScreen().getBtnDeposit()){
-				
+
 				Double value = Double.parseDouble(screen.getDepositScreen().getTfAmount().getText());
-									
+
 				currentUser.setBalance(currentUser.getBalance() + value);
-				
+
 				Double balance = currentUser.getBalance();
 				String initials = currentUser.getInitials();
-				
+
 				dbcon.depositUser(balance, initials);
-							
+
 				screen.getDepositScreen().getLblBalance().setText("Balance: " + balance + " BC");
 				screen.getDepositScreen().getTfAmount().setText("");
-			
+
 			}
 
 		}
@@ -252,27 +256,27 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getWithdrawScreen().getBtnWithdraw()){
-				
+
 				Double value = Double.parseDouble(screen.getWithdrawScreen().getTfAmount().getText());
-				
+
 				if (currentUser.getBalance() >= value && value > 0){
-				
-				currentUser.setBalance(currentUser.getBalance() - value);
-											
-				Double balance = currentUser.getBalance(); 
-				String initials = currentUser.getInitials();
-			
-				dbcon.withdrawUser(balance, initials);
-				
-				screen.getWithdrawScreen().getLblBalance().setText("Balance: " + balance + " BC");
-				screen.getWithdrawScreen().getTfAmount().setText("");
+
+					currentUser.setBalance(currentUser.getBalance() - value);
+
+					Double balance = currentUser.getBalance(); 
+					String initials = currentUser.getInitials();
+
+					dbcon.withdrawUser(balance, initials);
+
+					screen.getWithdrawScreen().getLblBalance().setText("Balance: " + balance + " BC");
+					screen.getWithdrawScreen().getTfAmount().setText("");
 				} else {
 					JOptionPane.showMessageDialog(screen, "Insufficient funds!");
 				}
 			}
-			
+
 		}
-		
+
 	}
 
 	private class TransActionListener implements ActionListener{
@@ -292,30 +296,30 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getTransferScreen().getBtnTransfer()){
-						
+
 				double value = Double.parseDouble(screen.getTransferScreen().getTfAmount().getText());
 				Users transferTo = dbcon.getUserByName(screen.getTransferScreen().getTfTransUser().getText().toString());
-				
+
 				if (currentUser.getBalance() >= value && value > 0){
-											
+
 					currentUser.setBalance(currentUser.getBalance() - value);
 					transferTo.setBalance(transferTo.getBalance() + value);
-					
+
 					dbcon.transferUser(currentUser.getBalance(), currentUser.getInitials());
 					dbcon.transferUser(transferTo.getBalance(), transferTo.getInitials());
-					
+
 					screen.getTransferScreen().getTfAmount().setText(null);
 					screen.getTransferScreen().getTfTransUser().setText(null);
-					
+
 					screen.getTransferScreen().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
-										
+
 				} else {
 					JOptionPane.showMessageDialog(screen, "Insufficient funds!");
 				}
 			}
 
 		}
-		
+
 	}
 
 	private class ViewActionListener implements ActionListener{
@@ -335,9 +339,9 @@ public class BCBSapp2 {
 			else if (e.getSource() == screen.getViewScreen().getBtnOverview()){
 				dbcon.overview();
 			}
-			
+
 		}
-		
+
 	}
 
 	public class CreateActionListener implements ActionListener{
@@ -355,24 +359,30 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getCreateScreen().getBtnCreate()){
-				
+
 				String firstname = screen.getCreateScreen().getUserFirst().getText();
 				String lastname = screen.getCreateScreen().getUserLast().getText();
 				String initials = screen.getCreateScreen().getUserInit().getText();
 				String password = screen.getCreateScreen().getUserPass().getText();
-				
-				//if (){
-				dbcon.createUser(firstname, lastname, initials, password);
-			
-				screen.getCreateScreen().getUserFirst().setText("");
-				screen.getCreateScreen().getUserLast().setText("");
-				screen.getCreateScreen().getUserInit().setText("");
-				screen.getCreateScreen().getUserPass().setText("");
-				//}
+
+				if (myPasswordValidate(password) && myUserNameValidate(initials)){
+					dbcon.createUser(firstname, lastname, initials, password);
+
+					JOptionPane.showMessageDialog(screen, "The user is now in the system!");
+
+					screen.getCreateScreen().getUserFirst().setText("");
+					screen.getCreateScreen().getUserLast().setText("");
+					screen.getCreateScreen().getUserInit().setText("");
+					screen.getCreateScreen().getUserPass().setText("");
+
+				} else {
+					JOptionPane.showMessageDialog(screen, "Please fill out the enitre formular. Bitch.");
+				}
+
 			}
-		
+
 		}
-		
+
 	}
 
 	public class DeleteActionListener implements ActionListener{
@@ -390,23 +400,42 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getDeleteScreen().getBtnDelete()){
-				
+
 				String firstname = screen.getDeleteScreen().getUserFirst().getText();
 				String lastname = screen.getDeleteScreen().getUserLast().getText();
 				String initials = screen.getDeleteScreen().getUserInit().getText();
 				String password = screen.getDeleteScreen().getUserPass().getText();
-			
-				dbcon.deleteUser(firstname, lastname, initials, password);
-				
-				screen.getDeleteScreen().getUserFirst().setText("");
-				screen.getDeleteScreen().getUserLast().setText("");
-				screen.getDeleteScreen().getUserInit().setText("");
-				screen.getDeleteScreen().getUserPass().setText("");
+
+				if (myPasswordValidate(password) && myUserNameValidate(initials)){
+					dbcon.deleteUser(firstname, lastname, initials, password);
+
+					screen.getDeleteScreen().getUserFirst().setText("");
+					screen.getDeleteScreen().getUserLast().setText("");
+					screen.getDeleteScreen().getUserInit().setText("");
+					screen.getDeleteScreen().getUserPass().setText("");
+				} else {
+					JOptionPane.showMessageDialog(screen, "Please fill out the enitre formular. Bitch.");
+				}
 			}
-			
+
 		}
-	
+
+	}
+
+	public boolean myPasswordValidate(String passWord){
+		Matcher mtch = pswNamePtrn.matcher(passWord);
+		if(mtch.matches()){
+			return true;
+		}
+		return false;
+	}
+
+	public boolean myUserNameValidate(String userName){
+		Matcher mtch = usrNamePtrn.matcher(userName);
+		if (mtch.matches()){
+			return true;
+		}
+		return false;
 	}
 
 }
-	
