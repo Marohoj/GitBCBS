@@ -39,6 +39,7 @@ public class DBCon {
 	private PreparedStatement deposit = null;
 	private PreparedStatement withdraw = null;
 	private PreparedStatement transfer = null;
+	private PreparedStatement userByName = null;
 
 	ResultSet resultSet = null;
 	Statement statement = null;	
@@ -64,11 +65,37 @@ public class DBCon {
 			deposit = conn.prepareStatement("UPDATE Users SET balance = ? WHERE initials = ?");
 			withdraw = conn.prepareStatement("UPDATE Users SET balance = ? WHERE initials = ?");
 			transfer = conn.prepareStatement("UPDATE Users SET balance = ? WHERE initials = ?");
+			
+			userByName = conn.prepareStatement("SELECT * FROM Users WHERE initials = ?");
 		} 
 
 		catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	public Users getUserByName (String username){
+		
+		Users result = null;
+		
+		
+		try{
+			
+			userByName.setString(1, username);
+			
+			resultSet = userByName.executeQuery();
+			
+			while (resultSet.next()){
+				
+				result = new Users(resultSet.getString("Initials"), resultSet.getString("first_name"), resultSet.getString("last_name"),
+						resultSet.getString("password"), resultSet.getDouble("balance"));
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	public void depositUser(Double balance, String initials){
@@ -101,7 +128,7 @@ public class DBCon {
 
 	}
 
-	public void transferUser(Double balance, String initials){
+	public void transferUser(double balance, String initials){
 
 		try {
 			transfer.setDouble(1, balance);

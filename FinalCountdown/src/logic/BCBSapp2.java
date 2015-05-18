@@ -295,18 +295,19 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getTransferScreen().getBtnTransfer()){
-							
-				Double value = new Double(screen.getTransferScreen().getTfAmount().getText());
-				String text = screen.getTransferScreen().getTfAmount().getText();
-				
-				double balance1 = value.parseDouble(text);
+						
+				double value = Double.parseDouble(screen.getTransferScreen().getTfAmount().getText());
+				Users transferTo = dbcon.getUserByName(screen.getTransferScreen().getTfTransUser().getText().toString());
 				
 				if (currentUser.getBalance() >= value && value > 0){
-								
-					String initials = screen.getTransferScreen().getTfTransUser().getText();
-					Double balance = ;
+											
+					currentUser.setBalance(currentUser.getBalance() - value);
+					transferTo.setBalance(transferTo.getBalance() + value);
 					
-					dbcon.transferUser(balance, initials);
+					dbcon.transferUser(currentUser.getBalance(), currentUser.getInitials());
+					dbcon.transferUser(transferTo.getBalance(), transferTo.getInitials());
+					
+					//dbcon.transferUser(balance, initials);
 				} else {
 					JOptionPane.showMessageDialog(screen, "Insufficient funds!");
 				}
