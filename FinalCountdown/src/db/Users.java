@@ -52,5 +52,9 @@ public class Users {
 	public Double getBalance() {
 		return balance;
 	}
+	
+	public void setBalance(Double balance){
+		this.balance = balance;
+	}
 
 }

@@ -76,10 +76,7 @@ public class DBCon {
 		try {
 			deposit.setDouble(1, balance);
 			deposit.setString(2, initials);
-
 			deposit.executeUpdate();
-
-			System.out.println("Done");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -92,7 +89,6 @@ public class DBCon {
 		try {
 			withdraw.setDouble(1, balance);
 			withdraw.setString(2, initials);
-
 			withdraw.executeUpdate();
 
 			System.out.println("Done");
@@ -110,7 +106,6 @@ public class DBCon {
 		try {
 			transfer.setDouble(1, balance);
 			transfer.setString(2, initials);
-
 			transfer.executeUpdate();
 
 			System.out.println("Done");
@@ -127,14 +122,10 @@ public class DBCon {
 		
 		try {
 			updateExchange.setDouble(1, currency);
-						
 			updateExchange.executeUpdate();
-			
-			System.out.println("Done");
-			
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, "You have to type a value!");
 		}
 		
 	}
@@ -146,10 +137,9 @@ public class DBCon {
 			createUser.setString(2, lastname);
 			createUser.setString(3, initials);
 			createUser.setString(4, password);
-
 			createUser.executeUpdate();
 
-			System.out.println("Done");
+			JOptionPane.showMessageDialog(null, "The user is now in the system!");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -166,10 +156,9 @@ public class DBCon {
 			deleteUser.setString(2, lastname);
 			deleteUser.setString(3, initials);
 			deleteUser.setString(4, password);
-
 			deleteUser.executeUpdate();
 
-			System.out.println("Done");
+			JOptionPane.showMessageDialog(null, "The user is deleted from the system!");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -188,7 +177,6 @@ public class DBCon {
 	public List<Users> getUser(){
 		List<Users> ul = null;
 		ResultSet resultSet;
-		
 		try {
 			resultSet = selectAllUsers.executeQuery();
 			ul = new ArrayList<Users>();

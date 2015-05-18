@@ -57,7 +57,6 @@ public class BCBSapp2 {
 
 			if (users.getInitials().equals(initials) && users.getPassword().equals(password)){
 
-				System.out.println("Welcome to the Bitcoin ATM");
 				currentUser = users;
 				UserAuth = true;
 			}
@@ -77,7 +76,6 @@ public class BCBSapp2 {
 
 			if (admin.getInitials().equals(initials) && admin.getPassword().equals(password)){
 
-				System.out.println("Welcome to the Bitcoin ATM");
 				currentAdmin = admin;
 				AdminAuth = true;
 			}
@@ -131,6 +129,7 @@ public class BCBSapp2 {
 			
 			else if (e.getSource() == screen.getAdminMenu().getBtnExchange()){
 				
+				try {
 				Double cur = new Double(screen.getAdminMenu().getTfExchange().getText());
 				String text = screen.getAdminMenu().getTfExchange().getText();	
 				
@@ -140,8 +139,12 @@ public class BCBSapp2 {
 				
 				screen.getAdminMenu().getTfExchange().setText("");
 				screen.getAdminMenu().getLblCurrentEx().setText("Current Exchangerate: " + currency);
+			
+				} catch (NumberFormatException e2) {
+					JOptionPane.showMessageDialog(null, "Please type a value!");
+				}
 			}
-
+			
 			else if (e.getSource() == screen.getAdminMenu().getBtnViewUsers()){	
 				inJTable();
 				screen.show(Screen.VIEW);
@@ -178,7 +181,7 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getUserMenu().getBtnDeposit()){
 				screen.getDepositScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
-				screen.getDepositScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
+				screen.getDepositScreen().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.DEPOSIT);
 			}
 
@@ -190,7 +193,7 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getUserMenu().getBtnTransfer()){
 				screen.getTransferScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
-				screen.getTransferScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
+				screen.getTransferScreen().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.TRANSFER);
 			}
 
@@ -216,14 +219,22 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getDepositScreen().getBtnDeposit()){
 				
-				Double bal = new Double(screen.getDepositScreen().getTfAmount().getText());
+				Double bal = new Double(currentUser.getBalance());
 				String text = screen.getDepositScreen().getTfAmount().getText();
 				
-				double balance = (currentUser.getBalance() + bal.parseDouble(text));
+				double balance1 = (bal.parseDouble(text));
 					
-				String initials = getCurrentUser().getInitials();
+				currentUser.setBalance(currentUser.getBalance() + balance1);
+				
+				Double balance = balance1;
+				
+				String initials = currentUser.getInitials();
 				
 				dbcon.depositUser(balance, initials);
+				
+				System.out.println("Indsat: " + bal + "/" + text);
+				System.out.println("Gammel Balance: " + currentUser.getBalance());
+				System.out.println("Ny balance " + balance);
 				
 				screen.getDepositScreen().getLblBalance().setText("Balance: " + balance + " BC");
 				screen.getDepositScreen().getTfAmount().setText("");				
@@ -339,9 +350,13 @@ public class BCBSapp2 {
 				String lastname = screen.getCreateScreen().getUserLast().getText();
 				String initials = screen.getCreateScreen().getUserInit().getText();
 				String password = screen.getCreateScreen().getUserPass().getText();
-	
+				
 				dbcon.createUser(firstname, lastname, initials, password);
 			
+				screen.getCreateScreen().getUserFirst().setText("");
+				screen.getCreateScreen().getUserLast().setText("");
+				screen.getCreateScreen().getUserInit().setText("");
+				screen.getCreateScreen().getUserPass().setText("");
 			}
 		
 		}
@@ -370,6 +385,11 @@ public class BCBSapp2 {
 				String password = screen.getDeleteScreen().getUserPass().getText();
 			
 				dbcon.deleteUser(firstname, lastname, initials, password);
+				
+				screen.getDeleteScreen().getUserFirst().setText("");
+				screen.getDeleteScreen().getUserLast().setText("");
+				screen.getDeleteScreen().getUserInit().setText("");
+				screen.getDeleteScreen().getUserPass().setText("");
 			}
 			
 		}
