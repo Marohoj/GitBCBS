@@ -49,12 +49,12 @@ public class LoginScreen extends JPanel {
 		tfPassword.setBounds(247, 360, 200, 26);
 		add(tfPassword);
 		
-		btnLogin = new JButton("Login");
+		btnLogin = new JButton("");
 		btnLogin.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/approve.png")));
 		btnLogin.setBounds(247, 414, 101, 23);
 		add(btnLogin);
 
-		btnAfslut = new JButton("Afslut");
+		btnAfslut = new JButton("");
 		btnAfslut.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/exit.png")));
 		btnAfslut.setBounds(358, 414, 109, 23);
 		add(btnAfslut);
@@ -64,6 +64,14 @@ public class LoginScreen extends JPanel {
 		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/BCBS_LOGO.jpg")));
 		label_1.setBounds(160, 11, 366, 290);
 		add(label_1);
+		
+		lblUsername = new JLabel("Username:");
+		lblUsername.setBounds(170, 318, 67, 14);
+		add(lblUsername);
+		
+		lblPassword = new JLabel("Password:");
+		lblPassword.setBounds(170, 366, 67, 14);
+		add(lblPassword);
 	}
 
 	public JTextField getTfUsername() {
@@ -96,6 +104,8 @@ public class LoginScreen extends JPanel {
 	}
 	
 	HandlerClass handler = new HandlerClass();	
+	private JLabel lblUsername;
+	private JLabel lblPassword;
 
 	public class HandlerClass implements MouseListener{
 			
@@ -105,7 +115,7 @@ public class LoginScreen extends JPanel {
 		}
 		
 		public void mousePressed(MouseEvent event){
-				tfUsername.setText("");
+			tfUsername.setText("");
 		}
 		
 		public void mouseExited(MouseEvent event){
