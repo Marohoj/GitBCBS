@@ -35,7 +35,7 @@ public class LoginScreen extends JPanel {
 		setLayout(null);
 		setBounds(100, 100, 800, 600);
 
-		tfUsername = new JTextField();
+		tfUsername = new JTextField("Enter your initials");
 		tfUsername.setColumns(10);
 		tfUsername.setBounds(247, 312, 200, 26);
 		add(tfUsername);
@@ -47,12 +47,11 @@ public class LoginScreen extends JPanel {
 		
 		btnLogin = new JButton("Login");
 		btnLogin.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/approve.png")));
-		
-		//________________________________________
 		btnLogin.setBounds(247, 414, 101, 23);
 		add(btnLogin);
 
 		btnAfslut = new JButton("Afslut");
+		btnAfslut.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/exit.png")));
 		btnAfslut.setBounds(358, 414, 109, 23);
 		add(btnAfslut);
 
