@@ -3,7 +3,6 @@ package gui;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-
 import java.awt.event.ActionListener;
 import java.awt.Color;
 
@@ -21,9 +20,12 @@ public class UserMenu extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public UserMenu() {
+	
+		public UserMenu() {
+		
+		
 		setBackground(new Color(240, 240, 240));	
-		setBounds(100,100,350,131);
+		setBounds(100,100,646,19);
 		setLayout(null);
 		
 		btnLogout = new JButton("Log out");

@@ -46,16 +46,19 @@ public class LoginScreen extends JPanel {
 		add(tfPassword);
 		
 		btnLogin = new JButton("Login");
-		btnLogin.setBounds(247, 414, 89, 23);
+		btnLogin.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/approve.png")));
+		
+		//________________________________________
+		btnLogin.setBounds(247, 414, 101, 23);
 		add(btnLogin);
 
 		btnAfslut = new JButton("Afslut");
-		btnAfslut.setBounds(358, 414, 89, 23);
+		btnAfslut.setBounds(358, 414, 109, 23);
 		add(btnAfslut);
 
 		label_1 = new JLabel("");
 		label_1.setBackground(Color.WHITE);
-		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/kimjung.jpg")));
+		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/BCBS_LOGO.jpg")));
 		label_1.setBounds(160, 11, 366, 290);
 		add(label_1);
 	}

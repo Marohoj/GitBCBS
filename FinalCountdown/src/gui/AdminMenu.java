@@ -1,7 +1,9 @@
 package gui;
 
 import java.awt.event.ActionListener;
+import java.awt.*;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,6 +24,8 @@ public class AdminMenu extends JPanel {
 	private JLabel lblLoginInfo;
 	private JLabel lblCurrentEx;
 	private JLabel lblExchange;
+	private JLabel label;
+	private JLabel btclodret;
 		
 	public AdminMenu() {
 
@@ -72,7 +76,13 @@ public class AdminMenu extends JPanel {
 		lblCurrentEx = new JLabel("Current exchangerate:");
 		lblCurrentEx.setBounds(204, 201, 167, 14);
 		add(lblCurrentEx);	
-	}
+		
+		btclodret = new JLabel("");
+		btclodret.setIcon(new ImageIcon(AdminMenu.class.getResource("/img/btclodret.jpg")));
+		btclodret.setBounds(358, 104, 194, 308);
+		add(btclodret);
+		
+			}
 	
 	public JLabel getLblUser(){
 		return lblUser;
@@ -118,5 +128,4 @@ public class AdminMenu extends JPanel {
 		btnDeleteUser.addActionListener(l);
 		btnExchange.addActionListener(l);
 	}
-	
 }
