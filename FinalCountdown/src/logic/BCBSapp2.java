@@ -1,6 +1,5 @@
 package logic;
 
-import gui.CreateScreen;
 import gui.Screen;
 
 import java.awt.event.ActionEvent;
@@ -16,6 +15,7 @@ public class BCBSapp2 {
 
 	private Screen screen;
 	private DBCon dbcon;
+	private Admin admin;
 	private Users currentUser;
 	private Admin currentAdmin;
 	private ModelTabel table;
@@ -27,7 +27,7 @@ public class BCBSapp2 {
 		dbcon = new DBCon();
 		table = new ModelTabel();
 
-		screen.setVisible(true);;
+		screen.setVisible(true);
 	}
 
 	public void run(){
@@ -93,7 +93,8 @@ public class BCBSapp2 {
 
 				if (auth()) {
 					screen.getUserMenu().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
-					screen.getUserMenu().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
+					screen.getUserMenu().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");			
+					screen.getUserMenu().getLblExchange().setText("Exchangerate: " + currentUser.getCurrency());
 					screen.show(Screen.USERMENU);
 				}
 
@@ -104,7 +105,7 @@ public class BCBSapp2 {
 				}
 
 				else {
-					JOptionPane.showMessageDialog(null, "Forkert Brugernavn/Password. Prøv igen!");
+					JOptionPane.showMessageDialog(screen, "Forkert Brugernavn/Password. Prøv igen!");
 				}
 
 			}
@@ -130,18 +131,15 @@ public class BCBSapp2 {
 			else if (e.getSource() == screen.getAdminMenu().getBtnExchange()){
 				
 				try {
-				Double cur = new Double(screen.getAdminMenu().getTfExchange().getText());
-				String text = screen.getAdminMenu().getTfExchange().getText();	
-				
-				double currency = cur.parseDouble(text);
-							
+				Double currency = Double.parseDouble(screen.getAdminMenu().getTfExchange().getText());
+											
 				dbcon.updateExchange(currency);
 				
 				screen.getAdminMenu().getTfExchange().setText("");
 				screen.getAdminMenu().getLblCurrentEx().setText("Current Exchangerate: " + currency);
 			
 				} catch (NumberFormatException e2) {
-					JOptionPane.showMessageDialog(null, "Please type a value!");
+					JOptionPane.showMessageDialog(screen, "Please type a value!");
 				}
 			}
 			
@@ -219,11 +217,9 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getDepositScreen().getBtnDeposit()){
 				
-				Double bal = new Double(currentUser.getBalance());
-				String text = screen.getDepositScreen().getTfAmount().getText();
-				double balance1 = (bal.parseDouble(text));
-								
-				currentUser.setBalance(currentUser.getBalance() + balance1);
+				Double value = Double.parseDouble(screen.getDepositScreen().getTfAmount().getText());
+									
+				currentUser.setBalance(currentUser.getBalance() + value);
 				
 				Double balance = currentUser.getBalance();
 				String initials = currentUser.getInitials();
@@ -250,22 +246,21 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getWithdrawScreen().getBtnHome()){
+				screen.getWithdrawScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+				screen.getWithdrawScreen().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.USERMENU);
 			}
 
 			else if (e.getSource() == screen.getWithdrawScreen().getBtnWithdraw()){
 				
-				Double value = new Double(screen.getWithdrawScreen().getTfAmount().getText());
-				String text = screen.getWithdrawScreen().getTfAmount().getText();
-				
-				double balance1 = (value.parseDouble(text));
+				Double value = Double.parseDouble(screen.getWithdrawScreen().getTfAmount().getText());
 				
 				if (currentUser.getBalance() >= value && value > 0){
 				
-				currentUser.setBalance(currentUser.getBalance() - balance1);
+				currentUser.setBalance(currentUser.getBalance() - value);
 											
 				Double balance = currentUser.getBalance(); 
-				String initials = getCurrentUser().getInitials();
+				String initials = currentUser.getInitials();
 			
 				dbcon.withdrawUser(balance, initials);
 				
@@ -291,6 +286,8 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getTransferScreen().getBtnHome()){
+				screen.getTransferScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
+				screen.getTransferScreen().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.USERMENU);
 			}
 
@@ -307,7 +304,11 @@ public class BCBSapp2 {
 					dbcon.transferUser(currentUser.getBalance(), currentUser.getInitials());
 					dbcon.transferUser(transferTo.getBalance(), transferTo.getInitials());
 					
-					//dbcon.transferUser(balance, initials);
+					screen.getTransferScreen().getTfAmount().setText(null);
+					screen.getTransferScreen().getTfTransUser().setText(null);
+					
+					screen.getTransferScreen().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
+										
 				} else {
 					JOptionPane.showMessageDialog(screen, "Insufficient funds!");
 				}
@@ -332,7 +333,7 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getViewScreen().getBtnOverview()){
-				//screen.getViewScreen().getTbUser().
+				dbcon.overview();
 			}
 			
 		}
@@ -360,12 +361,14 @@ public class BCBSapp2 {
 				String initials = screen.getCreateScreen().getUserInit().getText();
 				String password = screen.getCreateScreen().getUserPass().getText();
 				
+				//if (){
 				dbcon.createUser(firstname, lastname, initials, password);
 			
 				screen.getCreateScreen().getUserFirst().setText("");
 				screen.getCreateScreen().getUserLast().setText("");
 				screen.getCreateScreen().getUserInit().setText("");
 				screen.getCreateScreen().getUserPass().setText("");
+				//}
 			}
 		
 		}
@@ -404,10 +407,6 @@ public class BCBSapp2 {
 		}
 	
 	}
-	
-	public Users getCurrentUser() {
-		return currentUser;
-	} 
-	
+
 }
 	

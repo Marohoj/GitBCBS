@@ -16,8 +16,8 @@ import db.Users;
 public class DBCon {
 
 	private static Configurations cf = new Configurations();	
-	// private static String sqlUrl = "jdbc:mysql://localhost:3306/bcbs";
 
+	//Henter data fra config.json for at oprette forbindelse til database
 	private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
 	private static String sqlUser = cf.getUsername();
 	private static String sqlPassword = cf.getPassword();
@@ -40,6 +40,7 @@ public class DBCon {
 	private PreparedStatement withdraw = null;
 	private PreparedStatement transfer = null;
 	private PreparedStatement userByName = null;
+	private PreparedStatement getCurrency = null;
 
 	ResultSet resultSet = null;
 	Statement statement = null;	
@@ -67,6 +68,8 @@ public class DBCon {
 			transfer = conn.prepareStatement("UPDATE Users SET balance = ? WHERE initials = ?");
 			
 			userByName = conn.prepareStatement("SELECT * FROM Users WHERE initials = ?");
+			getCurrency = conn.prepareStatement("SELECT Currency FROM Admin WHERE initials =  'adm'");
+			
 		} 
 
 		catch (Exception ex) {
@@ -77,9 +80,8 @@ public class DBCon {
 	public Users getUserByName (String username){
 		
 		Users result = null;
-		
-		
-		try{
+				
+		try {
 			
 			userByName.setString(1, username);
 			
@@ -87,8 +89,12 @@ public class DBCon {
 			
 			while (resultSet.next()){
 				
-				result = new Users(resultSet.getString("Initials"), resultSet.getString("first_name"), resultSet.getString("last_name"),
-						resultSet.getString("password"), resultSet.getDouble("balance"));
+				result = new Users(resultSet.getString("Initials"), 
+						resultSet.getString("first_name"), 
+						resultSet.getString("last_name"),
+						resultSet.getString("password"), 
+						resultSet.getDouble("balance"),
+						getCurrency());
 			}
 		}
 		catch(Exception e){
@@ -128,7 +134,7 @@ public class DBCon {
 
 	}
 
-	public void transferUser(double balance, String initials){
+	public void transferUser(Double balance, String initials){
 
 		try {
 			transfer.setDouble(1, balance);
@@ -193,11 +199,27 @@ public class DBCon {
 	}
 
 	public void overview(){
+			
+		try {
+			richOverview.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		//richOverview.
+	}
+	
+	public double getCurrency() throws SQLException{
 		
-		//richOverview.executeQuery();
+		double ex = 0;
+		resultSet = getCurrency.executeQuery();
 		
+		while (resultSet.next()){
+			
+			ex = resultSet.getDouble("Currency");
+		}
+		
+		return ex;
 	}
 	
 	public List<Users> getUser(){
@@ -211,7 +233,8 @@ public class DBCon {
 						resultSet.getString("last_name"),
 						resultSet.getString("initials"),
 						resultSet.getString("password"), 
-						resultSet.getDouble("balance")));
+						resultSet.getDouble("balance"),
+						getCurrency()));
 			}
 
 		} catch (SQLException e) {

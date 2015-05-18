@@ -28,6 +28,7 @@ public class AdminMenu extends JPanel {
 	private JLabel btclodret;
 		
 	public AdminMenu() {
+		setBackground(new Color(176, 224, 230));
 
 		setBounds(100,100,600,500);
 		setLayout(null);
@@ -53,11 +54,11 @@ public class AdminMenu extends JPanel {
 		add(btnViewUsers);
 
 		btnExchange = new JButton("Update Exchangerate");
-		btnExchange.setBounds(204, 368, 152, 23);
+		btnExchange.setBounds(158, 328, 152, 23);
 		add(btnExchange);
 		
 		tfExchange = new JTextField();
-		tfExchange.setBounds(204, 310, 152, 20);
+		tfExchange.setBounds(158, 294, 152, 20);
 		tfExchange.setColumns(10);
 		add(tfExchange);
 		
@@ -66,20 +67,21 @@ public class AdminMenu extends JPanel {
 		add(lblUser);
 		
 		lblLoginInfo = new JLabel("You are logged in as Admin. You got all the power. Have fun!");
-		lblLoginInfo.setBounds(137, 70, 310, 14);
+		lblLoginInfo.setBounds(81, 78, 350, 14);
 		add(lblLoginInfo);
 		
 		lblExchange = new JLabel("Type in todays exchangerate:");
-		lblExchange.setBounds(204, 285, 243, 14);
+		lblExchange.setBounds(160, 269, 243, 14);
 		add(lblExchange);
 		
 		lblCurrentEx = new JLabel("Current exchangerate:");
-		lblCurrentEx.setBounds(204, 201, 167, 14);
+		lblCurrentEx.setBounds(155, 201, 167, 14);
 		add(lblCurrentEx);	
 		
 		btclodret = new JLabel("");
-		btclodret.setIcon(new ImageIcon(AdminMenu.class.getResource("/img/btclodret.jpg")));
-		btclodret.setBounds(358, 104, 194, 308);
+		btclodret.setBackground(SystemColor.activeCaption);
+		btclodret.setIcon(new ImageIcon(AdminMenu.class.getResource("/img/btclodretresize.png")));
+		btclodret.setBounds(345, 95, 255, 256);
 		add(btclodret);
 		
 			}
