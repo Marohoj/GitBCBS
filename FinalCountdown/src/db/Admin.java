@@ -19,23 +19,7 @@ public class Admin //extends AbstractTableModel
 	private String name;
 	private Double currency;
 	
-	
 	DBCon connect = new DBCon ();
-	
-	
-	//public ResultSetTableModel(String url, String username, String password, String query)
-	//throws SQLException{
-		
-		
-		
-		
-	//	stmt = connect.DBCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-	//			ResultSet.CONCUR_READ_ONLY);
-	//	setQuery( query );
-	//}
-	
-	
-	
 	
 	public Admin(String initials, String password, String name, Double currency){
 		

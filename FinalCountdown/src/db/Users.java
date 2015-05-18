@@ -7,14 +7,24 @@ public class Users {
 	private String last_name;
 	private String password;
 	private Double balance;
+	private double currency;
 
-	public Users(String first_name, String last_name, String initials, String password, Double balance) {
+	public Users(String first_name, String last_name, String initials, String password, Double balance, double currency) {
 		
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.initials = initials;
 		this.password = password;
 		this.balance = balance;		
+		this.currency = currency;
+	}
+
+	public double getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(double currency) {
+		this.currency = currency;
 	}
 
 	public String getFirstName() {

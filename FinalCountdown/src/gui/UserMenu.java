@@ -16,10 +16,8 @@ public class UserMenu extends JPanel {
 	
 	private JLabel lblUser;
 	private JLabel lblBalance;
-
-	/**
-	 * Create the panel.
-	 */
+	private JLabel lblWelcome;
+	private JLabel lblExchange;
 	
 		public UserMenu() {
 		
@@ -53,6 +51,14 @@ public class UserMenu extends JPanel {
 		lblBalance = new JLabel("Balance: ");
 		lblBalance.setBounds(20, 40, 89, 40);
 		add(lblBalance);
+		
+		lblExchange = new JLabel("Exchangerate: ");
+		lblExchange.setBounds(197, 184, 135, 14);
+		add(lblExchange);
+		
+		lblWelcome = new JLabel("Welcome to the BitCoin ATM");
+		lblWelcome.setBounds(197, 104, 135, 14);
+		add(lblWelcome);
 	}
 
 	public JButton getBtnLogout() {
@@ -82,7 +88,15 @@ public class UserMenu extends JPanel {
 	public JLabel getLblBalance() {
 		return lblBalance;
 	}
-	
+		
+	public JLabel getLblWelcome() {
+		return lblWelcome;
+	}
+
+	public JLabel getLblExchange() {
+		return lblExchange;
+	}
+
 	public void addActionListener(ActionListener l) {
 		btnLogout.addActionListener(l);
 		btnHome.addActionListener(l);

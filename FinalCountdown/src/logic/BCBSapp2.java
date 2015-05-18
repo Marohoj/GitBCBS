@@ -15,6 +15,7 @@ public class BCBSapp2 {
 
 	private Screen screen;
 	private DBCon dbcon;
+	private Admin admin;
 	private Users currentUser;
 	private Admin currentAdmin;
 	private ModelTabel table;
@@ -92,7 +93,8 @@ public class BCBSapp2 {
 
 				if (auth()) {
 					screen.getUserMenu().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
-					screen.getUserMenu().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
+					screen.getUserMenu().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");			
+					screen.getUserMenu().getLblExchange().setText("Exchangerate: " + currentUser.getCurrency());
 					screen.show(Screen.USERMENU);
 				}
 

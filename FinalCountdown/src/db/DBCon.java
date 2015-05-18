@@ -40,6 +40,7 @@ public class DBCon {
 	private PreparedStatement withdraw = null;
 	private PreparedStatement transfer = null;
 	private PreparedStatement userByName = null;
+	private PreparedStatement getCurrency = null;
 
 	ResultSet resultSet = null;
 	Statement statement = null;	
@@ -67,6 +68,8 @@ public class DBCon {
 			transfer = conn.prepareStatement("UPDATE Users SET balance = ? WHERE initials = ?");
 			
 			userByName = conn.prepareStatement("SELECT * FROM Users WHERE initials = ?");
+			getCurrency = conn.prepareStatement("SELECT Currency FROM Admin WHERE initials =  'adm'");
+			
 		} 
 
 		catch (Exception ex) {
@@ -90,7 +93,8 @@ public class DBCon {
 						resultSet.getString("first_name"), 
 						resultSet.getString("last_name"),
 						resultSet.getString("password"), 
-						resultSet.getDouble("balance"));
+						resultSet.getDouble("balance"),
+						getCurrency());
 			}
 		}
 		catch(Exception e){
@@ -205,6 +209,19 @@ public class DBCon {
 		
 	}
 	
+	public double getCurrency() throws SQLException{
+		
+		double ex = 0;
+		resultSet = getCurrency.executeQuery();
+		
+		while (resultSet.next()){
+			
+			ex = resultSet.getDouble("Currency");
+		}
+		
+		return ex;
+	}
+	
 	public List<Users> getUser(){
 		List<Users> ul = null;
 		ResultSet resultSet;
@@ -216,7 +233,8 @@ public class DBCon {
 						resultSet.getString("last_name"),
 						resultSet.getString("initials"),
 						resultSet.getString("password"), 
-						resultSet.getDouble("balance")));
+						resultSet.getDouble("balance"),
+						getCurrency()));
 			}
 
 		} catch (SQLException e) {
