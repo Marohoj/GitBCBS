@@ -41,8 +41,8 @@ public class Screen extends JFrame {
 	 */
 	
 	// Background
-	JPanel jp = new JPanel();
-	JLabel jl = new JLabel();
+	//JPanel jp = new JPanel();
+	//JLabel jl = new JLabel();
 	
 	
 	

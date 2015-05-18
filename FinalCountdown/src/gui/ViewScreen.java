@@ -44,7 +44,7 @@ public class ViewScreen extends JPanel {
 		btnHome.setBounds(20, 100, 89, 23);
 		add(btnHome);
 		
-		lblUser = new JLabel("User :");
+		lblUser = new JLabel("User:");
 		lblUser.setBounds(20, 11, 238, 23);
 		add(lblUser);
 		

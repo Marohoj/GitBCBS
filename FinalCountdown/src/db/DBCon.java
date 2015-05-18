@@ -32,9 +32,9 @@ public class DBCon {
 	public PreparedStatement deleteUser = null;
 	private PreparedStatement updateExchange = null;
 	private PreparedStatement richOverview = null;
-
-	//Statements for Users
 	private PreparedStatement poorOverview = null;
+	
+	//Statements for Users
 	public PreparedStatement selectCredit = null;
 	private PreparedStatement deposit = null;
 	private PreparedStatement withdraw = null;
@@ -52,15 +52,11 @@ public class DBCon {
 			statement = conn.createStatement();
 
 			selectAllUsers = conn.prepareStatement("SELECT * FROM Users");
-			
 			selectAdmin = conn.prepareStatement("SELECT * FROM Admin");
-
 			selectCredit = conn.prepareStatement("SELECT balance FROM users WHERE initials = ?");
 
 			createUser = conn.prepareStatement("INSERT INTO Users (first_name, last_name, initials, password, balance) VALUES (?, ?, ?, ?, 1)");
-
 			deleteUser = conn.prepareStatement("DELETE FROM Users WHERE first_name = ? AND last_name = ? AND initials = ? AND password = ?");
-
 			updateExchange = conn.prepareStatement ("UPDATE Admin SET currency = ?");
 			richOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance DESC");
 			poorOverview = conn.prepareStatement ("SELECT first_name, last_name, initials, balance FROM Users ORDER BY balance ASC");
@@ -181,6 +177,14 @@ public class DBCon {
 		}
 	}
 
+	public void overview(){
+		
+		//richOverview.
+		
+		//richOverview.executeQuery();
+		
+	}
+	
 	public List<Users> getUser(){
 		List<Users> ul = null;
 		ResultSet resultSet;

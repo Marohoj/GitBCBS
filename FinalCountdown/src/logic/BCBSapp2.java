@@ -184,7 +184,7 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getUserMenu().getBtnWithdraw()){
 				screen.getWithdrawScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
-				screen.getWithdrawScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
+				screen.getWithdrawScreen().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.WITHDRAW);
 			}
 
@@ -210,31 +210,23 @@ public class BCBSapp2 {
 
 			else if (e.getSource() == screen.getDepositScreen().getBtnHome()){
 				screen.getDepositScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
-				screen.getDepositScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
+				screen.getDepositScreen().getLblBalance().setText("Balance: " + currentUser.getBalance() + " BC");
 				screen.show(Screen.USERMENU);
 			}
 
 			else if (e.getSource() == screen.getDepositScreen().getBtnDeposit()){
-				screen.getDepositScreen().getLblUser().setText("User: " + currentUser.getFirstName() + " " + currentUser.getLastName());
-				screen.getDepositScreen().getLblBalance().setText("Credit: " + currentUser.getBalance() + " BC");
-				screen.getDepositScreen().getTfAmount().setText("");
 				
-				try {
 				Double bal = new Double(screen.getDepositScreen().getTfAmount().getText());
 				String text = screen.getDepositScreen().getTfAmount().getText();
 				
-				double balance = (bal.parseDouble(text) + currentUser.getBalance());
-				
+				double balance = (currentUser.getBalance() + bal.parseDouble(text));
+					
 				String initials = getCurrentUser().getInitials();
 				
 				dbcon.depositUser(balance, initials);
 				
-				} catch (NumberFormatException e1) {
-							
-					JOptionPane.showMessageDialog(null, "You have to type a value!");
-						
-				}
-				
+				screen.getDepositScreen().getLblBalance().setText("Balance: " + balance + " BC");
+				screen.getDepositScreen().getTfAmount().setText("");				
 			}
 
 		}
@@ -252,21 +244,22 @@ public class BCBSapp2 {
 			}
 
 			else if (e.getSource() == screen.getWithdrawScreen().getBtnHome()){
-				screen.getLogin().getTfUsername().setText("");
-				screen.getLogin().getTfPassword().setText("");
 				screen.show(Screen.USERMENU);
 			}
 
 			else if (e.getSource() == screen.getWithdrawScreen().getBtnWithdraw()){
-				
+								
 				Double bal = new Double(screen.getWithdrawScreen().getTfAmount().getText());
 				String text = screen.getWithdrawScreen().getTfAmount().getText();
 				
-				double balance = (bal.parseDouble(text) - currentUser.getBalance());
+				double balance = (currentUser.getBalance() - bal.parseDouble(text));
 				
 				String initials = getCurrentUser().getInitials();
 			
 				dbcon.withdrawUser(balance, initials);
+				
+				screen.getWithdrawScreen().getLblBalance().setText("Balance: " + balance + " BC");
+				screen.getWithdrawScreen().getTfAmount().setText("");
 			}
 			
 		}
@@ -318,9 +311,8 @@ public class BCBSapp2 {
 				screen.show(Screen.ADMINMENU);
 			}
 
-			else if (e.getSource() == screen.getViewScreen().getBtnView()){
-							
-				screen.show(Screen.VIEW);
+			else if (e.getSource() == screen.getViewScreen().getBtnOverview()){
+				//screen.getViewScreen().getTbUser().
 			}
 			
 		}
