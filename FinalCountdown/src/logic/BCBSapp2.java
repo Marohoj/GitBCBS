@@ -297,7 +297,8 @@ public class BCBSapp2 {
 			else if (e.getSource() == screen.getTransferScreen().getBtnTransfer()){
 
 				double value = Double.parseDouble(screen.getTransferScreen().getTfAmount().getText());
-				Users transferTo = dbcon.getUserByName(screen.getTransferScreen().getTfTransUser().getText().toString());
+				
+				Users transferTo = dbcon.getUserByName(screen.getTransferScreen().getTfTransUser().getText());
 
 				if (currentUser.getBalance() >= value && value > 0){
 

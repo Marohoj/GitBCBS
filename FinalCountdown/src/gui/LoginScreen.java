@@ -8,42 +8,30 @@ import javax.swing.JLabel;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.*;
-
-import db.DBCon;
 
 public class LoginScreen extends JPanel {
 	
 	private JTextField tfUsername;
 	private JPasswordField tfPassword;
 	private JLabel label_1;
-	private JLabel lblPing;
+	private JLabel lblUsername;
+	private JLabel lblPassword;
 	private JButton btnLogin;
 	private JButton btnAfslut;
-	
-	private DBCon dbcon;
 
-		
-	/**
-	 * Create the Login Panel.
-	 */
 	public LoginScreen() {
-		
-		dbcon = new DBCon();
-		
+				
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setBounds(100, 100, 800, 600);
 
-		tfUsername = new JTextField("Enter your initials");
+		tfUsername = new JTextField();
 		tfUsername.setColumns(10);
 		tfUsername.setBounds(247, 312, 200, 26);
 		add(tfUsername);
-		tfUsername.addMouseListener(handler);
-
+	
 		tfPassword = new JPasswordField();
 		tfPassword.setColumns(10);
 		tfPassword.setBounds(247, 360, 200, 26);
@@ -103,30 +91,4 @@ public class LoginScreen extends JPanel {
 		btnAfslut.addActionListener(l);
 	}
 	
-	HandlerClass handler = new HandlerClass();	
-	private JLabel lblUsername;
-	private JLabel lblPassword;
-
-	public class HandlerClass implements MouseListener{
-			
-			
-		public void mouseClicked(MouseEvent event){
-			tfUsername.setText("");
-		}
-		
-		public void mousePressed(MouseEvent event){
-			tfUsername.setText("");
-		}
-		
-		public void mouseExited(MouseEvent event){
-		}
-		
-		public void mouseEntered(MouseEvent event){
-		}
-		
-		public void mouseReleased(MouseEvent event){
-			tfUsername.setText("");
-		}
-
-	}
 }

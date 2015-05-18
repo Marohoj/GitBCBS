@@ -18,8 +18,6 @@ public class ModelTabel extends AbstractTableModel {
 	}
 
 	public int getRowCount() {
-		//return 4;
-
 		return dbcon.getUser().size();
 	}
 
@@ -55,8 +53,6 @@ public class ModelTabel extends AbstractTableModel {
 		case 4: 
 			return dbcon.getUser().get(rowIndex).getBalance();
 		}
-		//return null;
-
 		return getValueAt(rowIndex, columnIndex);
 	}
 }

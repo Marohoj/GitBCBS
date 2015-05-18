@@ -18,10 +18,10 @@ public class DBCon {
 	private static Configurations cf = new Configurations();	
 
 	//Henter data fra config.json for at oprette forbindelse til database
-	private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
-	private static String sqlUser = cf.getUsername();
-	private static String sqlPassword = cf.getPassword();
-	private static String sqlDriver = "com.mysql.jdbc.Driver";
+	private static final String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
+	private static final String sqlUser = cf.getUsername();
+	private static final String sqlPassword = cf.getPassword();
+	private static final String sqlDriver = "com.mysql.jdbc.Driver";
 
 	//Statements til dannelse af database
 	private PreparedStatement selectAllUsers = null;
@@ -134,7 +134,7 @@ public class DBCon {
 
 	}
 
-	public void transferUser(Double balance, String initials){
+	public void transferUser(double balance, String initials){
 
 		try {
 			transfer.setDouble(1, balance);
@@ -220,7 +220,7 @@ public class DBCon {
 
 	public List<Users> getUser(){
 		List<Users> ul = null;
-		ResultSet resultSet;
+		ResultSet resultSet = null;
 		try {
 			resultSet = selectAllUsers.executeQuery();
 			ul = new ArrayList<Users>();
