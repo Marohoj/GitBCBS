@@ -171,11 +171,8 @@ public class DBCon {
 			createUser.setString(4, password);
 			createUser.executeUpdate();
 
-			JOptionPane.showMessageDialog(null, "The user is now in the system!");
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Please fill out the formular");
 		}
 

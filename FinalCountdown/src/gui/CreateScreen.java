@@ -72,7 +72,7 @@ public class CreateScreen extends JPanel {
 		userPass.setBounds(277, 285, 155, 23);
 		add(userPass);
 		
-		lblInitials = new JLabel("Initials:");
+		lblInitials = new JLabel("CBS-mail:");
 		lblInitials.setBounds(182, 187, 85, 14);
 		add(lblInitials);
 		
