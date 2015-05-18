@@ -17,12 +17,11 @@ public class BCBSapp2 {
 
 	private Screen screen;
 	private DBCon dbcon;
-	private Admin admin;
 	private Users currentUser;
 	private Admin currentAdmin;
 	private ModelTabel table;
-	private Pattern pswNamePtrn = Pattern.compile("((?=.*\\d)(?=.*[a-z]).{6,100})");
-	private Pattern usrNamePtrn = Pattern.compile("(?=.*[@.]).{1,1001}");
+	private Pattern passwordPattern = Pattern.compile("((?=.*\\d)(?=.*[a-z]).{6,8})");
+	private Pattern initialsPattern = Pattern.compile("(?=.*[@.]).{1,20}");
 
 	public BCBSapp2(){
 
@@ -365,7 +364,7 @@ public class BCBSapp2 {
 				String initials = screen.getCreateScreen().getUserInit().getText();
 				String password = screen.getCreateScreen().getUserPass().getText();
 
-				if (myPasswordValidate(password) && myUserNameValidate(initials)){
+				if (passwordValidate(password) && initialsValidate(initials)){
 					dbcon.createUser(firstname, lastname, initials, password);
 
 					JOptionPane.showMessageDialog(screen, "The user is now in the system!");
@@ -376,7 +375,7 @@ public class BCBSapp2 {
 					screen.getCreateScreen().getUserPass().setText("");
 
 				} else {
-					JOptionPane.showMessageDialog(screen, "Please fill out the enitre formular. Bitch.");
+					JOptionPane.showMessageDialog(screen, "Please fill out the enitre formular");
 				}
 
 			}
@@ -406,7 +405,7 @@ public class BCBSapp2 {
 				String initials = screen.getDeleteScreen().getUserInit().getText();
 				String password = screen.getDeleteScreen().getUserPass().getText();
 
-				if (myPasswordValidate(password) && myUserNameValidate(initials)){
+				if (passwordValidate(password) && initialsValidate(initials)){
 					dbcon.deleteUser(firstname, lastname, initials, password);
 
 					screen.getDeleteScreen().getUserFirst().setText("");
@@ -414,25 +413,26 @@ public class BCBSapp2 {
 					screen.getDeleteScreen().getUserInit().setText("");
 					screen.getDeleteScreen().getUserPass().setText("");
 				} else {
-					JOptionPane.showMessageDialog(screen, "Please fill out the enitre formular. Bitch.");
+					JOptionPane.showMessageDialog(screen, "Please fill out the enitre formular");
 				}
+
 			}
 
 		}
 
 	}
 
-	public boolean myPasswordValidate(String passWord){
-		Matcher mtch = pswNamePtrn.matcher(passWord);
-		if(mtch.matches()){
+	public boolean passwordValidate(String password){
+		Matcher match = passwordPattern.matcher(password);
+		if(match.matches()){
 			return true;
 		}
 		return false;
 	}
 
-	public boolean myUserNameValidate(String userName){
-		Matcher mtch = usrNamePtrn.matcher(userName);
-		if (mtch.matches()){
+	public boolean initialsValidate(String initials){
+		Matcher match = initialsPattern.matcher(initials);
+		if (match.matches()){
 			return true;
 		}
 		return false;

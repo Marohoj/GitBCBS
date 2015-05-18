@@ -33,7 +33,7 @@ public class DBCon {
 	private PreparedStatement updateExchange = null;
 	private PreparedStatement richOverview = null;
 	private PreparedStatement poorOverview = null;
-	
+
 	//Statements for Users
 	public PreparedStatement selectCredit = null;
 	private PreparedStatement deposit = null;
@@ -66,29 +66,29 @@ public class DBCon {
 			deposit = conn.prepareStatement("UPDATE Users SET balance = ? WHERE initials = ?");
 			withdraw = conn.prepareStatement("UPDATE Users SET balance = ? WHERE initials = ?");
 			transfer = conn.prepareStatement("UPDATE Users SET balance = ? WHERE initials = ?");
-			
+
 			userByName = conn.prepareStatement("SELECT * FROM Users WHERE initials = ?");
 			getCurrency = conn.prepareStatement("SELECT Currency FROM Admin WHERE initials =  'adm'");
-			
+
 		} 
 
 		catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	public Users getUserByName (String username){
-		
+
 		Users result = null;
-				
+
 		try {
-			
+
 			userByName.setString(1, username);
-			
+
 			resultSet = userByName.executeQuery();
-			
+
 			while (resultSet.next()){
-				
+
 				result = new Users(resultSet.getString("Initials"), 
 						resultSet.getString("first_name"), 
 						resultSet.getString("last_name"),
@@ -100,7 +100,7 @@ public class DBCon {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
@@ -151,15 +151,15 @@ public class DBCon {
 	}
 
 	public void updateExchange(Double currency){
-		
+
 		try {
 			updateExchange.setDouble(1, currency);
 			updateExchange.executeUpdate();
-				
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 		}
-		
+
 	}
 
 	public void createUser(String firstname, String lastname, String initials, String password){
@@ -196,29 +196,28 @@ public class DBCon {
 	}
 
 	public void overview(){
-			
+
 		try {
 			richOverview.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public double getCurrency() throws SQLException{
-		
+
 		double ex = 0;
 		resultSet = getCurrency.executeQuery();
-		
+
 		while (resultSet.next()){
-			
 			ex = resultSet.getDouble("Currency");
 		}
-		
+
 		return ex;
 	}
-	
+
 	public List<Users> getUser(){
 		List<Users> ul = null;
 		ResultSet resultSet;
@@ -236,7 +235,7 @@ public class DBCon {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		
+
 		}
 
 		return ul;	

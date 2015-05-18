@@ -7,19 +7,19 @@ import db.DBCon;
 public class ModelTabel extends AbstractTableModel {
 
 	private DBCon dbcon;
-		
+
 	public ModelTabel(){
-		
+
 		dbcon = new DBCon();
 	}
-	
+
 	public int getColumnCount() {
 		return 5;
 	}
 
 	public int getRowCount() {
 		//return 4;
-		
+
 		return dbcon.getUser().size();
 	}
 
@@ -56,7 +56,7 @@ public class ModelTabel extends AbstractTableModel {
 			return dbcon.getUser().get(rowIndex).getBalance();
 		}
 		//return null;
-		
+
 		return getValueAt(rowIndex, columnIndex);
 	}
 }
