@@ -119,11 +119,9 @@ public class LoginScreen extends JPanel {
 		}
 		
 		public void mouseExited(MouseEvent event){
-			tfUsername.setText("");
 		}
 		
 		public void mouseEntered(MouseEvent event){
-			tfUsername.setText("");
 		}
 		
 		public void mouseReleased(MouseEvent event){
