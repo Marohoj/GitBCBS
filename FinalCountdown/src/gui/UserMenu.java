@@ -57,7 +57,7 @@ public class UserMenu extends JPanel {
 		add(lblExchange);
 		
 		lblWelcome = new JLabel("Welcome to the BitCoin ATM");
-		lblWelcome.setBounds(197, 104, 135, 14);
+		lblWelcome.setBounds(144, 104, 226, 23);
 		add(lblWelcome);
 	}
 
