@@ -1,12 +1,12 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.ImageIcon;
 
 public class WithdrawScreen extends JPanel {
 	
@@ -20,7 +20,7 @@ public class WithdrawScreen extends JPanel {
 	private JLabel lblPossible;
 
 	public WithdrawScreen() {
-
+		setBackground(Color.WHITE);
 		setBounds(100,100,600,500);
 		setLayout(null);
 

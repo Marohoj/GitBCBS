@@ -1,6 +1,6 @@
 package gui;
 
-import java.awt.event.ActionEvent;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -18,9 +18,6 @@ public class CreateScreen extends JPanel {
 	private JTextField userFirst;
 	private JTextField userLast;
 	private JTextField userPass;
-	
-	private JLabel	lblUser;
-	private JLabel	lblBalance;	
 	private JLabel lblInitials;
 	private JLabel lblFirstname;
 	private JLabel lblLastname;
@@ -28,6 +25,7 @@ public class CreateScreen extends JPanel {
 	private JLabel lblFormular;
 	
 	public CreateScreen() {
+		setBackground(Color.WHITE);
 		
 		setBounds(100,100,600,500);
 		setLayout(null);
@@ -37,19 +35,11 @@ public class CreateScreen extends JPanel {
 		add(btnLogout);
 		
 		btnHome = new JButton("Home");
-		btnHome.setBounds(20, 100, 89, 23);
+		btnHome.setBounds(20, 74, 103, 23);
 		add(btnHome);
 		
-		lblUser = new JLabel("Du er logget ind som:" + "");
-		lblUser.setBounds(20, 11, 238, 23);
-		add(lblUser);
-
-		lblBalance = new JLabel("Balance:" + "");
-		lblBalance.setBounds(20, 40, 103, 23);
-		add(lblBalance);
-		
 		btnCreate = new JButton("Create user");
-		btnCreate.setBounds(252, 389, 103, 23);
+		btnCreate.setBounds(235, 330, 103, 23);
 		add(btnCreate);
 		
 		userInit = new JTextField();

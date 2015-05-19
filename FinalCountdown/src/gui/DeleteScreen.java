@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -18,8 +19,6 @@ public class DeleteScreen extends JPanel {
 	private JTextField userLast;
 	private JTextField userPass;
 	
-	private JLabel	lblBruger;
-	private JLabel	lblSaldo;	
 	private JLabel lblInitials;
 	private JLabel lblFirstname;
 	private JLabel lblLastname;
@@ -27,7 +26,8 @@ public class DeleteScreen extends JPanel {
 	private JLabel lblFormular;
 	
 	public DeleteScreen() {
-
+		setBackground(Color.WHITE);
+		
 		setBounds(100,100,600,500);
 		setLayout(null);
 
@@ -36,16 +36,8 @@ public class DeleteScreen extends JPanel {
 		add(btnLogout);
 		
 		btnHome = new JButton("Home");
-		btnHome.setBounds(20, 100, 89, 23);
+		btnHome.setBounds(20, 74, 103, 23);
 		add(btnHome);
-		
-		lblBruger = new JLabel("Du er logget ind som:" + "");
-		lblBruger.setBounds(20, 11, 238, 23);
-		add(lblBruger);
-
-		lblSaldo = new JLabel("Saldo:" + "");
-		lblSaldo.setBounds(20, 40, 103, 23);
-		add(lblSaldo);
 		
 		btnDelete = new JButton("Delete user");
 		btnDelete.setBounds(252, 389, 103, 23);

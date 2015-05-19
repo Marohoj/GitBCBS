@@ -1,37 +1,25 @@
 package gui;
 
-import java.awt.FlowLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
-
-import db.DBCon;
-import db.Users;
-
 import javax.swing.JScrollPane;
-
-import logic.ModelTabel;
 
 public class ViewScreen extends JPanel {
 	
 	private JButton btnLogout;
 	private JButton btnHome;
-	private JButton btnView;
-	private JButton btnOverview;
+	private JButton btnOverviewRich;
+	private JButton btnOverviewPoor;
 	
-	private JTextField tfSearch;
-	
-	private JLabel	lblUser;
-	private JLabel lblSearch;
 	private JTable tbUser;
 	private JScrollPane scrollPane;
 		
 	public ViewScreen() {
+		setBackground(Color.WHITE);
 		
 		setBounds(100,100,600,500);
 		setLayout(null);
@@ -41,43 +29,24 @@ public class ViewScreen extends JPanel {
 		add(btnLogout);
 		
 		btnHome = new JButton("Home");
-		btnHome.setBounds(20, 100, 89, 23);
+		btnHome.setBounds(20, 74, 103, 23);
 		add(btnHome);
 		
-		lblUser = new JLabel("User:");
-		lblUser.setBounds(20, 11, 238, 23);
-		add(lblUser);
+		btnOverviewRich = new JButton("Order by the richest user");
+		btnOverviewRich.setBounds(106, 415, 159, 23);
+		add(btnOverviewRich);
 		
-		btnView = new JButton("View Users");
-		btnView.setBounds(256, 371, 103, 23);
-		add(btnView);
-		
-		btnOverview = new JButton("Order by the richest user");
-		btnOverview.setBounds(233, 405, 159, 23);
-		add(btnOverview);
-		
-		tfSearch = new JTextField();
-		tfSearch.setBounds(219, 340, 197, 20);
-		add(tfSearch);
-		tfSearch.setColumns(10);
-		
-		lblSearch = new JLabel("Search: ");
-		lblSearch.setBounds(168, 343, 41, 14);
-		add(lblSearch);	
+		btnOverviewPoor = new JButton("Order by the poorest user");
+		btnOverviewPoor.setBounds(324, 415, 159, 23);
+		add(btnOverviewPoor);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(119, 63, 401, 246);
+		scrollPane.setBounds(20, 127, 548, 246);
 		add(scrollPane);
 		
 		tbUser = new JTable();
 		scrollPane.setViewportView(tbUser);
-		//tbUser.setFillsViewportHeight(true);
-		//tbUser.setBounds(200, 250, 300, 300);
-		//add(tbUser);
-	}
-
-	public JLabel getLblUser() {
-		return lblUser;
+		
 	}
 
 	public JButton getBtnLogout() {
@@ -87,19 +56,15 @@ public class ViewScreen extends JPanel {
 	public JButton getBtnHome() {
 		return btnHome;
 	}
-
-	public JButton getBtnView() {
-		return btnView;
+	
+	public JButton getBtnOverviewRich() {
+		return btnOverviewRich;
 	}
 	
-	public JButton getBtnOverview() {
-		return btnOverview;
+	public JButton getBtnOverviewPoor() {
+		return btnOverviewPoor;
 	}
-	
-	public JTextField getTfSearch() {
-		return tfSearch;
-	}
-	
+		
 	public JTable getTbUser(){
 		return tbUser;
 	}
@@ -107,8 +72,7 @@ public class ViewScreen extends JPanel {
 	public void addActionListener(ActionListener l) {
 		btnLogout.addActionListener(l);
 		btnHome.addActionListener(l);
-		btnView.addActionListener(l);
-		btnOverview.addActionListener(l);
-		//tbUser.addActionListener(l);
+		btnOverviewRich.addActionListener(l);
+		btnOverviewPoor.addActionListener(l);
 	}
 }

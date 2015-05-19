@@ -17,11 +17,11 @@ public class DBCon {
 
 	private static Configurations cf = new Configurations();	
 
-	//Henter data fra config.json for at oprette forbindelse til database
-	private static final String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
-	private static final String sqlUser = cf.getUsername();
-	private static final String sqlPassword = cf.getPassword();
-	private static final String sqlDriver = "com.mysql.jdbc.Driver";
+	//
+	private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/" + cf.getDBname();
+	private static String sqlUser = cf.getUsername();
+	private static String sqlPassword = cf.getPassword();
+	private static String sqlDriver = "com.mysql.jdbc.Driver";
 
 	//Statements til dannelse af database
 	private PreparedStatement selectAllUsers = null;
@@ -46,6 +46,9 @@ public class DBCon {
 	Statement statement = null;	
 	Connection conn = null;
 
+	/**
+	 * Method that connects to the database and declares the prepared statements
+	 */
 	public DBCon(){
 
 		try { 
@@ -195,7 +198,7 @@ public class DBCon {
 		}
 	}
 
-	public void overview(){
+	public void overviewRich(){
 
 		try {
 			richOverview.executeQuery();
@@ -203,12 +206,23 @@ public class DBCon {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
+	
+	public void overviewPoor(){
+		
+		try {
+			poorOverview.executeQuery();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+
 
 	public double getCurrency() throws SQLException{
 
-		double ex = 0;
+		double ex = 150;
 		resultSet = getCurrency.executeQuery();
 
 		while (resultSet.next()){

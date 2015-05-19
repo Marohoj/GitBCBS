@@ -25,40 +25,40 @@ public class LoginScreen extends JPanel {
 				
 		setBackground(Color.WHITE);
 		setLayout(null);
-		setBounds(100, 100, 800, 600);
+		setBounds(100, 100, 600, 500);
 
 		tfUsername = new JTextField();
 		tfUsername.setColumns(10);
-		tfUsername.setBounds(247, 312, 200, 26);
+		tfUsername.setBounds(208, 312, 200, 26);
 		add(tfUsername);
 	
 		tfPassword = new JPasswordField();
 		tfPassword.setColumns(10);
-		tfPassword.setBounds(247, 360, 200, 26);
+		tfPassword.setBounds(208, 360, 200, 26);
 		add(tfPassword);
 		
 		btnLogin = new JButton("");
 		btnLogin.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/approve.png")));
-		btnLogin.setBounds(247, 414, 101, 23);
+		btnLogin.setBounds(208, 414, 84, 23);
 		add(btnLogin);
 
 		btnAfslut = new JButton("");
 		btnAfslut.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/exit.png")));
-		btnAfslut.setBounds(358, 414, 109, 23);
+		btnAfslut.setBounds(324, 414, 84, 23);
 		add(btnAfslut);
 
 		label_1 = new JLabel("");
 		label_1.setBackground(Color.WHITE);
 		label_1.setIcon(new ImageIcon(LoginScreen.class.getResource("/img/BCBS_LOGO.jpg")));
-		label_1.setBounds(160, 11, 366, 290);
+		label_1.setBounds(114, 11, 366, 290);
 		add(label_1);
 		
 		lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(170, 318, 67, 14);
+		lblUsername.setBounds(131, 318, 67, 14);
 		add(lblUsername);
 		
 		lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(170, 366, 67, 14);
+		lblPassword.setBounds(131, 366, 67, 14);
 		add(lblPassword);
 	}
 

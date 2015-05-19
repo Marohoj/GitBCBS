@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -23,7 +24,7 @@ public class TransferScreen extends JPanel {
 	private JLabel lblAmount;
 	
 	public TransferScreen() {
-		
+		setBackground(Color.WHITE);
 		setBounds(100,100,600,500);
 		setLayout(null);
 

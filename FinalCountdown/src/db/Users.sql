@@ -1,15 +1,15 @@
 CREATE DATABASE IF NOT EXISTS `bcbs`;
 use bcbs;
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users`(
-`id` int(11) NOT NULL AUTO_INCREMENT, 
-`first_name` varchar(20) NOT NULL,
-`last_name` varchar(50) NOT NULL,
-`initials` varchar(50) NOT NULL,
-`password` varchar(20) NOT NULL,
-`balance` double NOT NULL,
-PRIMARY KEY (`id`)) AUTO_INCREMENT = 4;
+DROP TABLE IF EXISTS users;
+CREATE TABLE users(
+id` int(11) NOT NULL AUTO_INCREMENT, 
+first_name varchar(20) NOT NULL,
+last_name varchar(50) NOT NULL,
+initials varchar(50) NOT NULL UNIQUE,
+password varchar(20) NOT NULL,
+balance double,
+PRIMARY KEY (id)) AUTO_INCREMENT = 4;
 
 INSERT INTO `users` VALUES ('1','Mathias', 'Højgaard', 'maho14am@student.cbs.dk', '1234aaaa', 1.0), 
 ('2','Rasmus', 'Dyhr', 'rady13ac@student.cbs.dk', '1234bbbb', 1.0), 

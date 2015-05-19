@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -16,11 +17,10 @@ public class DepositScreen extends JPanel {
 	private JLabel lblBalance;
 	private JLabel lblAmount;
 	private JTextField tfAmount;
-	private JLabel label;
 	private JLabel lblTest;
 	
 	public DepositScreen() {
-		
+		setBackground(Color.WHITE);
 		setBounds(100,100,600,500);
 		setLayout(null);
 
@@ -41,7 +41,7 @@ public class DepositScreen extends JPanel {
 		add(lblBalance);
 		
 		tfAmount = new JTextField();
-		tfAmount.setBounds(199, 300, 199, 23);
+		tfAmount.setBounds(199, 221, 199, 23);
 		add(tfAmount);
 		tfAmount.setColumns(10);
 		
@@ -50,12 +50,8 @@ public class DepositScreen extends JPanel {
 		add(btnDeposit);
 		
 		lblAmount = new JLabel("How many BC do you want to deposit?");
-		lblAmount.setBounds(199, 167, 254, 14);
+		lblAmount.setBounds(199, 196, 254, 14);
 		add(lblAmount);
-		
-		label = new JLabel("Balance:");
-		label.setBounds(199, 202, 103, 23);
-		add(label);
 		
 		lblTest = new JLabel("");
 		lblTest.setBounds(199, 342, 46, 14);
